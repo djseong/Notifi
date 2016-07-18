@@ -70,6 +70,9 @@
 		65F2715C1D3CAEA50042BDA2 /* Notifi */ = {
 			isa = PBXGroup;
 			children = (
+				65F271751D3CF3960042BDA2 /* View Controller */,
+				65F271741D3CF3910042BDA2 /* View */,
+				65F271731D3CF38C0042BDA2 /* Model */,
 				65F2715D1D3CAEA50042BDA2 /* AppDelegate.swift */,
 				65F271641D3CAEA50042BDA2 /* Assets.xcassets */,
 				65F271661D3CAEA50042BDA2 /* LaunchScreen.storyboard */,
@@ -78,6 +81,27 @@
 				65F271701D3CB2420042BDA2 /* LoginViewController.xib */,
 			);
 			path = Notifi;
+			sourceTree = "<group>";
+		};
+		65F271731D3CF38C0042BDA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		65F271741D3CF3910042BDA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		65F271751D3CF3960042BDA2 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 		A31ED027C3D99D19FCCA82E2 /* Frameworks */ = {
