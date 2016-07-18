@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		276F60DD1FA2787EE7C2560E /* Pods_Notifi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */; };
+		488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */; };
+		488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */; };
 		65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2715D1D3CAEA50042BDA2 /* AppDelegate.swift */; };
 		65F271651D3CAEA50042BDA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65F271641D3CAEA50042BDA2 /* Assets.xcassets */; };
 		65F271681D3CAEA50042BDA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F271661D3CAEA50042BDA2 /* LaunchScreen.storyboard */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		087056BB095B7BF37F4685DD /* Pods-Notifi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notifi/Pods-Notifi.debug.xcconfig"; sourceTree = "<group>"; };
+		488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightlyViewController.swift; sourceTree = "<group>"; };
+		488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NightlyViewController.xib; sourceTree = "<group>"; };
 		65F2715A1D3CAEA50042BDA2 /* Notifi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F2715D1D3CAEA50042BDA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F271641D3CAEA50042BDA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 		65F271741D3CF3910042BDA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */,
 				65F271701D3CB2420042BDA2 /* LoginViewController.xib */,
 				65F271771D3CF3C80042BDA2 /* RegisterViewController.xib */,
 				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
@@ -115,6 +120,7 @@
 		65F271751D3CF3960042BDA2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */,
 				65F2716F1D3CB2420042BDA2 /* LoginViewController.swift */,
 				65F271761D3CF3C80042BDA2 /* RegisterViewController.swift */,
 				65F2717A1D3CF4080042BDA2 /* OnboardingViewController.swift */,
@@ -191,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
 				65F271681D3CAEA50042BDA2 /* LaunchScreen.storyboard in Resources */,
 				65F271651D3CAEA50042BDA2 /* Assets.xcassets in Resources */,
 				65F2717D1D3CF4080042BDA2 /* OnboardingViewController.xib in Resources */,
@@ -258,6 +265,7 @@
 				65F271781D3CF3C80042BDA2 /* RegisterViewController.swift in Sources */,
 				65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */,
 				65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */,
+				488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */,
 				65F2717C1D3CF4080042BDA2 /* OnboardingViewController.swift in Sources */,
 				65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */,
 			);
