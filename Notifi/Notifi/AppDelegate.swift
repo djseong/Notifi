@@ -14,12 +14,18 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var tabViewController = UITabBarController()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-            
+        //do init for tab bar
+        initTabBarController()
+        
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        var navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        
+        //TODO uncomment this line below to simulate being log in
+        //navigationcontroller = UINavigationController(rootViewController: tabViewController)
         
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -28,6 +34,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func initTabBarController(){
+        let nightlyViewController = NightlyViewController()
+        let homenavigationController = UINavigationController(rootViewController: nightlyViewController)
+        let friendnavigationController = UINavigationController(rootViewController: UIViewController())
+        
+        let homeTabBarItem = UITabBarItem(title: "Home", image: nil, selectedImage: nil)
+        let friendTabBarItem = UITabBarItem(title: "Friends", image: nil, selectedImage: nil)
+        homenavigationController.tabBarItem = homeTabBarItem
+        friendnavigationController.tabBarItem = friendTabBarItem
+        
+        let controllers = [homenavigationController,friendnavigationController]
+        tabViewController.viewControllers = controllers
+        return
     }
     
     func application(application: UIApplication,
