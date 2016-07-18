@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let loginviewcontroller = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        let navigationcontroller = UINavigationController(rootViewController: loginviewcontroller)
+            
+        let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
+        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

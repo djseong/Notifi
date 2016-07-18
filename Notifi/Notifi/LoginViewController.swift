@@ -13,9 +13,15 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet var loginView: FBSDKLoginButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loginView.readPermissions = ["public_profile", "email", "user_friends"]
+        loginView.delegate = self
+        
+        
+        /*
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
@@ -28,12 +34,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            loginView.center = self.view.center
-            self.view.addSubview(loginView)
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-        }
+            
+        }*/
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.addGradient(.notifiWhite(), bottom: .notifiGray())
     }
 
     override func didReceiveMemoryWarning() {
