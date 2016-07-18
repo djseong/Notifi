@@ -17,10 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-            
+        /*for name in UIFont.familyNames() {
+            print(name)
+            if let nameString = name as? String
+            {
+                print(UIFont.fontNamesForFamilyName(nameString))
+            }
+        }*/
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
         let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
-        
+        navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
+        navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
+        navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = navigationcontroller

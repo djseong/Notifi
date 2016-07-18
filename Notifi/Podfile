@@ -9,5 +9,6 @@ target 'Notifi' do
 pod “FBSDKCoreKit”;
 pod “FBSDKLoginKit”; 
 pod “FBSDKShareKit”;
+pod “SwiftyJSON”;
 
 end

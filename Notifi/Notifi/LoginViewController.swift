@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginView.readPermissions = ["public_profile", "email", "user_friends"]
         loginView.delegate = self
         
-        
+        navigationItem.title = "Login"
         /*
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -36,17 +36,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         {
             
         }*/
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        view.addGradient(.notifiWhite(), bottom: .notifiGray())
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // Facebook Delegate Methods

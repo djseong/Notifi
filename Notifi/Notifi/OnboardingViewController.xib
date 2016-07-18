@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Montserrat-UltraLight.otf">
+            <string>Montserrat-UltraLight</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="Notifi" customModuleProvider="target">
             <connections>
@@ -19,30 +24,54 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Notifi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDd-Ye-5Ha">
-                    <rect key="frame" x="253" y="200" width="96" height="49"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="signifi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDd-Ye-5Ha">
+                    <rect key="frame" x="213" y="300" width="175" height="77"/>
+                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="63"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qE4-fy-98E">
-                    <rect key="frame" x="272" y="341" width="57" height="30"/>
-                    <state key="normal" title="Register"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qE4-fy-98E" customClass="CustomButton" customModule="Notifi" customModuleProvider="target">
+                    <rect key="frame" x="40" y="400" width="520" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="cqR-SY-8vN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Create Account"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-EL-imE">
-                    <rect key="frame" x="281" y="420" width="38" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-EL-imE" customClass="CustomButton" customModule="Notifi" customModuleProvider="target">
+                    <rect key="frame" x="40" y="455" width="520" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Rsz-X4-Y2W"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Login"/>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-78-cdL">
+                    <rect key="frame" x="213" y="120" width="175" height="175"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="175" id="gmA-pb-d8j"/>
+                        <constraint firstAttribute="width" constant="175" id="ieb-vp-ogh"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="BDd-Ye-5Ha" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="bottom" multiplier="1:3" id="0kb-fW-xKN"/>
+                <constraint firstItem="BDd-Ye-5Ha" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="bottom" multiplier="1:2" id="0kb-fW-xKN"/>
+                <constraint firstAttribute="trailing" secondItem="qE4-fy-98E" secondAttribute="trailing" constant="40" id="2Og-e6-fFY"/>
+                <constraint firstAttribute="bottom" secondItem="qE4-fy-98E" secondAttribute="bottom" constant="155" id="9Od-bo-GCv"/>
+                <constraint firstItem="BDd-Ye-5Ha" firstAttribute="top" secondItem="J6o-78-cdL" secondAttribute="bottom" constant="5" id="AfP-VQ-aRC"/>
+                <constraint firstAttribute="trailing" secondItem="ZAI-EL-imE" secondAttribute="trailing" constant="40" id="Cf4-gi-Hg4"/>
+                <constraint firstItem="ZAI-EL-imE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="IjY-8z-rm3"/>
                 <constraint firstItem="ZAI-EL-imE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UEX-HL-XWL"/>
                 <constraint firstItem="BDd-Ye-5Ha" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XXy-sS-acm"/>
-                <constraint firstItem="qE4-fy-98E" firstAttribute="top" secondItem="BDd-Ye-5Ha" secondAttribute="bottom" constant="92" id="heh-87-uti"/>
+                <constraint firstItem="J6o-78-cdL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cyj-yE-kfE"/>
+                <constraint firstItem="ZAI-EL-imE" firstAttribute="top" secondItem="qE4-fy-98E" secondAttribute="bottom" constant="10" id="gvM-nR-Ldj"/>
+                <constraint firstItem="qE4-fy-98E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="hbb-sT-uy0"/>
                 <constraint firstItem="qE4-fy-98E" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="icp-Br-4Dv"/>
-                <constraint firstItem="ZAI-EL-imE" firstAttribute="top" secondItem="qE4-fy-98E" secondAttribute="bottom" constant="49" id="sxn-20-WEn"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="Logo" width="567" height="526"/>
+    </resources>
 </document>

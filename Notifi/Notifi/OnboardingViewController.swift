@@ -19,22 +19,29 @@ class OnboardingViewController: UIViewController {
 
         // Set colors
         self.view.backgroundColor = UIColor.notifiGray()
-        self.titleLabel.textColor = UIColor.notifiWhite()
-        self.registerButton.tintColor = UIColor.notifiWhite()
-        self.loginButton.tintColor = UIColor.notifiWhite()
+        self.titleLabel.textColor = UIColor.whiteColor()
         
         // Button segues
         registerButton.addTarget(self, action: #selector(registerView), forControlEvents: .TouchUpInside)
         loginButton.addTarget(self, action: #selector(loginView), forControlEvents: .TouchUpInside)
         
-           }
+        // navigation controller
+        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+
+        
+    }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.navigationBarHidden = true
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBarHidden = false
+    }
+        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.addGradient(from: .notifiGreen(), to: .notifiDarkGreen())
     }
     
     func registerView() {
