@@ -25,7 +25,8 @@ class NightlyViewController: UIViewController {
         tabBarController?.tabBar.tintColor = UIColor.whiteColor()
         
         //create a setting button
-        let settingButton = UIBarButtonItem(title: "Settings", style: .Done, target: self, action: #selector(self.settingPressed(_:)))
+        let settingButton = UIBarButtonItem(image: UIImage(named:"icon_settings_stroke.png"), style: .Done, target: self, action:  #selector(self.settingPressed(_:)))
+            //UIBarButtonItem(title: "Settings", style: .Done, target: self, action: #selector(self.settingPressed(_:)))
         settingButton.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(settingButton, animated: true)
         navigationItem.title = "Your status: Safe"

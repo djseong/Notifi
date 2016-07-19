@@ -14,7 +14,7 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var tabViewController = UITabBarController()
+    var tabViewController = CustomizedTabBarViewController()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -42,8 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homenavigationController = UINavigationController(rootViewController: nightlyViewController)
         let friendnavigationController = UINavigationController(rootViewController: UIViewController())
         
-        let homeTabBarItem = UITabBarItem(title: "Home", image: nil, selectedImage: nil)
-        let friendTabBarItem = UITabBarItem(title: "Friends", image: nil, selectedImage: nil)
+        let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "icon_home_stroke.png"), selectedImage:UIImage(named: "icon_home_full.png") )
+        let friendTabBarItem = UITabBarItem(title: "Friends", image:UIImage(named: "icon_friends_stroke.png") , selectedImage: UIImage(named: "icon_friends_full.png"))
         homenavigationController.tabBarItem = homeTabBarItem
         friendnavigationController.tabBarItem = friendTabBarItem
         

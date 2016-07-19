@@ -17,6 +17,8 @@
 		488FF1BB1D3D9322008D5BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1BA1D3D9322008D5BA2 /* Assets.xcassets */; };
 		488FF1C21D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */; };
 		488FF1C31D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */; };
+		488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */; };
+		488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */; };
 		65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2715D1D3CAEA50042BDA2 /* AppDelegate.swift */; };
 		65F271681D3CAEA50042BDA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F271661D3CAEA50042BDA2 /* LaunchScreen.storyboard */; };
 		65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2716F1D3CB2420042BDA2 /* LoginViewController.swift */; };
@@ -40,6 +42,8 @@
 		488FF1BA1D3D9322008D5BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTabBarViewController.swift; sourceTree = "<group>"; };
+		488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizedTabBarViewController.xib; sourceTree = "<group>"; };
 		65F2715A1D3CAEA50042BDA2 /* Notifi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F2715D1D3CAEA50042BDA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F271671D3CAEA50042BDA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		65F271741D3CF3910042BDA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */,
 				488FF1B41D3D841A008D5BA2 /* NoticeViewController.xib */,
 				488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */,
 				488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */,
@@ -144,6 +149,7 @@
 		65F271751D3CF3960042BDA2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */,
 				488FF1B21D3D83FC008D5BA2 /* NoticeViewController.swift */,
 				488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */,
 				488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */,
@@ -230,6 +236,7 @@
 				65F2717D1D3CF4080042BDA2 /* OnboardingViewController.xib in Resources */,
 				488FF1BB1D3D9322008D5BA2 /* Assets.xcassets in Resources */,
 				65F271721D3CB2420042BDA2 /* LoginViewController.xib in Resources */,
+				488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */,
 				65F271791D3CF3C80042BDA2 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +305,7 @@
 				65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */,
 				65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */,
 				488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */,
+				488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */,
 				65F2717C1D3CF4080042BDA2 /* OnboardingViewController.swift in Sources */,
 				65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */,
 			);
