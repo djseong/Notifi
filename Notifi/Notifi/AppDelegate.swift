@@ -18,20 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-            /*for name in UIFont.familyNames() {
-             print(name)
-             if let nameString = name as? String
-             {
-             print(UIFont.fontNamesForFamilyName(nameString))
-             }
-             }*/
             
         //do init for tab bar
         initTabBarController()
         
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        var navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
         //TODO uncomment this line below to simulate being log in
         //navigationcontroller = UINavigationController(rootViewController: tabViewController)
