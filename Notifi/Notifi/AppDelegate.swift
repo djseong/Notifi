@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
         
         //Daniel needs to commit /Downloads/montserrat/Montserrat-UltraLight.otf: file. i dont think he did
         
@@ -28,12 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              print(UIFont.fontNamesForFamilyName(nameString))
              }
              }*/
-            
+
         //do init for tab bar
         initTabBarController()
         
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        var navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
         //TODO uncomment this line below to simulate being log in
         //navigationcontroller = UINavigationController(rootViewController: tabViewController)

@@ -21,21 +21,23 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginView.delegate = self
         
         navigationItem.title = "Login"
-        /*
+        
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
+            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+            self.navigationController?.pushViewController(friendtablecontoller, animated: true)
             // User is already logged in, do work such as go to next view controller.
             // Get List Of Friends
-            let friendRequest = FBSDKGraphRequest(graphPath: "me/invitable_friends", parameters: ["fields" : "id, name, picture", "after" : "QVZAtaWpPMlg3M2FHYTNEQmwwcVl6eUp5XzRNYXlGaUJZAR01KZAnBpREpHV0FJM2tTUjVYWHg0cWE2WnFYUGZA4YVYtYVU1bHJoN2RISDZAkU2REZAEY3dENzcU9FLVFVaF94eGZAKY1J4TVMxc3YwZA3cZD"], HTTPMethod: "GET")
+           /* let friendRequest = FBSDKGraphRequest(graphPath: "me/invitable_friends", parameters: ["fields" : "id, name, picture", "after" : "QVZAtaWpPMlg3M2FHYTNEQmwwcVl6eUp5XzRNYXlGaUJZAR01KZAnBpREpHV0FJM2tTUjVYWHg0cWE2WnFYUGZA4YVYtYVU1bHJoN2RISDZAkU2REZAEY3dENzcU9FLVFVaF94eGZAKY1J4TVMxc3YwZA3cZD"], HTTPMethod: "GET")
             friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                 print(result)
 
-            })
+            })*/
         }
         else
         {
             
-        }*/
+        }
     }
     
     // Facebook Delegate Methods
