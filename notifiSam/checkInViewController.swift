@@ -10,6 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
+
+
+
+
+
+
 class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -28,7 +34,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     @IBOutlet weak var bigProfileImage: UIImageView!
     
     
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var address1Label: UILabel!
     
@@ -55,6 +61,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     var friendList : [User] = []
     
     let locationManager = CLLocationManager()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +84,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         mapView.addAnnotations(friendList)
         locationManager.requestWhenInUseAuthorization()
+        mapView.showsCompass = true
+        mapView.rotateEnabled = true
         
         // do we need an add button?
         navigationItem.title = "Notifi"
@@ -139,6 +149,26 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             cell.imageview.layer.borderColor = UIColor.greenColor().CGColor
   
             
+        }
+        
+        
+        // tapAction closure sent to IBAction
+        cell.tapAction = { (cell) in
+            
+            let message = self.friendList[indexPath.row].title! + " will be notified that you requested an update from them."
+            
+            let alert = UIAlertController(title: "Request Sent!", message: message,
+                                          preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
+                
+                
+                
+            })
+            
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+
         }
 
         
@@ -218,6 +248,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+      //  tableView.cellForRowAtIndexPath(indexPath)?.backgroundColor = UIColor.darkGrayColor()
         
         let location = friendList[indexPath.row].coordinate
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -226,14 +257,24 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         mapView.setRegion(region, animated: true)
         
         
+        // there's prob a better solution then this
+        for annotation in self.mapView.annotations {
+            
+            if annotation.title! == friendList[indexPath.row].title {
+                mapView.selectAnnotation(annotation, animated: true)
+            }
+            
+            
+        }
+        
+        
         tableView.hidden = true
         navigationItem.leftBarButtonItem?.enabled = true
         navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
         
         
         // friendInfo stuff
-        
-        addressLabel.text = friendList[indexPath.row].title!
+        nameLabel.text = friendList[indexPath.row].title!
         address1Label.text = friendList[indexPath.row].address1
         address2Label.text = friendList[indexPath.row].address2
         
@@ -359,7 +400,22 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     
     @IBAction func bigRequestButtonPressed(sender: UIButton) {
-        print("request button pressed")
+        
+        
+        let message = nameLabel.text! + " will be notified that you requested an update from them"
+        let alert = UIAlertController(title: "Request Sent!", message: message,
+                                      preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
+            
+            
+            
+        })
+        
+        alert.addAction(alertAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+
+
     }
     
 

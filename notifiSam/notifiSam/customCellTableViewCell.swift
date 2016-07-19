@@ -16,12 +16,15 @@ class customCellTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var imageview: UIImageView!
+    
+    
+    var tapAction: ((UITableViewCell) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
        
         
-      /*  imageview.layer.borderColor = UIColor.greenColor().CGColor */
         imageview.layer.borderWidth = 2.0;
         
         self.imageview.layer.cornerRadius = self.imageview.frame.size.width / 2
@@ -31,16 +34,30 @@ class customCellTableViewCell: UITableViewCell {
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        
+        // I don't want it to grayed when selected
+        super.setSelected(false, animated: animated)
 
-        // Configure the view for the selected state
      
         
     }
     
     
     
+    
+    
     @IBAction func requestButtonPressed(sender: UIButton) {
         print("Request button pressed")
+        
+        tapAction?(self)
+        
+        
+               
+        
+
+        
+        
+
+
     }
 }

@@ -13,10 +13,10 @@
                 <outlet property="Label4" destination="J7T-p8-aHO" id="Nec-Gd-rMB"/>
                 <outlet property="address1Label" destination="ftP-Rw-Y5Q" id="Idc-mH-cvO"/>
                 <outlet property="address2Label" destination="bc8-jn-MPG" id="1Ac-xo-ZQA"/>
-                <outlet property="addressLabel" destination="LHA-jc-B3v" id="UPf-dZ-hvM"/>
                 <outlet property="bigProfileImage" destination="ERo-AY-TmG" id="4tr-0h-5hU"/>
                 <outlet property="friendInfo" destination="Gar-nX-cWy" id="zal-RK-5i7"/>
                 <outlet property="mapView" destination="Ojd-QT-N7S" id="tee-zZ-Qh7"/>
+                <outlet property="nameLabel" destination="LHA-jc-B3v" id="pDn-ct-iXY"/>
                 <outlet property="smallImage1" destination="xKS-oU-vwR" id="bBk-wd-Zf2"/>
                 <outlet property="smallImage2" destination="0m8-vh-oOl" id="PEV-bu-WeY"/>
                 <outlet property="smallImage3" destination="Dkh-Y6-20V" id="hPd-BA-LtN"/>
@@ -36,13 +36,13 @@
                     <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="398" width="400" height="302"/>
+                        <rect key="frame" x="0.0" y="398" width="400" height="280"/>
                     </variation>
                 </tableView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-QT-N7S">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="47" width="400" height="322"/>
+                        <rect key="frame" x="0.0" y="64" width="400" height="301"/>
                     </variation>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnX-mp-SR2">
@@ -101,7 +101,10 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhN-qI-FtR" userLabel="textButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <state key="normal" title="Text"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Text">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                 <rect key="frame" x="20" y="223" width="30" height="30"/>
                             </variation>
@@ -111,7 +114,10 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nal-ng-2BI" userLabel="bigRequestButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <state key="normal" title="Request Update"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Request Update">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                 <rect key="frame" x="180" y="223" width="180" height="30"/>
                             </variation>
@@ -205,7 +211,10 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rud-1A-jIT" userLabel="callButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <state key="normal" title="Call"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Call">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                 <rect key="frame" x="98" y="223" width="30" height="30"/>
                             </variation>
@@ -213,7 +222,7 @@
                                 <action selector="callButtonPressed:" destination="-1" eventType="touchUpInside" id="blY-sk-aeR"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v" userLabel="nameLabel">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -244,7 +253,7 @@
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="398" width="400" height="302"/>
+                        <rect key="frame" x="0.0" y="398" width="400" height="280"/>
                         <mask key="subviews">
                             <include reference="vhN-qI-FtR"/>
                             <include reference="nal-ng-2BI"/>
