@@ -53,9 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initTabBarController(){
         let nightlyViewController = NightlyViewController()
+
         let switchViewController = SwitchViewController()
+
+        let CheckInViewController = checkInViewController()
+
         let homenavigationController = UINavigationController(rootViewController: nightlyViewController)
-        let friendnavigationController = UINavigationController(rootViewController: UIViewController())
+        let friendnavigationController = UINavigationController(rootViewController: CheckInViewController)
         
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "icon_home_stroke.png"), selectedImage:UIImage(named: "icon_home_full.png") )
         let friendTabBarItem = UITabBarItem(title: "Friends", image:UIImage(named: "icon_friends_stroke.png") , selectedImage: UIImage(named: "icon_friends_full.png"))
