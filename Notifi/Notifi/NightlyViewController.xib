@@ -19,51 +19,34 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-8R-msw" userLabel="Attention Button">
-                    <rect key="frame" x="0.0" y="216" width="600" height="168"/>
-                    <color key="backgroundColor" red="0.8666666666666667" green="0.73725490196078436" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Keep an eye on me">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="attentionPressed:" destination="-1" eventType="touchUpInside" id="jSa-sm-BGs"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaJ-mf-BRn">
-                    <rect key="frame" x="0.0" y="384" width="600" height="171"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Help me">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="helpPressed:" destination="-1" eventType="touchUpInside" id="t9H-HD-MM0"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elh-RF-hci">
-                    <rect key="frame" x="0.0" y="60" width="600" height="156"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elh-RF-hci">
+                    <rect key="frame" x="0.0" y="32" width="600" height="225"/>
                     <color key="backgroundColor" red="0.090196078431372548" green="0.6470588235294118" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="I'm Safe">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="safePressed:" destination="-1" eventType="touchUpInside" id="v3x-Xe-VQd"/>
-                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-8R-msw" userLabel="Attention Button">
+                    <rect key="frame" x="248" y="400" width="143" height="30"/>
+                    <color key="backgroundColor" red="0.8666666666666667" green="0.73725490196078436" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Keep an eye on me">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaJ-mf-BRn">
+                    <rect key="frame" x="248" y="499" width="64" height="30"/>
+                    <color key="backgroundColor" red="0.98039215686274506" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Help me">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="NS8-8R-msw" firstAttribute="top" secondItem="elh-RF-hci" secondAttribute="bottom" id="0ea-kj-0ct"/>
-                <constraint firstItem="AaJ-mf-BRn" firstAttribute="top" secondItem="NS8-8R-msw" secondAttribute="bottom" id="1d4-4Q-JB2"/>
-                <constraint firstItem="elh-RF-hci" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="9Mc-Xg-x5r"/>
-                <constraint firstAttribute="trailing" secondItem="elh-RF-hci" secondAttribute="trailing" id="KwQ-l5-tH1"/>
-                <constraint firstAttribute="bottom" secondItem="AaJ-mf-BRn" secondAttribute="bottom" constant="45" id="RUg-0f-vwE"/>
-                <constraint firstItem="NS8-8R-msw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UeV-G3-PBT"/>
-                <constraint firstItem="elh-RF-hci" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WiI-zK-Ghl"/>
-                <constraint firstItem="AaJ-mf-BRn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZmP-o0-X3z"/>
-                <constraint firstItem="elh-RF-hci" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.72" id="di0-FQ-ZSZ"/>
-                <constraint firstAttribute="trailing" secondItem="AaJ-mf-BRn" secondAttribute="trailing" id="hWF-Yt-SqU"/>
-                <constraint firstItem="NS8-8R-msw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hhD-th-WdH"/>
-                <constraint firstAttribute="trailing" secondItem="NS8-8R-msw" secondAttribute="trailing" id="sWR-mK-pNw"/>
+                <constraint firstItem="elh-RF-hci" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5L3-M7-GBn"/>
+                <constraint firstItem="elh-RF-hci" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S9y-1B-nS9"/>
+                <constraint firstAttribute="trailing" secondItem="elh-RF-hci" secondAttribute="trailing" id="W2p-QI-5RL"/>
+                <constraint firstAttribute="centerY" secondItem="elh-RF-hci" secondAttribute="bottom" multiplier="1.3332" id="fT8-dy-6dj"/>
             </constraints>
         </view>
     </objects>

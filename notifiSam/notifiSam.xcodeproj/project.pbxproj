@@ -17,6 +17,8 @@
 		22EC571D1D3CF4A600463E8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC571C1D3CF4A600463E8A /* CoreLocation.framework */; };
 		22EC571F1D3CF4AC00463E8A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC571E1D3CF4AC00463E8A /* MapKit.framework */; };
 		22EC57211D3CF7F100463E8A /* dummyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC57201D3CF7F100463E8A /* dummyUser.swift */; };
+		22EC57461D3D16EA00463E8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC57451D3D16EA00463E8A /* QuartzCore.framework */; };
+		22EC574A1D3D176E00463E8A /* SVPulsingAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EC57491D3D176E00463E8A /* SVPulsingAnnotationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		22EC571C1D3CF4A600463E8A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		22EC571E1D3CF4AC00463E8A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		22EC57201D3CF7F100463E8A /* dummyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dummyUser.swift; sourceTree = "<group>"; };
+		22EC57451D3D16EA00463E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		22EC57471D3D176D00463E8A /* notifiSam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "notifiSam-Bridging-Header.h"; sourceTree = "<group>"; };
+		22EC57481D3D176E00463E8A /* SVPulsingAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPulsingAnnotationView.h; path = "../../../../Downloads/SVPulsingAnnotationView-master/SVPulsingAnnotationView/SVPulsingAnnotationView.h"; sourceTree = "<group>"; };
+		22EC57491D3D176E00463E8A /* SVPulsingAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPulsingAnnotationView.m; path = "../../../../Downloads/SVPulsingAnnotationView-master/SVPulsingAnnotationView/SVPulsingAnnotationView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22EC57461D3D16EA00463E8A /* QuartzCore.framework in Frameworks */,
 				22EC571F1D3CF4AC00463E8A /* MapKit.framework in Frameworks */,
 				22EC571D1D3CF4A600463E8A /* CoreLocation.framework in Frameworks */,
 			);
@@ -50,6 +57,7 @@
 		222A1DCF1D3CCD68006B42F9 = {
 			isa = PBXGroup;
 			children = (
+				22EC57451D3D16EA00463E8A /* QuartzCore.framework */,
 				22EC571E1D3CF4AC00463E8A /* MapKit.framework */,
 				22EC571C1D3CF4A600463E8A /* CoreLocation.framework */,
 				222A1DDA1D3CCD68006B42F9 /* notifiSam */,
@@ -68,15 +76,18 @@
 		222A1DDA1D3CCD68006B42F9 /* notifiSam */ = {
 			isa = PBXGroup;
 			children = (
-				222A1DEF1D3CCEC8006B42F9 /* checkInViewController.swift */,
 				22EC57201D3CF7F100463E8A /* dummyUser.swift */,
 				222A1DF01D3CCEC8006B42F9 /* checkInViewController.xib */,
 				222A1DF31D3CD646006B42F9 /* customCellTableViewCell.swift */,
+				22EC57481D3D176E00463E8A /* SVPulsingAnnotationView.h */,
+				222A1DEF1D3CCEC8006B42F9 /* checkInViewController.swift */,
+				22EC57491D3D176E00463E8A /* SVPulsingAnnotationView.m */,
 				222A1DF41D3CD646006B42F9 /* customCellTableViewCell.xib */,
 				222A1DDB1D3CCD68006B42F9 /* AppDelegate.swift */,
 				222A1DE21D3CCD68006B42F9 /* Assets.xcassets */,
 				222A1DE41D3CCD68006B42F9 /* LaunchScreen.storyboard */,
 				222A1DE71D3CCD68006B42F9 /* Info.plist */,
+				22EC57471D3D176D00463E8A /* notifiSam-Bridging-Header.h */,
 			);
 			path = notifiSam;
 			sourceTree = "<group>";
@@ -154,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22EC574A1D3D176E00463E8A /* SVPulsingAnnotationView.m in Sources */,
 				222A1DF11D3CCEC8006B42F9 /* checkInViewController.swift in Sources */,
 				22EC57211D3CF7F100463E8A /* dummyUser.swift in Sources */,
 				222A1DF51D3CD646006B42F9 /* customCellTableViewCell.swift in Sources */,
@@ -262,10 +274,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = notifiSam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sam.notifiSam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "notifiSam/notifiSam-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -273,10 +288,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = notifiSam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sam.notifiSam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "notifiSam/notifiSam-Bridging-Header.h";
 			};
 			name = Release;
 		};
