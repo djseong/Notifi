@@ -34,4 +34,7 @@ extension UIColor {
     class func noticeButtonGrey() ->UIColor{
         return UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
     }
+    class func nightlyBackgroundGrey() ->UIColor{
+        return UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1)
+    }
 }
