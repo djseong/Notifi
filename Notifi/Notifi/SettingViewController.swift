@@ -8,10 +8,29 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var gpsLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var switchGPS: UISwitch!
+    var settingArray = ["My profile","Emergency Contact"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.titleView = UIImageView(image: UIImage(named: "icon_settings_full.png"))
+        self.view.backgroundColor = UIColor.nightlyBackgroundGrey()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = UIColor.nightlyBackgroundGrey()
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "settingcell")
+                
+        switchGPS.onTintColor = UIColor.notifiTeal()
+        switchGPS.backgroundColor = UIColor.noticeGrey()
+        switchGPS.transform = CGAffineTransformMakeScale(2.0, 2.0)
+        switchGPS.layer.cornerRadius = 16
+        
+        gpsLabel.font = UIFont(name: "Montserrat-UltraLight", size: 20)
 
         // Do any additional setup after loading the view.
     }
@@ -19,6 +38,28 @@ class SettingViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settingArray.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let newCell = tableView.dequeueReusableCellWithIdentifier("settingcell",forIndexPath: indexPath)
+        newCell.backgroundColor = UIColor.nightlyBackgroundGrey()
+        let myfont = UIFont(name: "Montserrat-UltraLight", size: 30)
+        newCell.textLabel?.text = settingArray[indexPath.row]
+        newCell.textLabel?.textColor = UIColor.noticeGrey()
+        newCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        newCell.textLabel?.font = myfont
+        
+        return newCell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0{
+            navigationController?.pushViewController(MyProfileViewController(), animated: true)
+        }
+        else if indexPath.row == 1{
+            navigationController?.pushViewController(MyProfileViewController(), animated: true)
+        }
     }
     
 

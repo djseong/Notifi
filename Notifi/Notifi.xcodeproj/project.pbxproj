@@ -32,10 +32,12 @@
 		488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */; };
 		48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */; };
 		48E4CE7B1D3E658D0096AE3E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */; };
-		48E4CE7E1D3E68100096AE3E /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE7C1D3E68100096AE3E /* SwitchViewController.swift */; };
-		48E4CE7F1D3E68100096AE3E /* SwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE7D1D3E68100096AE3E /* SwitchViewController.xib */; };
 		48E4CE821D3E809B0096AE3E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE801D3E809B0096AE3E /* SettingViewController.swift */; };
 		48E4CE831D3E809B0096AE3E /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE811D3E809B0096AE3E /* SettingViewController.xib */; };
+		48E4CE861D3EDA730096AE3E /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */; };
+		48E4CE871D3EDA730096AE3E /* MyProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */; };
+		48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */; };
+		48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */; };
 		656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FAD1D3E139500D81943 /* CustomImage.swift */; };
 		656C5FB51D3E551800D81943 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FB31D3E551800D81943 /* FriendTableViewController.swift */; };
 		656C5FB61D3E551800D81943 /* FriendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656C5FB41D3E551800D81943 /* FriendTableViewController.xib */; };
@@ -79,10 +81,12 @@
 		488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizedTabBarViewController.xib; sourceTree = "<group>"; };
 		48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
-		48E4CE7C1D3E68100096AE3E /* SwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchViewController.swift; sourceTree = "<group>"; };
-		48E4CE7D1D3E68100096AE3E /* SwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchViewController.xib; sourceTree = "<group>"; };
 		48E4CE801D3E809B0096AE3E /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		48E4CE811D3E809B0096AE3E /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileViewController.xib; sourceTree = "<group>"; };
+		48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		656C5FAD1D3E139500D81943 /* CustomImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		656C5FB31D3E551800D81943 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		656C5FB41D3E551800D81943 /* FriendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewController.xib; sourceTree = "<group>"; };
@@ -189,13 +193,9 @@
 		65F271741D3CF3910042BDA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-
 				48E4CE811D3E809B0096AE3E /* SettingViewController.xib */,
-				48E4CE7D1D3E68100096AE3E /* SwitchViewController.xib */,
-
 				22FD9F701D3E858300257AD4 /* customCellTableViewCell.xib */,
 				22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */,
-
 				48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */,
 				488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */,
 				488FF1B41D3D841A008D5BA2 /* NoticeViewController.xib */,
@@ -204,6 +204,8 @@
 				65F271701D3CB2420042BDA2 /* LoginViewController.xib */,
 				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				656C5FB41D3E551800D81943 /* FriendTableViewController.xib */,
+				48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */,
+				48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -211,13 +213,9 @@
 		65F271751D3CF3960042BDA2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-
 				48E4CE801D3E809B0096AE3E /* SettingViewController.swift */,
-				48E4CE7C1D3E68100096AE3E /* SwitchViewController.swift */,
-
 				22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */,
 				22FD9F6A1D3E855F00257AD4 /* checkInViewController.swift */,
-
 				488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */,
 				488FF1B21D3D83FC008D5BA2 /* NoticeViewController.swift */,
 				488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */,
@@ -226,6 +224,8 @@
 				65F271761D3CF3C80042BDA2 /* RegisterViewController.swift */,
 				65F2717A1D3CF4080042BDA2 /* OnboardingViewController.swift */,
 				656C5FB31D3E551800D81943 /* FriendTableViewController.swift */,
+				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
+				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -308,15 +308,13 @@
 				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
 				48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */,
 				48E4CE831D3E809B0096AE3E /* SettingViewController.xib in Resources */,
+				48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */,
 				656C5FB61D3E551800D81943 /* FriendTableViewController.xib in Resources */,
 				488FF1C31D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib in Resources */,
 				488FF1B51D3D841A008D5BA2 /* NoticeViewController.xib in Resources */,
-
-				48E4CE7F1D3E68100096AE3E /* SwitchViewController.xib in Resources */,
-
 				22FD9F6D1D3E856E00257AD4 /* checkInViewController.xib in Resources */,
-
 				65F271681D3CAEA50042BDA2 /* LaunchScreen.storyboard in Resources */,
+				48E4CE871D3EDA730096AE3E /* MyProfileViewController.xib in Resources */,
 				65F2717D1D3CF4080042BDA2 /* OnboardingViewController.xib in Resources */,
 				488FF1BB1D3D9322008D5BA2 /* Assets.xcassets in Resources */,
 				65F271721D3CB2420042BDA2 /* LoginViewController.xib in Resources */,
@@ -380,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */,
 				65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */,
 				488FF1B11D3D7E36008D5BA2 /* StatusController .swift in Sources */,
 				488FF1C21D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift in Sources */,
@@ -389,11 +388,8 @@
 				488FF1AE1D3D7C1F008D5BA2 /* Status.swift in Sources */,
 				48E4CE821D3E809B0096AE3E /* SettingViewController.swift in Sources */,
 				65F271781D3CF3C80042BDA2 /* RegisterViewController.swift in Sources */,
-
-				48E4CE7E1D3E68100096AE3E /* SwitchViewController.swift in Sources */,
-
+				48E4CE861D3EDA730096AE3E /* MyProfileViewController.swift in Sources */,
 				22FD9F731D3E858B00257AD4 /* dummyUser.swift in Sources */,
-
 				488FF1B31D3D83FC008D5BA2 /* NoticeViewController.swift in Sources */,
 				656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */,
 				65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */,
