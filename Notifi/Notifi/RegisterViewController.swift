@@ -21,6 +21,7 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var zipCodeField: UITextField!
+    @IBOutlet weak var profileImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,13 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let titletext = NSAttributedString(string: "Register with Facebook")
         fbRegisterButton.setAttributedTitle(titletext, forState: .Normal)
+       
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        profileImage.round()
+
     }
 
     @IBAction func registerButtonPressed(sender: NextButton) {
@@ -64,13 +72,19 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
             // Handle cancellations
         }
         else {
-            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, last_name, email"])
+            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, last_name, email, picture.type(large)"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                 self.firstNameField.text = result.valueForKey("first_name") as! String
                 self.lastNameField.text = result.valueForKey("last_name") as! String
                 self.emailField.text = result.valueForKey("email") as! String
                 let titletext = NSAttributedString(string: "Successfully Registered")
                 self.fbRegisterButton.setAttributedTitle(titletext, forState: .Normal)
+                let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
+                if url != nil {
+                    let picurl = NSURL(string: url! as! String)
+                    let data = NSData(contentsOfURL: picurl!)
+                    self.profileImage.image = UIImage(data: data!)
+                }
                 
             })
             

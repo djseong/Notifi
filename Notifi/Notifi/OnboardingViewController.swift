@@ -18,7 +18,6 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
 
         // Set colors
-        self.view.backgroundColor = UIColor.notifiGray()
         self.titleLabel.textColor = UIColor.whiteColor()
         
         // Button segues
@@ -41,7 +40,7 @@ class OnboardingViewController: UIViewController {
         
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.addGradient(from: .notifiGreen(), to: .notifiDarkGreen())
+        view.addGradient(from: .notifiTeal(), to: .notifiDarkTeal())
     }
     
     func registerView() {
