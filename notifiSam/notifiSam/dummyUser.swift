@@ -24,6 +24,9 @@ class User : NSObject, MKAnnotation {
     var coordinate : CLLocationCoordinate2D
     var picture: UIImage?
     var status : statusType = .Safe
+    var subtitle: String?
+    var address1: String = "123 Apple Street"
+    var address2: String = "NYC, NY 10002"
     
     init(title : String, latitude: Double, longitude : Double) {
         self.title = title

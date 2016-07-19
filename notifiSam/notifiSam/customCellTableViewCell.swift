@@ -21,11 +21,12 @@ class customCellTableViewCell: UITableViewCell {
         
        
         
-        imageview.layer.borderColor = UIColor.greenColor().CGColor
+      /*  imageview.layer.borderColor = UIColor.greenColor().CGColor */
         imageview.layer.borderWidth = 2.0;
         
         self.imageview.layer.cornerRadius = self.imageview.frame.size.width / 2
         self.imageview.clipsToBounds = true
+        self.backgroundColor = UIColor.darkGrayColor()
         
     }
 
@@ -33,7 +34,7 @@ class customCellTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-        self.backgroundColor = .None
+     
         
     }
     
