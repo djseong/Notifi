@@ -51,11 +51,11 @@
 		488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTabBarViewController.swift; sourceTree = "<group>"; };
 		488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizedTabBarViewController.xib; sourceTree = "<group>"; };
-=======
+
 
 		656C5FAD1D3E139500D81943 /* CustomImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 
->>>>>>> 56880f592cb566dd9331e531e3775416c4c2a894
+
 		65F2715A1D3CAEA50042BDA2 /* Notifi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F2715D1D3CAEA50042BDA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F271671D3CAEA50042BDA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -256,10 +256,10 @@
 				65F271721D3CB2420042BDA2 /* LoginViewController.xib in Resources */,
 				488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */,
 				65F271791D3CF3C80042BDA2 /* RegisterViewController.xib in Resources */,
-=======
+
 				65F271A51D3D87950042BDA2 /* Montserrat-UltraLight.otf in Resources */,
 				65F271A91D3D9C500042BDA2 /* RegisterViewController.xib in Resources */,
->>>>>>> 56880f592cb566dd9331e531e3775416c4c2a894
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
