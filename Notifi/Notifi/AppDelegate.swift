@@ -43,7 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = navigationcontroller
+        //self.window?.rootViewController = navigationcontroller
+        self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
 
         
@@ -52,8 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initTabBarController(){
         let nightlyViewController = NightlyViewController()
+        let CheckInViewController = checkInViewController()
         let homenavigationController = UINavigationController(rootViewController: nightlyViewController)
-        let friendnavigationController = UINavigationController(rootViewController: UIViewController())
+        let friendnavigationController = UINavigationController(rootViewController: CheckInViewController)
         
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "icon_home_stroke.png"), selectedImage:UIImage(named: "icon_home_full.png") )
         let friendTabBarItem = UITabBarItem(title: "Friends", image:UIImage(named: "icon_friends_stroke.png") , selectedImage: UIImage(named: "icon_friends_full.png"))
