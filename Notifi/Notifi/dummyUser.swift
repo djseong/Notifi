@@ -64,13 +64,14 @@ class UserController {
     func getJournals() -> [User] {
         
         let s1 : Status = Status(state: .Safe, time: "3 minutes ago", user: "Tobin")
+        let s2 : Status = Status(state: .Safe, time: "6 minutes ago", user: "Bobby")
 
          
         let user1 = User(title: "Amy", coordinate: CLLocationCoordinate2D(latitude: -33.9350, longitude: 18.3890), address1: "123 Apple Street", address2: "NYC, NY 06607", phone: "2035510306" )
         user1.statusHistory = [s1, s1, s1]
         
         let user2 = User(title: "Tia", coordinate: CLLocationCoordinate2D(latitude: -33.9350, longitude: 18.37), address1: "321 Orange Street", address2: "NYC, NY 06607", phone: "2035510306")
-        user2.statusHistory = [s1]
+        user2.statusHistory = [s1, s2]
         
         
         let user3 = User(title: "Robert", coordinate: CLLocationCoordinate2D(latitude: -33.93, longitude: 18.3890), address1: "456 Port Street", address2: "NYC, NY 06607", phone: "2035510306")
