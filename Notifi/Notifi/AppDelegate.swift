@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var tabViewController = CustomizedTabBarViewController()
     
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -36,8 +38,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
         
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))  // types are UIUserNotificationType members
         
+        // increment Action
+        let incrementAction = UIMutableUserNotificationAction()
+        incrementAction.identifier = "SAFE"
+        incrementAction.title = "Safe"
+        incrementAction.activationMode = UIUserNotificationActivationMode.Background
+        incrementAction.authenticationRequired = true
+        incrementAction.destructive = false
+        
+        // decrement Action
+        let decrementAction = UIMutableUserNotificationAction()
+        decrementAction.identifier = "ATTENTION"
+        decrementAction.title = "Attention"
+        decrementAction.activationMode = UIUserNotificationActivationMode.Background
+        decrementAction.authenticationRequired = true
+        decrementAction.destructive = false
+        
+        // reset Action
+        let resetAction = UIMutableUserNotificationAction()
+        resetAction.identifier = "RESET_ACTION"
+        resetAction.title = "Reset"
+        resetAction.activationMode = UIUserNotificationActivationMode.Foreground
+        // NOT USED resetAction.authenticationRequired = true
+        resetAction.destructive = true
+        
+        // Category
+        let counterCategory = UIMutableUserNotificationCategory()
+        counterCategory.identifier = "COUNTER_CATEGORY"
+        
+        // A. Set actions for the default context
+        counterCategory.setActions([incrementAction, decrementAction, resetAction],
+        forContext: UIUserNotificationActionContext.Default)
+        
+        // B. Set actions for the minimal context
+        counterCategory.setActions([incrementAction, decrementAction],
+        forContext: UIUserNotificationActionContext.Minimal)
+        
+         //UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: counterCategory))  // types are UIUserNotificationType members
+        
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: NSSet(object: counterCategory) as! Set<UIUserNotificationCategory>)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -64,6 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return tabViewController
     }
     
+    
     func application(application: UIApplication,
                      openURL url: NSURL,
                              sourceApplication: String?,
@@ -74,6 +117,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             openURL: url,
             sourceApplication: sourceApplication,
             annotation: annotation)
+    }
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        if identifier == "ATTENTION"{
+            print("I need attention")
+            StatusController.sharedInstance.changeCurrentState(.Attention)
+            
+        }else if identifier == "SAFE"{
+            print("I am safe")
+            StatusController.sharedInstance.changeCurrentState(.Safe)
+        }
+        
     }
     
     func applicationWillResignActive(application: UIApplication) {
