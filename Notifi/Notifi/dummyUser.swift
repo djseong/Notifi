@@ -10,11 +10,6 @@ import Foundation
 import MapKit
 
 
-enum statusType {
-    case Safe
-    case Weary
-    case Danger
-}
 
 
 // Should the user model and the model for the MKAnnotation be the same thing?
@@ -25,7 +20,7 @@ class User : NSObject, MKAnnotation {
     var title : String?
     var coordinate : CLLocationCoordinate2D
     var picture: UIImage?
-    var status : statusType = .Safe
+    var currstatus : State = .Safe
     var address1: String = "123 Apple Street"
     var address2: String = "NYC, NY 10002"
     var phone : String = "2035510306"
@@ -64,25 +59,26 @@ class UserController {
     func getJournals() -> [User] {
         
         let s1 : Status = Status(state: .Safe, time: "3 minutes ago", user: "Tobin")
-        let s2 : Status = Status(state: .Safe, time: "6 minutes ago", user: "Bobby")
+        let s2 : Status = Status(state: .Attention, time: "6 minutes ago", user: "Bobby")
+        let s3 : Status = Status(state: .Help, time: "10 minutes ago", user: "Tobin's cat")
 
          
         let user1 = User(title: "Amy", coordinate: CLLocationCoordinate2D(latitude: -33.9350, longitude: 18.3890), address1: "123 Apple Street", address2: "NYC, NY 06607", phone: "2035510306" )
         user1.statusHistory = [s1, s1, s1]
         
         let user2 = User(title: "Tia", coordinate: CLLocationCoordinate2D(latitude: -33.9350, longitude: 18.37), address1: "321 Orange Street", address2: "NYC, NY 06607", phone: "2035510306")
-        user2.statusHistory = [s1, s2]
+        user2.statusHistory = [s1, s2, s3]
         
         
         let user3 = User(title: "Robert", coordinate: CLLocationCoordinate2D(latitude: -33.93, longitude: 18.3890), address1: "456 Port Street", address2: "NYC, NY 06607", phone: "2035510306")
-        user3.status = .Weary
+        user3.currstatus = .Attention
         user3.statusHistory = [s1]
         
         
         let user4 = User(title: "Tobin", coordinate: CLLocationCoordinate2D(latitude: -33.93, longitude: 18.37), address1: "123 Apple Street", address2: "NYC, NY 06607", phone: "2035510306")
         user4.picture = UIImage(named: "testAlpaca")
-        user4.status = .Danger
-                user4.statusHistory = [s1]
+        user4.currstatus = .Help
+                user4.statusHistory = [s1, s3]
         
         
         
