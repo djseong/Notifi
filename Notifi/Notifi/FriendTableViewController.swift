@@ -13,19 +13,40 @@ import FBSDKLoginKit
 
 class FriendTableViewController: UITableViewController {
     @IBOutlet var tableview: UITableView!
+    @IBOutlet var loader: UIActivityIndicatorView!
     
     var data:[String] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableview.addSubview(loader)
+        
+        //Tableview customization
         tableview.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "cellidentifier")
-            // Get List Of Friends
+        tableview.allowsMultipleSelection = true
+        
+        // Get List Of Friends
         getAllFriends("") {
-            print("done")
             print(self.data.count)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addFriends))
+            self.loader.stopAnimating()
+            self.loader.hidden = true
             self.tableview.reloadData()
         }
       
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        loader.center = self.view.center
+        loader.startAnimating()
+    }
+    
+    func addFriends() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let application = UIApplication.sharedApplication()
+        let window = application.keyWindow
+        window?.rootViewController = appDelegate.initTabBarController()
     }
     
     func getAllFriends (after: String, onCompletion: () -> Void) {
@@ -39,6 +60,7 @@ class FriendTableViewController: UITableViewController {
                     }
                 }
                 //print(self.data)
+                //onCompletion()
                 self.getAllFriends(next as! String, onCompletion: onCompletion)
             }
             else {
@@ -73,6 +95,10 @@ class FriendTableViewController: UITableViewController {
         cell.textLabel?.text = data[indexPath.row]
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  
     }
     
 

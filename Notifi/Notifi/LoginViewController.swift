@@ -14,7 +14,7 @@ import FBSDKLoginKit
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet var loginView: FBSDKLoginButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.readPermissions = ["public_profile", "email", "user_friends"]
@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
-            self.navigationController?.pushViewController(friendtablecontoller, animated: true)
+            navigationController?.pushViewController(friendtablecontoller, animated: true)
         }
     }
     

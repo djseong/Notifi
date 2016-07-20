@@ -47,6 +47,8 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     @IBAction func registerButtonPressed(sender: NextButton) {
+        var error = false
+        
         for subview in self.view.subviews {
             if let textfield = subview as? UITextField {
                 if textfield.text == "" {
@@ -54,8 +56,14 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
                     alert.addAction(alertAction)
                     self.presentViewController(alert, animated: true, completion: nil)
+                    error = true
                 }
             }
+        }
+        
+        if (!error) {
+            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+            navigationController?.pushViewController(friendtablecontoller, animated: true)
         }
     }
     

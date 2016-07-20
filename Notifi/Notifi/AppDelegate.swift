@@ -19,17 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        
-        //Daniel needs to commit /Downloads/montserrat/Montserrat-UltraLight.otf: file. i dont think he did
-        
-            /*for name in UIFont.familyNames() {
-             print(name)
-             if let nameString = name as? String
-             {
-             print(UIFont.fontNamesForFamilyName(nameString))
-             }
-             }*/
-
         //do init for tab bar
         initTabBarController()
         
@@ -51,7 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func initTabBarController(){
+    func initTabBarController() -> CustomizedTabBarViewController{
+        var tabViewController = CustomizedTabBarViewController()
+
         let nightlyViewController = NightlyViewController()
 
 
@@ -68,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let controllers = [homenavigationController,friendnavigationController]
         tabViewController.viewControllers = controllers
-        return
+        return tabViewController
     }
     
     func application(application: UIApplication,
