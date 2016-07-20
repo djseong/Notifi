@@ -13,7 +13,9 @@ import MessageUI
 
 
 
-
+// to get the index of the selected row
+var rowindex : Int = 0
+var friendList : [User] = UserController.sharedInstance.getJournals()
 
 
 
@@ -29,6 +31,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     @IBOutlet weak var friendInfo: UIView!
     
+    @IBOutlet weak var StatusTableView: UITableView!
     
     
     // These are all outlets for friendInfo View
@@ -43,28 +46,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     @IBOutlet weak var address2Label: UILabel!
     
+
     
-    @IBOutlet weak var Label1: UILabel!
-    
-    @IBOutlet weak var Label2: UILabel!
-    
-    @IBOutlet weak var Label3: UILabel!
-    
-    @IBOutlet weak var Label4: UILabel!
+  
     
     
-    @IBOutlet weak var smallImage1: UIImageView!
-    
-    @IBOutlet weak var smallImage2: UIImageView!
-    
-    @IBOutlet weak var smallImage3: UIImageView!
-    
-    @IBOutlet weak var smallImage4: UIImageView!
-    
-    var friendList : [User] = []
-    
-    // to get the index of the selected row
-    var rowindex : Int?
     
     let locationManager = CLLocationManager()
     
@@ -73,10 +59,21 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+   //     let friendProfileViewController = FriendProfileViewController(nibName: "friendProfileViewController", bundle: nil)
+        
+     //   StatusTableView.delegate = friendProfileViewController
+      //  StatusTableView.dataSource = friendProfileViewController
+        
+        StatusTableView.delegate = FriendTableViewController()
+        StatusTableView.delegate = FriendTableViewController()
+
         
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         navigationController!.navigationBar.barStyle = UIBarStyle.Black
@@ -86,11 +83,18 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         tableView.registerNib(UINib(nibName: "customCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         tableView.rowHeight = 80
+        
+        
+        StatusTableView.registerNib(UINib(nibName: "StatusTableViewCell", bundle: nil), forCellReuseIdentifier: "statusCell")
+        StatusTableView.rowHeight = 36
+        
+        
+        
     
         // this is to remove the empty space on the top of the table view. ns if it breaks anything lol
         self.automaticallyAdjustsScrollViewInsets = false
         
-        friendList = UserController.sharedInstance.getJournals()
+        
         
         mapView.addAnnotations(friendList)
         locationManager.requestWhenInUseAuthorization()
@@ -140,14 +144,21 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friendList.count
+        
+        
+            
+            return friendList.count
+        
     }
     
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-      
+       tableView
+        
+        
+        
         
         
         let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
@@ -180,7 +191,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         // tapAction closure sent to IBAction
         cell.tapAction = { (cell) in
             
-            let message = self.friendList[indexPath.row].title! + " will be notified that you requested an update."
+            let message = friendList[indexPath.row].title! + " will be notified that you requested an update."
             
             let alert = UIAlertController(title: "Request Sent!", message: message,
                                           preferredStyle: UIAlertControllerStyle.Alert)
@@ -198,8 +209,107 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
 
         
         return cell
-    }
+        }
     
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        
+        let location = friendList[indexPath.row].coordinate
+        let span = MKCoordinateSpanMake(0.001, 0.001)
+        
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        
+        // there's prob a better solution then this
+        for annotation in self.mapView.annotations {
+            
+            if annotation.title! == friendList[indexPath.row].title {
+                mapView.selectAnnotation(annotation, animated: true)
+            }
+            
+            
+        }
+        
+        rowindex = indexPath.row
+        StatusTableView.reloadData()
+        tableView.hidden = true
+        navigationItem.leftBarButtonItem?.enabled = true
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        
+        
+        // friendInfo stuff
+        nameLabel.text = friendList[indexPath.row].title!
+        address1Label.text = friendList[indexPath.row].address1
+        address2Label.text = friendList[indexPath.row].address2
+        rowindex = indexPath.row
+        
+        bigProfileImage.layer.borderWidth = 2.0;
+        bigProfileImage.frame.size.width = 100
+        
+        if friendList[indexPath.row].picture != nil {
+            bigProfileImage.image = friendList[indexPath.row].picture
+            
+        }
+        else {
+            bigProfileImage.image = nil
+        }
+        
+      
+        
+        if friendList[indexPath.row].status == statusType.Danger {
+            bigProfileImage.layer.borderColor = UIColor.redColor().CGColor
+        }
+        else if friendList[indexPath.row].status == statusType.Weary {
+            bigProfileImage.layer.borderColor = UIColor.yellowColor().CGColor
+        }
+        else {
+            bigProfileImage.layer.borderColor = UIColor.greenColor().CGColor
+        }
+
+        
+        
+        
+        self.bigProfileImage.layer.cornerRadius = self.bigProfileImage.frame.size.width / 2
+        self.bigProfileImage.clipsToBounds = true
+        
+        
+        
+        /*
+         
+         self.smallImage1.layer.cornerRadius = self.smallImage1.frame.size.width/2
+         self.smallImage1.clipsToBounds = true
+         
+         
+         
+         self.smallImage2.layer.cornerRadius = self.smallImage2.frame.size.width/2
+         self.smallImage2.clipsToBounds = true
+         
+         self.smallImage3.layer.cornerRadius = self.smallImage3.frame.size.width/2
+         self.smallImage3.clipsToBounds = true
+         
+         self.smallImage4.layer.cornerRadius = self.smallImage4.frame.size.width/2
+         self.smallImage4.clipsToBounds = true
+         
+         
+         // this is all hard coded stuff
+         
+         
+         self.smallImage1.backgroundColor = UIColor.greenColor()
+         self.smallImage2.backgroundColor = UIColor.redColor()
+         self.smallImage3.backgroundColor = UIColor.yellowColor()
+         self.smallImage4.backgroundColor = UIColor.greenColor()
+         
+         */
+        
+        
+        friendInfo.hidden = false
+        
+    }
+
+
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         
@@ -217,10 +327,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MyPin") as? SVPulsingAnnotationView
-        
-        
-        
-        
         
         
         if (annotationView == nil) {
@@ -257,19 +363,15 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             }
             
             
-        
-           
-            
-            
         }
         
         
         annotationView!.annotation = annotation
         return annotationView!
         
-
-        
     }
+    
+    
     
     
     func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
@@ -281,109 +383,12 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         self.navigationController?.navigationBarHidden = false
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
-        let location = friendList[indexPath.row].coordinate
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        
-        let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
-        
-        
-        // there's prob a better solution then this
-        for annotation in self.mapView.annotations {
-            
-            if annotation.title! == friendList[indexPath.row].title {
-                mapView.selectAnnotation(annotation, animated: true)
-            }
-            
-            
-        }
-        
-        
-        tableView.hidden = true
-        navigationItem.leftBarButtonItem?.enabled = true
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
-        
-        
-        // friendInfo stuff
-        nameLabel.text = friendList[indexPath.row].title!
-        address1Label.text = friendList[indexPath.row].address1
-        address2Label.text = friendList[indexPath.row].address2
-        rowindex = indexPath.row
-        
-        bigProfileImage.layer.borderWidth = 2.0;
-        bigProfileImage.frame.size.width = 100
-        
-        if friendList[indexPath.row].picture != nil {
-            bigProfileImage.image = friendList[indexPath.row].picture
-            
-        }
-        else {
-            bigProfileImage.image = nil
-        }
-        
-        
-        
-        if friendList[indexPath.row].status == .Danger {
-            bigProfileImage.layer.borderColor = UIColor.noticeRed().CGColor
-        }
-        else if friendList[indexPath.row].status == .Weary {
-            bigProfileImage.layer.borderColor = UIColor.noticeYellow().CGColor
-        }
-        else {
-            bigProfileImage.layer.borderColor = UIColor.noticeGreen().CGColor
-        }
-        
     
-    
-        self.bigProfileImage.layer.cornerRadius = self.bigProfileImage.frame.size.width / 2
-        self.bigProfileImage.clipsToBounds = true
         
-        
-        
-        self.smallImage1.layer.cornerRadius = self.smallImage1.frame.size.width/2
-        self.smallImage1.clipsToBounds = true
-        
-        
-        
-        self.smallImage2.layer.cornerRadius = self.smallImage2.frame.size.width/2
-        self.smallImage2.clipsToBounds = true
-        
-        self.smallImage3.layer.cornerRadius = self.smallImage3.frame.size.width/2
-        self.smallImage3.clipsToBounds = true
-        
-        self.smallImage4.layer.cornerRadius = self.smallImage4.frame.size.width/2
-        self.smallImage4.clipsToBounds = true
-        
-        
-        // this is all hard coded stuff
-        
-        
-        self.smallImage1.backgroundColor = UIColor.greenColor()
-        self.smallImage2.backgroundColor = UIColor.redColor()
-        self.smallImage3.backgroundColor = UIColor.yellowColor()
-        self.smallImage4.backgroundColor = UIColor.greenColor()
-        
-        
-        
-        friendInfo.hidden = false
-        
-        
-        
-        
-        
-        
-    }
-        
-        
-        func addAction(sender:UIBarButtonItem){
+    func addAction(sender:UIBarButtonItem) {
             
-            print("This do something?")
-            
-            
-            
+        print("This do something?")
+        
         }
     
     func backAction(sender: UIBarButtonItem) {
@@ -413,7 +418,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     @IBAction func callButtonPressed(sender: UIButton) {
         print("call button pressed")
         
-        if let phoneCallURL:NSURL = NSURL(string: "tel://\(friendList[rowindex!].phone)") {
+        if let phoneCallURL:NSURL = NSURL(string: "tel://\(friendList[rowindex].phone)") {
             let application:UIApplication = UIApplication.sharedApplication()
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL);
@@ -427,7 +432,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
             controller.body = "Message Body"
-            controller.recipients = [friendList[rowindex!].phone]
+            controller.recipients = [friendList[rowindex].phone]
             controller.messageComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
         }
@@ -438,7 +443,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     @IBAction func bigRequestButtonPressed(sender: UIButton) {
         
         
-        let message = friendList[rowindex!].title! + " will be notified that you requested an update."
+        let message = friendList[rowindex].title! + " will be notified that you requested an update."
         let alert = UIAlertController(title: "Request Sent!", message: message,
                                       preferredStyle: UIAlertControllerStyle.Alert)
         
