@@ -175,6 +175,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
                 
                 cell.imageview.image = friendList[indexPath.row].picture
             }
+            else {
+                cell.imageview.image = nil
+            }
             
             
             // get actual colors from the palette
