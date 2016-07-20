@@ -308,14 +308,12 @@
 				TargetAttributes = {
 					65F271591D3CAEA50042BDA2 = {
 						CreatedOnToolsVersion = 7.3.1;
-
 						DevelopmentTeam = KC6ABGRXCW;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
-
 					};
 				};
 			};
@@ -574,11 +572,9 @@
 				);
 				INFOPLIST_FILE = Notifi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "957d4e75-5b19-479d-8e54-73d43e913f6a";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -598,11 +594,9 @@
 				);
 				INFOPLIST_FILE = Notifi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "957d4e75-5b19-479d-8e54-73d43e913f6a";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 			};
 			name = Release;
