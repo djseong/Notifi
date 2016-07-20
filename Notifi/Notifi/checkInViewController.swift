@@ -14,8 +14,7 @@ import MessageUI
 
 
 // to get the index of the selected row
-var rowindex : Int = 0
-var friendList : [User] = UserController.sharedInstance.getJournals()
+
 
 
 
@@ -47,7 +46,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     @IBOutlet weak var address2Label: UILabel!
     
 
-    
+    var rowindex : Int = 0
+    var friendList : [User] = []
   
     
     
@@ -59,6 +59,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        friendList = UserController.sharedInstance.getJournals()
         
         // Do any additional setup after loading the view.
         mapView.delegate = self
@@ -104,15 +106,14 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         mapView.showsCompass = true
         mapView.rotateEnabled = true
         
-        
-        // center the initial mapView to your location
-  /*    let userLocation = mapView.userLocation.coordinate
+    /*    // center the initial mapView to your location
+        let userLocation = mapView.userLocation.coordinate
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegion(center: userLocation, span: span)
-        mapView.setRegion(region, animated: true) */
+        mapView.setRegion(region, animated: true)  */
         
         // do we need an add button?
-        navigationItem.title = "Notifi"
+        navigationItem.title = "Signifi"
         let add_button : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: nil)
         navigationItem.rightBarButtonItem = add_button
         navigationItem.rightBarButtonItem?.enabled = false
@@ -128,8 +129,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         // hide the friendInfoView -- this is retarded 
         friendInfo.hidden = true
-        
-        
+       
         
     }
     
@@ -178,11 +178,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             
             // get actual colors from the palette
-            switch friendList[indexPath.row].status {
+            switch friendList[indexPath.row].currstatus {
                 
-            case .Danger:
+            case .Help:
                 cell.imageview.layer.borderColor = UIColor.noticeRed().CGColor
-            case .Weary:
+            case .Attention:
                 cell.imageview.layer.borderColor = UIColor.noticeYellow().CGColor
             default:
                 cell.imageview.layer.borderColor = UIColor.noticeGreen().CGColor
@@ -194,7 +194,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             // tapAction closure sent to IBAction
             cell.tapAction = { (cell) in
                 
-                let message = friendList[indexPath.row].title! + " will be notified that you requested an update."
+                let message = self.friendList[indexPath.row].title! + " will be notified that you requested an update."
                 
                 let alert = UIAlertController(title: "Request Sent!", message: message,
                                               preferredStyle: UIAlertControllerStyle.Alert)
@@ -217,7 +217,19 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath)
                 as! StatusTableViewCell
-            cell.textLabel!.text = friendList[rowindex].statusHistory[indexPath.row].time
+            cell.statusTimeLabel.text = friendList[rowindex].statusHistory[indexPath.row].time
+            
+            
+            if friendList[rowindex].statusHistory[indexPath.row].state == .Safe  {
+                cell.statusTypeImage.backgroundColor = UIColor.greenColor()
+            }
+            else if friendList[rowindex].statusHistory[indexPath.row].state == .Attention {
+                cell.statusTypeImage.backgroundColor = UIColor.yellowColor()
+            }
+            else {
+                cell.statusTypeImage.backgroundColor = UIColor.redColor()
+            }
+            
             return cell
         }
         
@@ -229,10 +241,10 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        
+        if tableView == self.tableView {
         
         let location = friendList[indexPath.row].coordinate
-        let span = MKCoordinateSpanMake(0.001, 0.001)
+        let span = MKCoordinateSpanMake(0.01, 0.01)
         
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
@@ -255,7 +267,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
         
         
-        
+        navigationItem.title = friendList[indexPath.row].title!
         
         // friendInfo stuff
         nameLabel.text = friendList[indexPath.row].title!
@@ -276,10 +288,10 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
       
         
-        if friendList[indexPath.row].status == statusType.Danger {
+        if friendList[indexPath.row].currstatus == .Help {
             bigProfileImage.layer.borderColor = UIColor.redColor().CGColor
         }
-        else if friendList[indexPath.row].status == statusType.Weary {
+        else if friendList[indexPath.row].currstatus == .Attention {
             bigProfileImage.layer.borderColor = UIColor.yellowColor().CGColor
         }
         else {
@@ -323,6 +335,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         
         friendInfo.hidden = false
+        }
+        
+        else {
+            
+        }
         
     }
 
@@ -369,10 +386,10 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             let annotationUser : User = annotation as! User
             
-            if annotationUser.status == .Danger {
+            if annotationUser.currstatus == .Help {
                 annotationView?.annotationColor = UIColor.redColor()
             }
-            else if annotationUser.status == .Weary {
+            else if annotationUser.currstatus == .Attention {
                 annotationView?.annotationColor = UIColor.yellowColor()
             }
             else {
@@ -412,7 +429,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         self.tableView.hidden = false
         self.friendInfo.hidden = true
-        
+        navigationItem.title = "Signifi"
         // hides the back button to imitate an actual back button
         navigationItem.leftBarButtonItem?.enabled = false
         navigationItem.leftBarButtonItem?.tintColor = UIColor.clearColor()

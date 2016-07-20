@@ -11,8 +11,6 @@
 		2222226D1D3EF0D500F5F22B /* StatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2222226B1D3EF0D500F5F22B /* StatusTableViewCell.xib */; };
 		222A2A971D3FF9060055C930 /* signifi_certs in Resources */ = {isa = PBXBuildFile; fileRef = 222A2A961D3FF9060055C930 /* signifi_certs */; };
 		226A417A1D400A41007FCC7F /* FriendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226A41791D400A41007FCC7F /* FriendTableViewController.xib */; };
-		226A418A1D40112E007FCC7F /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A41881D40112E007FCC7F /* FriendProfileViewController.swift */; };
-		226A418B1D40112E007FCC7F /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226A41891D40112E007FCC7F /* FriendProfileViewController.xib */; };
 		22FD9F6B1D3E855F00257AD4 /* checkInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD9F6A1D3E855F00257AD4 /* checkInViewController.swift */; };
 		22FD9F6D1D3E856E00257AD4 /* checkInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */; };
 		22FD9F6F1D3E857800257AD4 /* customCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */; };
@@ -72,8 +70,6 @@
 		2222226B1D3EF0D500F5F22B /* StatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusTableViewCell.xib; sourceTree = "<group>"; };
 		222A2A961D3FF9060055C930 /* signifi_certs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signifi_certs; sourceTree = SOURCE_ROOT; };
 		226A41791D400A41007FCC7F /* FriendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewController.xib; sourceTree = "<group>"; };
-		226A41881D40112E007FCC7F /* FriendProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
-		226A41891D40112E007FCC7F /* FriendProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendProfileViewController.xib; sourceTree = "<group>"; };
 		22FD9F6A1D3E855F00257AD4 /* checkInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkInViewController.swift; sourceTree = "<group>"; };
 		22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = checkInViewController.xib; sourceTree = "<group>"; };
 		22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -256,8 +252,6 @@
 		65F271751D3CF3960042BDA2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				226A41881D40112E007FCC7F /* FriendProfileViewController.swift */,
-				226A41891D40112E007FCC7F /* FriendProfileViewController.xib */,
 				48E4CE801D3E809B0096AE3E /* SettingViewController.swift */,
 				22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */,
 				2222226A1D3EF0D500F5F22B /* StatusTableViewCell.swift */,
@@ -363,7 +357,6 @@
 				421D4E711D3FF2C6006C6B32 /* push.py in Resources */,
 				421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */,
 				421D4E701D3FF2C6006C6B32 /* privKey.pem in Resources */,
-				226A418B1D40112E007FCC7F /* FriendProfileViewController.xib in Resources */,
 				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
 				48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */,
 				226A417A1D400A41007FCC7F /* FriendTableViewController.xib in Resources */,
@@ -458,7 +451,6 @@
 				48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */,
 				65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */,
 				488FF1B11D3D7E36008D5BA2 /* StatusController .swift in Sources */,
-				226A418A1D40112E007FCC7F /* FriendProfileViewController.swift in Sources */,
 				488FF1C21D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift in Sources */,
 				22FD9F771D3E860100257AD4 /* SVPulsingAnnotationView.m in Sources */,
 				22FD9F6F1D3E857800257AD4 /* customCellTableViewCell.swift in Sources */,
