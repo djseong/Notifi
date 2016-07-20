@@ -53,6 +53,7 @@ class NightlyViewController: UIViewController {
             navigationItem.title = "Your status: Need Help"
         }
     }
+    
     func settingPressed(sender:UIBarButtonItem){
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
