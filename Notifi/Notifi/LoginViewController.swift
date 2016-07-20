@@ -14,30 +14,21 @@ import FBSDKLoginKit
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet var loginView: FBSDKLoginButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.readPermissions = ["public_profile", "email", "user_friends"]
         loginView.delegate = self
         
         navigationItem.title = "Login"
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
-            self.navigationController?.pushViewController(friendtablecontoller, animated: true)
-            // User is already logged in, do work such as go to next view controller.
-            // Get List Of Friends
-           /* let friendRequest = FBSDKGraphRequest(graphPath: "me/invitable_friends", parameters: ["fields" : "id, name, picture", "after" : "QVZAtaWpPMlg3M2FHYTNEQmwwcVl6eUp5XzRNYXlGaUJZAR01KZAnBpREpHV0FJM2tTUjVYWHg0cWE2WnFYUGZA4YVYtYVU1bHJoN2RISDZAkU2REZAEY3dENzcU9FLVFVaF94eGZAKY1J4TVMxc3YwZA3cZD"], HTTPMethod: "GET")
-            friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                print(result)
-
-            })*/
-        }
-        else
-        {
-            
-        }
+            navigationController?.pushViewController(friendtablecontoller, animated: true)
+        }   
     }
     
     // Facebook Delegate Methods
@@ -55,7 +46,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
-            returnUserData()
             if result.grantedPermissions.contains("email")
             {
                 // Do work
@@ -67,7 +57,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User Logged Out")
     }
 
-    func returnUserData()
+   /* func returnUserData()
     {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "email"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -87,5 +77,5 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         })
     }
-
+*/
 }

@@ -19,17 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        
-        //Daniel needs to commit /Downloads/montserrat/Montserrat-UltraLight.otf: file. i dont think he did
-        
-            /*for name in UIFont.familyNames() {
-             print(name)
-             if let nameString = name as? String
-             {
-             print(UIFont.fontNamesForFamilyName(nameString))
-             }
-             }*/
-
         //do init for tab bar
         initTabBarController()
         
@@ -43,28 +32,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        //self.window?.rootViewController = navigationcontroller
-        self.window?.rootViewController = tabViewController
+        self.window?.rootViewController = navigationcontroller
+        //self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
-
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))  // types are UIUserNotificationType members
+        
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func initTabBarController(){
+    func initTabBarController() -> CustomizedTabBarViewController{
+        var tabViewController = CustomizedTabBarViewController()
+
         let nightlyViewController = NightlyViewController()
+
+
         let CheckInViewController = checkInViewController()
+
         let homenavigationController = UINavigationController(rootViewController: nightlyViewController)
         let friendnavigationController = UINavigationController(rootViewController: CheckInViewController)
         
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "icon_home_stroke.png"), selectedImage:UIImage(named: "icon_home_full.png") )
         let friendTabBarItem = UITabBarItem(title: "Friends", image:UIImage(named: "icon_friends_stroke.png") , selectedImage: UIImage(named: "icon_friends_full.png"))
+        
         homenavigationController.tabBarItem = homeTabBarItem
         friendnavigationController.tabBarItem = friendTabBarItem
         
         let controllers = [homenavigationController,friendnavigationController]
         tabViewController.viewControllers = controllers
-        return
+        return tabViewController
     }
     
     func application(application: UIApplication,
@@ -100,6 +97,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print ("received notification")
+        
+        //first detect if the notification provided a uuid for a sensor to be alarmed.
+        let aps = userInfo["aps"]
+        print ("aps \(userInfo["aps"])")
+        if let alarmedUuid = aps!["uuid"]  {
+            print ("uuid in question: |\(alarmedUuid)|")
+            //go to the home screen, where the sensors are displayed, and refresh emmediately. The state of alarm is fetched along with the other information about the sensors
+            
+            
+        }
+        
+    }
+    
+    
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        
+        if notificationSettings.types != .None {
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        var tokenString = ""
+        
+        for i in 0..<deviceToken.length {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        
+        print("Device Token:", tokenString)
+        //UserController.sharedInstance.registerPushToken(tokenString)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Failed to register:", error)
+        //UserController.sharedInstance.registerPushToken("failed_to_register_for_ios_push_notes")
     }
 
 }

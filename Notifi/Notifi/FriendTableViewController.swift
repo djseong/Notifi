@@ -12,26 +12,65 @@ import FBSDKShareKit
 import FBSDKLoginKit
 
 class FriendTableViewController: UITableViewController {
+    @IBOutlet var tableview: UITableView!
+    @IBOutlet var loader: UIActivityIndicatorView!
     
-    var data = []
+    var data:[String] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-            // User is already logged in, do work such as go to next view controller.
-            // Get List Of Friends
-            let friendRequest = FBSDKGraphRequest(graphPath: "me/invitable_friends", parameters: ["fields" : "id, name, picture", "after" : "QVZAtaWpPMlg3M2FHYTNEQmwwcVl6eUp5XzRNYXlGaUJZAR01KZAnBpREpHV0FJM2tTUjVYWHg0cWE2WnFYUGZA4YVYtYVU1bHJoN2RISDZAkU2REZAEY3dENzcU9FLVFVaF94eGZAKY1J4TVMxc3YwZA3cZD"], HTTPMethod: "GET")
-            friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                print(result)
-                
-            })
-
+        tableview.addSubview(loader)
+        
+        //Tableview customization
+        tableview.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "cellidentifier")
+        tableview.allowsMultipleSelection = true
+        
+        // Get List Of Friends
+        getAllFriends("") {
+            print(self.data.count)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addFriends))
+            self.loader.stopAnimating()
+            self.loader.hidden = true
+            self.tableview.reloadData()
+        }
+      
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        loader.center = self.view.center
+        loader.startAnimating()
+    }
+    
+    func addFriends() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let application = UIApplication.sharedApplication()
+        let window = application.keyWindow
+        window?.rootViewController = appDelegate.initTabBarController()
+    }
+    
+    func getAllFriends (after: String, onCompletion: () -> Void) {
+        let friendRequest = FBSDKGraphRequest(graphPath: "me/invitable_friends", parameters: ["fields" : "id, name, picture", "after" : after], HTTPMethod: "GET")
+        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            if let next = result.valueForKey("paging")?.valueForKey("cursors")?.valueForKey("after") {
+                let friends = result["data"] as! [AnyObject]
+                for friend in friends {
+                    if let name = friend["name"] as? String {
+                        self.data.append(name)
+                    }
+                }
+                //print(self.data)
+                //onCompletion()
+                self.getAllFriends(next as! String, onCompletion: onCompletion)
+            }
+            else {
+                onCompletion()
+            }
+           
+            //print(self.data)
+            
+           // self.tableview.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,23 +82,25 @@ class FriendTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return data.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellidentifier") as! FriendTableViewCell
+        cell.textLabel?.text = data[indexPath.row]
 
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

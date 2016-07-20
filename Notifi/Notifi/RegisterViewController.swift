@@ -25,7 +25,7 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         fbRegisterButton.readPermissions = ["public_profile", "email", "user_friends"]
         fbRegisterButton.delegate = self
         
@@ -39,14 +39,15 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
         fbRegisterButton.setAttributedTitle(titletext, forState: .Normal)
        
     }
-    
-    override func viewDidAppear(animated: Bool) {
+        override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         profileImage.round()
 
     }
 
     @IBAction func registerButtonPressed(sender: NextButton) {
+        var error = false
+        
         for subview in self.view.subviews {
             if let textfield = subview as? UITextField {
                 if textfield.text == "" {
@@ -54,8 +55,14 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
                     alert.addAction(alertAction)
                     self.presentViewController(alert, animated: true, completion: nil)
+                    error = true
                 }
             }
+        }
+        
+        if (!error) {
+            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+            navigationController?.pushViewController(friendtablecontoller, animated: true)
         }
     }
     

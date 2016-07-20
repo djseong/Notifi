@@ -71,8 +71,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
      //   StatusTableView.delegate = friendProfileViewController
       //  StatusTableView.dataSource = friendProfileViewController
         
-        StatusTableView.delegate = FriendTableViewController()
-        StatusTableView.delegate = FriendTableViewController()
+        StatusTableView.delegate = self
+        StatusTableView.dataSource = self
 
         
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
@@ -145,9 +145,14 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        
-            
+        if (tableView == self.tableView)   {
             return friendList.count
+        }   else    {
+            //statusTableViwe
+            return friendList[rowindex].statusHistory.count
+        }
+            
+        
         
     }
     
@@ -155,61 +160,71 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-       tableView
-        
-        
-        
-        
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
-            as! customCellTableViewCell
-        
-        
-        
-        cell.nameLabel.text = friendList[indexPath.row].title
-        
-        if friendList[indexPath.row].picture != nil {
+        if (tableView == self.tableView)  {
+            //
             
-            cell.imageview.image = friendList[indexPath.row].picture
-        }
-        
-        
-        // get actual colors from the palette
-        switch friendList[indexPath.row].status {
             
-        case .Danger:
-            cell.imageview.layer.borderColor = UIColor.noticeRed().CGColor
-        case .Weary:
-            cell.imageview.layer.borderColor = UIColor.noticeYellow().CGColor
-        default:
-            cell.imageview.layer.borderColor = UIColor.noticeGreen().CGColor
-  
+            let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
+                as! customCellTableViewCell
             
-        }
-        
-        
-        // tapAction closure sent to IBAction
-        cell.tapAction = { (cell) in
             
-            let message = friendList[indexPath.row].title! + " will be notified that you requested an update."
             
-            let alert = UIAlertController(title: "Request Sent!", message: message,
-                                          preferredStyle: UIAlertControllerStyle.Alert)
+            cell.nameLabel.text = friendList[indexPath.row].title
             
-            let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
+            if friendList[indexPath.row].picture != nil {
+                
+                cell.imageview.image = friendList[indexPath.row].picture
+            }
+            
+            
+            // get actual colors from the palette
+            switch friendList[indexPath.row].status {
+                
+            case .Danger:
+                cell.imageview.layer.borderColor = UIColor.noticeRed().CGColor
+            case .Weary:
+                cell.imageview.layer.borderColor = UIColor.noticeYellow().CGColor
+            default:
+                cell.imageview.layer.borderColor = UIColor.noticeGreen().CGColor
                 
                 
-                
-            })
+            }
             
-            alert.addAction(alertAction)
-            self.presentViewController(alert, animated: true, completion: nil)
-
+            
+            // tapAction closure sent to IBAction
+            cell.tapAction = { (cell) in
+                
+                let message = friendList[indexPath.row].title! + " will be notified that you requested an update."
+                
+                let alert = UIAlertController(title: "Request Sent!", message: message,
+                                              preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
+                    
+                    
+                    
+                })
+                
+                alert.addAction(alertAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }
+            
+            
+            return cell
+        }   else    {
+            //statusTableView
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath)
+                as! StatusTableViewCell
+            cell.textLabel!.text = friendList[rowindex].statusHistory[indexPath.row].time
+            return cell
         }
-
         
-        return cell
-        }
+        
+        
+        
+    }
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -238,6 +253,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         tableView.hidden = true
         navigationItem.leftBarButtonItem?.enabled = true
         navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        
+        
         
         
         // friendInfo stuff

@@ -15,7 +15,7 @@ class PhotoProfileCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         contentImage.layer.cornerRadius = 75 * 0.5
-        contentImage.backgroundColor = UIColor.blueColor()
+        //contentImage.backgroundColor = UIColor.blueColor()
     }
     
 
