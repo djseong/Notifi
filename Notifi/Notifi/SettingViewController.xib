@@ -20,6 +20,9 @@
             <subviews>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afN-ur-nIa">
                     <rect key="frame" x="275" y="64" width="51" height="31"/>
+                    <connections>
+                        <action selector="switchTurned:" destination="-1" eventType="valueChanged" id="AW9-p8-e9w"/>
+                    </connections>
                 </switch>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PkO-oU-TaU">
                     <rect key="frame" x="0.0" y="150" width="600" height="300"/>

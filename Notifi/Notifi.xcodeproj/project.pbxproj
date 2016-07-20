@@ -38,6 +38,8 @@
 		48E4CE871D3EDA730096AE3E /* MyProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */; };
 		48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */; };
 		48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */; };
+		48E4CE8D1D3EF3CD0096AE3E /* SignifyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */; };
+		48E4CE8F1D3EF5BF0096AE3E /* SignifyUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */; };
 		656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FAD1D3E139500D81943 /* CustomImage.swift */; };
 		656C5FB51D3E551800D81943 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FB31D3E551800D81943 /* FriendTableViewController.swift */; };
 		656C5FB61D3E551800D81943 /* FriendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656C5FB41D3E551800D81943 /* FriendTableViewController.xib */; };
@@ -87,6 +89,8 @@
 		48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileViewController.xib; sourceTree = "<group>"; };
 		48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignifyUser.swift; sourceTree = "<group>"; };
+		48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignifyUserController.swift; sourceTree = "<group>"; };
 		656C5FAD1D3E139500D81943 /* CustomImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		656C5FB31D3E551800D81943 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		656C5FB41D3E551800D81943 /* FriendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewController.xib; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				488FF1B01D3D7E36008D5BA2 /* StatusController .swift */,
+				48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			children = (
 				22FD9F721D3E858B00257AD4 /* dummyUser.swift */,
 				488FF1AD1D3D7C1F008D5BA2 /* Status.swift */,
+				48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -397,10 +403,12 @@
 				65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */,
 				22FD9F6B1D3E855F00257AD4 /* checkInViewController.swift in Sources */,
 				65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */,
+				48E4CE8F1D3EF5BF0096AE3E /* SignifyUserController.swift in Sources */,
 				488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */,
 				488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */,
 				65F2717C1D3CF4080042BDA2 /* OnboardingViewController.swift in Sources */,
 				65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */,
+				48E4CE8D1D3EF3CD0096AE3E /* SignifyUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

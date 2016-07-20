@@ -10,6 +10,19 @@ import UIKit
 
 class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBAction func switchTurned(sender: UISwitch) {
+        if sender.on{
+            let alert = UIAlertController(title: "Your GPS is on", message: "By turning on the GPS, your friends will be able to see you on the map", preferredStyle: .Alert)
+            let alertAction = UIAlertAction(title: "Okay, I see", style: .Cancel, handler: nil)
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "Your GPS is off", message: "By turning off the GPS, your friends will not be able to see you on the map", preferredStyle: .Alert)
+            let alertAction = UIAlertAction(title: "Okay, I see", style: .Cancel, handler: nil)
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     @IBOutlet weak var gpsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var switchGPS: UISwitch!

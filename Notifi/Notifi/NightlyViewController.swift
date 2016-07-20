@@ -26,7 +26,13 @@ class NightlyViewController: UIViewController {
             //UIBarButtonItem(title: "Settings", style: .Done, target: self, action: #selector(self.settingPressed(_:)))
         settingButton.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(settingButton, animated: true)
+        if StatusController.sharedInstance.currentStatus.state == .Safe{
         navigationItem.title = "Your status: Safe"
+        }else if StatusController.sharedInstance.currentStatus.state == .Attention{
+            navigationItem.title = "Your status: Need Attention"
+        }else if StatusController.sharedInstance.currentStatus.state == .Help{
+            navigationItem.title = "Your status: Need Help"
+        }
         
         //change the back button title
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Done, target: self, action: nil)
@@ -38,6 +44,15 @@ class NightlyViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
         }
+    override func viewWillAppear(animated: Bool) {
+        if StatusController.sharedInstance.currentStatus.state == .Safe{
+            navigationItem.title = "Your status: Safe"
+        }else if StatusController.sharedInstance.currentStatus.state == .Attention{
+            navigationItem.title = "Your status: Need Attention"
+        }else if StatusController.sharedInstance.currentStatus.state == .Help{
+            navigationItem.title = "Your status: Need Help"
+        }
+    }
     func settingPressed(sender:UIBarButtonItem){
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
