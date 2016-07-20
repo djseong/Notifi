@@ -40,6 +40,8 @@
 		48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */; };
 		48E4CE8D1D3EF3CD0096AE3E /* SignifyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */; };
 		48E4CE8F1D3EF5BF0096AE3E /* SignifyUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */; };
+		650FDD391D3F8A0100D6562B /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */; };
+		650FDD3A1D3F8A0100D6562B /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 650FDD381D3F8A0100D6562B /* FriendTableViewCell.xib */; };
 		656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FAD1D3E139500D81943 /* CustomImage.swift */; };
 		656C5FB51D3E551800D81943 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FB31D3E551800D81943 /* FriendTableViewController.swift */; };
 		656C5FB61D3E551800D81943 /* FriendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656C5FB41D3E551800D81943 /* FriendTableViewController.xib */; };
@@ -91,6 +93,8 @@
 		48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignifyUser.swift; sourceTree = "<group>"; };
 		48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignifyUserController.swift; sourceTree = "<group>"; };
+		650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		650FDD381D3F8A0100D6562B /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		656C5FAD1D3E139500D81943 /* CustomImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		656C5FB31D3E551800D81943 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		656C5FB41D3E551800D81943 /* FriendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewController.xib; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */,
 				48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */,
 				488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */,
+				650FDD381D3F8A0100D6562B /* FriendTableViewCell.xib */,
+				65F271A81D3D9C500042BDA2 /* RegisterViewController.xib */,
 				488FF1B41D3D841A008D5BA2 /* NoticeViewController.xib */,
 				488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */,
 				488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */,
@@ -232,6 +238,7 @@
 				656C5FB31D3E551800D81943 /* FriendTableViewController.swift */,
 				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
 				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
+				650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -327,6 +334,9 @@
 				65F271721D3CB2420042BDA2 /* LoginViewController.xib in Resources */,
 				488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */,
 				22FD9F711D3E858300257AD4 /* customCellTableViewCell.xib in Resources */,
+				65F271A51D3D87950042BDA2 /* Montserrat-UltraLight.otf in Resources */,
+				65F271A91D3D9C500042BDA2 /* RegisterViewController.xib in Resources */,
+				650FDD3A1D3F8A0100D6562B /* FriendTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +416,7 @@
 				48E4CE8F1D3EF5BF0096AE3E /* SignifyUserController.swift in Sources */,
 				488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */,
 				488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */,
+				650FDD391D3F8A0100D6562B /* FriendTableViewCell.swift in Sources */,
 				65F2717C1D3CF4080042BDA2 /* OnboardingViewController.swift in Sources */,
 				65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */,
 				48E4CE8D1D3EF3CD0096AE3E /* SignifyUser.swift in Sources */,

@@ -2,7 +2,7 @@
 //  FriendTableViewCell.swift
 //  Notifi
 //
-//  Created by Daniel Seong on 7/19/16.
+//  Created by Daniel Seong on 7/20/16.
 //  Copyright © 2016 Daniel Seong. All rights reserved.
 //
 
