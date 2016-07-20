@@ -14,7 +14,7 @@ token_david = "adb3e77d04e982b7251f020d69dccbcdf4e8d1b05988b72c0737741b50c53279"
 
           
 successPackage = {}
-successPackage["alert"] = "TRANSACTION_SUCCESS"
+successPackage["alert"] = "what's up"
 successPackage["discountAmountProcessed"] = 5000
 successPackage["cardAmountProcessed"] = 100
 successPackage["rewardsAmountProcessed"] = 7000
@@ -24,5 +24,5 @@ failurePackage = {}
 failurePackage["notificationType"] = "TRANSACTION_FAILURE"	
 
 payload = Payload(alert="TRANSACTION_SUCCESS", custom=aps)
-result = apns.gateway_server.send_notification(token_julz, payload)
+result = apns.gateway_server.send_notification(token_david, payload)
 
