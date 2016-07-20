@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKShareKit
+import FBSDKLoginKit
 
-class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
+class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, FBSDKLoginButtonDelegate {
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
 
     @IBAction func switchTurned(sender: UISwitch) {
         if sender.on{
@@ -45,7 +50,7 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         gpsLabel.font = UIFont(name: "Montserrat-UltraLight", size: 20)
 
-        // Do any additional setup after loading the view.
+        loginButton.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,15 +80,18 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
+    
+    // Facebook
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
     }
-    */
-
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+        let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
+        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        let application = UIApplication.sharedApplication()
+        let window = application.keyWindow
+        window?.rootViewController = navigationcontroller
+    }
 }
