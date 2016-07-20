@@ -31,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qE4-fy-98E" customClass="CustomButton" customModule="Notifi" customModuleProvider="target">
-                    <rect key="frame" x="40" y="400" width="520" height="45"/>
+                    <rect key="frame" x="40" y="420" width="520" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="cqR-SY-8vN"/>
                     </constraints>
@@ -39,7 +39,7 @@
                     <state key="normal" title="Create Account"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-EL-imE" customClass="CustomButton" customModule="Notifi" customModuleProvider="target">
-                    <rect key="frame" x="40" y="455" width="520" height="45"/>
+                    <rect key="frame" x="40" y="475" width="520" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Rsz-X4-Y2W"/>
                     </constraints>
@@ -67,7 +67,7 @@
                 <constraint firstItem="ZAI-EL-imE" firstAttribute="top" secondItem="qE4-fy-98E" secondAttribute="bottom" constant="10" id="gvM-nR-Ldj"/>
                 <constraint firstItem="qE4-fy-98E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="hbb-sT-uy0"/>
                 <constraint firstItem="qE4-fy-98E" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="icp-Br-4Dv"/>
-                <constraint firstAttribute="bottom" secondItem="ZAI-EL-imE" secondAttribute="bottom" constant="100" id="l1I-pQ-nZA"/>
+                <constraint firstAttribute="bottom" secondItem="ZAI-EL-imE" secondAttribute="bottom" constant="80" id="l1I-pQ-nZA"/>
             </constraints>
         </view>
     </objects>
