@@ -1,5 +1,2 @@
-Notifi/Notifi.xcworkspace/xcuserdata
-Notifi/Notifi.xcodeproj/xcuserdata
-Notifi/Notifi.xcodeproj/project.xcworkspace/xcuserdata
-Notifi/Pods/Pods.xcodeproj/xcuserdata
-Notifi/Pods
+xcuserdata/
+.DS_Store
