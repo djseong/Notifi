@@ -43,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        //self.window?.rootViewController = navigationcontroller
-        self.window?.rootViewController = tabViewController
+        self.window?.rootViewController = navigationcontroller
+        //self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
 
         
