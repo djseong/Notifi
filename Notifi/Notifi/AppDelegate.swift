@@ -8,7 +8,7 @@
 
 import UIKit
 import FBSDKCoreKit
-
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,6 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
         
+        initNotificationSettings()
+        
+        FIRApp.configure()
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func initNotificationSettings() {
         
         // increment Action
         let incrementAction = UIMutableUserNotificationAction()
@@ -69,20 +77,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // A. Set actions for the default context
         counterCategory.setActions([incrementAction, decrementAction, resetAction],
-        forContext: UIUserNotificationActionContext.Default)
+                                   forContext: UIUserNotificationActionContext.Default)
         
         // B. Set actions for the minimal context
         counterCategory.setActions([incrementAction, decrementAction],
-        forContext: UIUserNotificationActionContext.Minimal)
+                                   forContext: UIUserNotificationActionContext.Minimal)
         
-         //UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: counterCategory))  // types are UIUserNotificationType members
+        //UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: counterCategory))  // types are UIUserNotificationType members
         
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: NSSet(object: counterCategory) as! Set<UIUserNotificationCategory>)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
 
-        
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
+    
+    
     
     func initTabBarController() -> CustomizedTabBarViewController{
         var tabViewController = CustomizedTabBarViewController()

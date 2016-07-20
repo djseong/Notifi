@@ -26,6 +26,7 @@
 		421D4E701D3FF2C6006C6B32 /* privKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6D1D3FF2C6006C6B32 /* privKey.pem */; };
 		421D4E711D3FF2C6006C6B32 /* push.py in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6E1D3FF2C6006C6B32 /* push.py */; };
 		421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6F1D3FF2C6006C6B32 /* pushcert.pem */; };
+		421D4E761D401EA1006C6B32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E751D401EA1006C6B32 /* GoogleService-Info.plist */; };
 		488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */; };
 		488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */; };
 		488FF1AE1D3D7C1F008D5BA2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1AD1D3D7C1F008D5BA2 /* Status.swift */; };
@@ -85,6 +86,7 @@
 		421D4E6D1D3FF2C6006C6B32 /* privKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privKey.pem; sourceTree = "<group>"; };
 		421D4E6E1D3FF2C6006C6B32 /* push.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = push.py; sourceTree = "<group>"; };
 		421D4E6F1D3FF2C6006C6B32 /* pushcert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pushcert.pem; sourceTree = "<group>"; };
+		421D4E751D401EA1006C6B32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightlyViewController.swift; sourceTree = "<group>"; };
 		488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NightlyViewController.xib; sourceTree = "<group>"; };
 		488FF1AD1D3D7C1F008D5BA2 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		65F2715C1D3CAEA50042BDA2 /* Notifi */ = {
 			isa = PBXGroup;
 			children = (
+				421D4E751D401EA1006C6B32 /* GoogleService-Info.plist */,
 				48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */,
 				488FF1BA1D3D9322008D5BA2 /* Assets.xcassets */,
 				488FF1AF1D3D7E1A008D5BA2 /* Model Controller */,
@@ -365,6 +368,7 @@
 				22FD9F6D1D3E856E00257AD4 /* checkInViewController.xib in Resources */,
 				65F271681D3CAEA50042BDA2 /* LaunchScreen.storyboard in Resources */,
 				48E4CE871D3EDA730096AE3E /* MyProfileViewController.xib in Resources */,
+				421D4E761D401EA1006C6B32 /* GoogleService-Info.plist in Resources */,
 				65F2717D1D3CF4080042BDA2 /* OnboardingViewController.xib in Resources */,
 				488FF1BB1D3D9322008D5BA2 /* Assets.xcassets in Resources */,
 				65F271721D3CB2420042BDA2 /* LoginViewController.xib in Resources */,

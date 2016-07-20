@@ -8,8 +8,9 @@
 
 import UIKit
 import FBSDKCoreKit
-import FBSDKShareKit
+
 import FBSDKLoginKit
+import Firebase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -24,11 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
-            navigationController?.pushViewController(friendtablecontoller, animated: true)
-        }   
+        
     }
     
     // Facebook Delegate Methods
@@ -49,6 +46,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email")
             {
                 // Do work
+                //firebase connection
+                let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                    // ...
+                    print("firebase returned")
+                    if (error != nil) {
+                        //
+                        print("firebase login error: \(error)")
+                        
+                        
+                    }   else    {
+                        
+                        //log in to app
+                        let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+                        self.navigationController?.pushViewController(friendtablecontoller, animated: true)
+                    }
+                    
+                }
             }
         }
     }
