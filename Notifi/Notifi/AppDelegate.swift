@@ -42,7 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
+        self.initDatabase()
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func initDatabase() {
+        
+        let ref = FIRDatabase.database().reference()
+        
     }
     
     func initNotificationSettings() {
