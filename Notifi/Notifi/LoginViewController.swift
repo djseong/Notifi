@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         {
             let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
             navigationController?.pushViewController(friendtablecontoller, animated: true)
-        }
+        }   
     }
     
     // Facebook Delegate Methods
