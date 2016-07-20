@@ -48,6 +48,7 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
             stateLabel.textColor = UIColor.noticeButtonRed()
         }
         
+        
 
         
         collectionView.registerNib(UINib(nibName:"PhotoProfileCollectionViewCell",bundle: nil), forCellWithReuseIdentifier: "CellForPhoto")
