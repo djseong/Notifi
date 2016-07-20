@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="checkInViewController" customModule="notifiSam" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="checkInViewController" customModule="Notifi" customModuleProvider="target">
             <connections>
                 <outlet property="Label1" destination="1ZF-nx-dyH" id="RgV-pd-61c"/>
                 <outlet property="Label2" destination="XIq-VE-AT1" id="px4-ni-hPM"/>
@@ -13,10 +13,10 @@
                 <outlet property="Label4" destination="J7T-p8-aHO" id="Nec-Gd-rMB"/>
                 <outlet property="address1Label" destination="ftP-Rw-Y5Q" id="Idc-mH-cvO"/>
                 <outlet property="address2Label" destination="bc8-jn-MPG" id="1Ac-xo-ZQA"/>
-                <outlet property="addressLabel" destination="LHA-jc-B3v" id="UPf-dZ-hvM"/>
                 <outlet property="bigProfileImage" destination="ERo-AY-TmG" id="4tr-0h-5hU"/>
                 <outlet property="friendInfo" destination="Gar-nX-cWy" id="zal-RK-5i7"/>
                 <outlet property="mapView" destination="Ojd-QT-N7S" id="tee-zZ-Qh7"/>
+                <outlet property="nameLabel" destination="LHA-jc-B3v" id="pDn-ct-iXY"/>
                 <outlet property="smallImage1" destination="xKS-oU-vwR" id="bBk-wd-Zf2"/>
                 <outlet property="smallImage2" destination="0m8-vh-oOl" id="PEV-bu-WeY"/>
                 <outlet property="smallImage3" destination="Dkh-Y6-20V" id="hPd-BA-LtN"/>
@@ -32,17 +32,17 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bPT-np-LWj">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="398" width="400" height="302"/>
+                        <rect key="frame" x="0.0" y="342" width="400" height="264"/>
                     </variation>
                 </tableView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-QT-N7S">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="47" width="400" height="322"/>
+                        <rect key="frame" x="0.0" y="64" width="400" height="246"/>
                     </variation>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnX-mp-SR2">
@@ -54,64 +54,21 @@
                         <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="368" width="400" height="30"/>
+                        <rect key="frame" x="0.0" y="312" width="400" height="30"/>
                     </variation>
                     <connections>
                         <action selector="editButtonPressed:" destination="-1" eventType="touchUpInside" id="Eb2-iC-I56"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yar-O9-7Kd" userLabel="informationButton">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="330" y="156" width="30" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="informationButtonPressed:" destination="-1" eventType="touchUpInside" id="SI2-9D-ep8"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-5Q-KX9" userLabel="findMeButton">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="330" y="186" width="30" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="findMeButtonPressed:" destination="-1" eventType="touchUpInside" id="vyo-th-54c"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITb-v9-IZW" userLabel="2DButton">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="2D">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="330" y="216" width="30" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="twoDButtonPressed:" destination="-1" eventType="touchUpInside" id="Gxu-fq-2Hy"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-nX-cWy" userLabel="friendInfoView">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhN-qI-FtR" userLabel="textButton">
-                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <state key="normal" title="Text"/>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="20" y="223" width="30" height="30"/>
-                            </variation>
-                            <connections>
-                                <action selector="textButtonPressed:" destination="-1" eventType="touchUpInside" id="MfA-ek-59c"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nal-ng-2BI" userLabel="bigRequestButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <state key="normal" title="Request Update"/>
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.82352941180000006" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Request Update">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                 <rect key="frame" x="180" y="223" width="180" height="30"/>
                             </variation>
@@ -205,15 +162,18 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rud-1A-jIT" userLabel="callButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <state key="normal" title="Call"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="icon_phone">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="98" y="223" width="30" height="30"/>
+                                <rect key="frame" x="87" y="218" width="40" height="40"/>
                             </variation>
                             <connections>
                                 <action selector="callButtonPressed:" destination="-1" eventType="touchUpInside" id="blY-sk-aeR"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v" userLabel="nameLabel">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -222,11 +182,23 @@
                                 <rect key="frame" x="20" y="127" width="174" height="30"/>
                             </variation>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhN-qI-FtR" userLabel="textButton">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="icon_textmessage">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="15" y="218" width="40" height="40"/>
+                            </variation>
+                            <connections>
+                                <action selector="textButtonPressed:" destination="-1" eventType="touchUpInside" id="MfA-ek-59c"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="default">
                         <mask key="subviews">
-                            <exclude reference="vhN-qI-FtR"/>
                             <exclude reference="nal-ng-2BI"/>
                             <exclude reference="ERo-AY-TmG"/>
                             <exclude reference="ftP-Rw-Y5Q"/>
@@ -241,12 +213,12 @@
                             <exclude reference="XzB-bl-Cnt"/>
                             <exclude reference="Rud-1A-jIT"/>
                             <exclude reference="LHA-jc-B3v"/>
+                            <exclude reference="vhN-qI-FtR"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="398" width="400" height="302"/>
+                        <rect key="frame" x="0.0" y="342" width="400" height="264"/>
                         <mask key="subviews">
-                            <include reference="vhN-qI-FtR"/>
                             <include reference="nal-ng-2BI"/>
                             <include reference="ERo-AY-TmG"/>
                             <include reference="ftP-Rw-Y5Q"/>
@@ -261,6 +233,7 @@
                             <include reference="XzB-bl-Cnt"/>
                             <include reference="Rud-1A-jIT"/>
                             <include reference="LHA-jc-B3v"/>
+                            <include reference="vhN-qI-FtR"/>
                         </mask>
                     </variation>
                 </view>
@@ -271,9 +244,6 @@
                     <exclude reference="bPT-np-LWj"/>
                     <exclude reference="Ojd-QT-N7S"/>
                     <exclude reference="nnX-mp-SR2"/>
-                    <exclude reference="yar-O9-7Kd"/>
-                    <exclude reference="e9b-5Q-KX9"/>
-                    <exclude reference="ITb-v9-IZW"/>
                     <exclude reference="Gar-nX-cWy"/>
                 </mask>
             </variation>
@@ -282,12 +252,13 @@
                     <include reference="bPT-np-LWj"/>
                     <include reference="Ojd-QT-N7S"/>
                     <include reference="nnX-mp-SR2"/>
-                    <include reference="yar-O9-7Kd"/>
-                    <include reference="e9b-5Q-KX9"/>
-                    <include reference="ITb-v9-IZW"/>
                     <include reference="Gar-nX-cWy"/>
                 </mask>
             </variation>
         </view>
     </objects>
+    <resources>
+        <image name="icon_phone" width="54" height="54"/>
+        <image name="icon_textmessage" width="54" height="54"/>
+    </resources>
 </document>

@@ -10,42 +10,70 @@ import UIKit
 
 class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource{
 
+    @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var call911Button: UIButton!
+    @IBOutlet weak var emergencyButton: UIButton!
     @IBOutlet weak var okayButton: UIButton!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var messageLabel: UILabel!
+    var navBar = UINavigationBar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBar.barTintColor = UIColor.blackColor()
+        navBar.barStyle = .Black
+        navBar.tintColor = UIColor.whiteColor()
+        self.navigationItem.title = "Thank you for checking in"
+        navBar.frame = CGRectMake(0, 0, self.view.frame.width, 60)
+        self.view.addSubview(navBar)
+        stateLabel.font = UIFont(name: "Helvetica", size: 30)
         if StatusController.sharedInstance.currentStatus.state == .Safe{
             self.view.backgroundColor = UIColor.noticeGreen()
             stateLabel.text = "I am safe"
+            stateLabel.textColor = UIColor.noticeButtonGreen()
+            emergencyButton.hidden = true
+            call911Button.hidden = true
         }
         else if StatusController.sharedInstance.currentStatus.state == .Attention{
             self.view.backgroundColor = UIColor.noticeYellow()
             stateLabel.text = "Keep an eye on me"
+            stateLabel.textColor = UIColor.noticeButtonYellow()
+            emergencyButton.hidden = true
+            call911Button.hidden = true
         }
         else if StatusController.sharedInstance.currentStatus.state == .Help{
             self.view.backgroundColor = UIColor.noticeRed()
             stateLabel.text = "I need help"
+            stateLabel.textColor = UIColor.noticeButtonRed()
         }
+        
 
         
         collectionView.registerNib(UINib(nibName:"PhotoProfileCollectionViewCell",bundle: nil), forCellWithReuseIdentifier: "CellForPhoto")
         collectionView.delegate = self
         collectionView.dataSource = self
         
-         let innerView = UIView(frame: CGRect(x: 57, y: 90, width: 300, height: 600))
+         //let innerView = UIView(frame: CGRect(x: 57, y: 90, width: 300, height: 600))
          innerView.backgroundColor = UIColor.noticeGrey()
          self.view.addSubview(innerView)
          innerView.addSubview(collectionView)
          innerView.addSubview(stateLabel)
          innerView.addSubview(messageLabel)
          innerView.addSubview(okayButton)
-         collectionView.frame = CGRect(x: 5, y: 5, width: 250, height: 240)
+         innerView.addSubview(emergencyButton)
+         innerView.addSubview(call911Button)
+         collectionView.frame = CGRect(x: 5, y: 5, width: 250, height: 250)
          collectionView.backgroundColor = UIColor.noticeGrey()
-         okayButton.backgroundColor = UIColor.noticeButtonGrey()
+         okayButton.backgroundColor = UIColor.notifiTeal()
          okayButton.layer.cornerRadius = 5
+         okayButton.titleLabel?.tintColor = UIColor.blackColor()
          innerView.layer.cornerRadius = 5
+        
+         emergencyButton.layer.cornerRadius = 5
+         call911Button.layer.cornerRadius = 5
+        
+        
 
         // Do any additional setup after loading the view.
     }

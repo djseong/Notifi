@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22FD9F6B1D3E855F00257AD4 /* checkInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD9F6A1D3E855F00257AD4 /* checkInViewController.swift */; };
+		22FD9F6D1D3E856E00257AD4 /* checkInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */; };
+		22FD9F6F1D3E857800257AD4 /* customCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */; };
+		22FD9F711D3E858300257AD4 /* customCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD9F701D3E858300257AD4 /* customCellTableViewCell.xib */; };
+		22FD9F731D3E858B00257AD4 /* dummyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD9F721D3E858B00257AD4 /* dummyUser.swift */; };
+		22FD9F771D3E860100257AD4 /* SVPulsingAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD9F761D3E860100257AD4 /* SVPulsingAnnotationView.m */; };
+		22FD9F791D3E866300257AD4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD9F781D3E866300257AD4 /* MapKit.framework */; };
+		22FD9F7B1D3E867000257AD4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD9F7A1D3E867000257AD4 /* CoreLocation.framework */; };
+		22FD9F7D1D3E867800257AD4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD9F7C1D3E867800257AD4 /* QuartzCore.framework */; };
+		22FD9F7F1D3E868300257AD4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD9F7E1D3E868300257AD4 /* MessageUI.framework */; };
+		22FD9F811D3E883700257AD4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD9F801D3E883700257AD4 /* SwiftyJSON.framework */; };
 		276F60DD1FA2787EE7C2560E /* Pods_Notifi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */; };
 		488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */; };
 		488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */; };
@@ -17,6 +28,18 @@
 		488FF1BB1D3D9322008D5BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1BA1D3D9322008D5BA2 /* Assets.xcassets */; };
 		488FF1C21D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */; };
 		488FF1C31D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */; };
+		488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */; };
+		488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */; };
+		48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */; };
+		48E4CE7B1D3E658D0096AE3E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */; };
+		48E4CE821D3E809B0096AE3E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE801D3E809B0096AE3E /* SettingViewController.swift */; };
+		48E4CE831D3E809B0096AE3E /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE811D3E809B0096AE3E /* SettingViewController.xib */; };
+		48E4CE861D3EDA730096AE3E /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */; };
+		48E4CE871D3EDA730096AE3E /* MyProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */; };
+		48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */; };
+		48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */; };
+		48E4CE8D1D3EF3CD0096AE3E /* SignifyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */; };
+		48E4CE8F1D3EF5BF0096AE3E /* SignifyUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */; };
 		656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FAD1D3E139500D81943 /* CustomImage.swift */; };
 		656C5FB51D3E551800D81943 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C5FB31D3E551800D81943 /* FriendTableViewController.swift */; };
 		656C5FB61D3E551800D81943 /* FriendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656C5FB41D3E551800D81943 /* FriendTableViewController.xib */; };
@@ -30,12 +53,23 @@
 		65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */; };
 		65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271801D3D00E50042BDA2 /* ViewGradient.swift */; };
 		65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271821D3D09420042BDA2 /* CustomButton.swift */; };
-		65F271A51D3D87950042BDA2 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65F271A41D3D87940042BDA2 /* Montserrat-UltraLight.otf */; };
-		65F271A91D3D9C500042BDA2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65F271A81D3D9C500042BDA2 /* RegisterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		087056BB095B7BF37F4685DD /* Pods-Notifi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notifi/Pods-Notifi.debug.xcconfig"; sourceTree = "<group>"; };
+		22FD9F6A1D3E855F00257AD4 /* checkInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkInViewController.swift; sourceTree = "<group>"; };
+		22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = checkInViewController.xib; sourceTree = "<group>"; };
+		22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCellTableViewCell.swift; sourceTree = "<group>"; };
+		22FD9F701D3E858300257AD4 /* customCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCellTableViewCell.xib; sourceTree = "<group>"; };
+		22FD9F721D3E858B00257AD4 /* dummyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dummyUser.swift; sourceTree = "<group>"; };
+		22FD9F741D3E860000257AD4 /* Notifi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Notifi-Bridging-Header.h"; sourceTree = "<group>"; };
+		22FD9F751D3E860100257AD4 /* SVPulsingAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPulsingAnnotationView.h; sourceTree = "<group>"; };
+		22FD9F761D3E860100257AD4 /* SVPulsingAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPulsingAnnotationView.m; sourceTree = "<group>"; };
+		22FD9F781D3E866300257AD4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		22FD9F7A1D3E867000257AD4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		22FD9F7C1D3E867800257AD4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		22FD9F7E1D3E868300257AD4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		22FD9F801D3E883700257AD4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightlyViewController.swift; sourceTree = "<group>"; };
 		488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NightlyViewController.xib; sourceTree = "<group>"; };
 		488FF1AD1D3D7C1F008D5BA2 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -45,6 +79,18 @@
 		488FF1BA1D3D9322008D5BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTabBarViewController.swift; sourceTree = "<group>"; };
+		488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizedTabBarViewController.xib; sourceTree = "<group>"; };
+		48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
+		48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		48E4CE801D3E809B0096AE3E /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		48E4CE811D3E809B0096AE3E /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileViewController.xib; sourceTree = "<group>"; };
+		48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignifyUser.swift; sourceTree = "<group>"; };
+		48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignifyUserController.swift; sourceTree = "<group>"; };
 		656C5FAD1D3E139500D81943 /* CustomImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		656C5FB31D3E551800D81943 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		656C5FB41D3E551800D81943 /* FriendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewController.xib; sourceTree = "<group>"; };
@@ -60,8 +106,6 @@
 		65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		65F271801D3D00E50042BDA2 /* ViewGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGradient.swift; sourceTree = "<group>"; };
 		65F271821D3D09420042BDA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		65F271A41D3D87940042BDA2 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-UltraLight.otf"; path = "../../../../../Downloads/montserrat/Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
-		65F271A81D3D9C500042BDA2 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController.xib; path = ../../../../../.Trash/RegisterViewController.xib; sourceTree = "<group>"; };
 		ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notifi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6EA597F42D6C29793BAA9AD /* Pods-Notifi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notifi/Pods-Notifi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +115,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22FD9F811D3E883700257AD4 /* SwiftyJSON.framework in Frameworks */,
+				22FD9F7F1D3E868300257AD4 /* MessageUI.framework in Frameworks */,
+				22FD9F7D1D3E867800257AD4 /* QuartzCore.framework in Frameworks */,
+				22FD9F7B1D3E867000257AD4 /* CoreLocation.framework in Frameworks */,
+				22FD9F791D3E866300257AD4 /* MapKit.framework in Frameworks */,
 				276F60DD1FA2787EE7C2560E /* Pods_Notifi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				488FF1B01D3D7E36008D5BA2 /* StatusController .swift */,
+				48E4CE8E1D3EF5BF0096AE3E /* SignifyUserController.swift */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -116,19 +166,22 @@
 		65F2715C1D3CAEA50042BDA2 /* Notifi */ = {
 			isa = PBXGroup;
 			children = (
-				65F271A41D3D87940042BDA2 /* Montserrat-UltraLight.otf */,
+				48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */,
 				488FF1BA1D3D9322008D5BA2 /* Assets.xcassets */,
 				488FF1AF1D3D7E1A008D5BA2 /* Model Controller */,
 				65F271751D3CF3960042BDA2 /* View Controller */,
 				65F271741D3CF3910042BDA2 /* View */,
 				65F271731D3CF38C0042BDA2 /* Model */,
 				65F2715D1D3CAEA50042BDA2 /* AppDelegate.swift */,
+				22FD9F751D3E860100257AD4 /* SVPulsingAnnotationView.h */,
+				22FD9F761D3E860100257AD4 /* SVPulsingAnnotationView.m */,
 				65F271661D3CAEA50042BDA2 /* LaunchScreen.storyboard */,
 				65F271691D3CAEA50042BDA2 /* Info.plist */,
 				65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */,
 				65F271801D3D00E50042BDA2 /* ViewGradient.swift */,
 				65F271821D3D09420042BDA2 /* CustomButton.swift */,
 				656C5FAD1D3E139500D81943 /* CustomImage.swift */,
+				22FD9F741D3E860000257AD4 /* Notifi-Bridging-Header.h */,
 			);
 			path = Notifi;
 			sourceTree = "<group>";
@@ -136,7 +189,9 @@
 		65F271731D3CF38C0042BDA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				22FD9F721D3E858B00257AD4 /* dummyUser.swift */,
 				488FF1AD1D3D7C1F008D5BA2 /* Status.swift */,
+				48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -144,13 +199,19 @@
 		65F271741D3CF3910042BDA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				65F271A81D3D9C500042BDA2 /* RegisterViewController.xib */,
+				48E4CE811D3E809B0096AE3E /* SettingViewController.xib */,
+				22FD9F701D3E858300257AD4 /* customCellTableViewCell.xib */,
+				22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */,
+				48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */,
+				488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */,
 				488FF1B41D3D841A008D5BA2 /* NoticeViewController.xib */,
 				488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */,
 				488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */,
 				65F271701D3CB2420042BDA2 /* LoginViewController.xib */,
 				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				656C5FB41D3E551800D81943 /* FriendTableViewController.xib */,
+				48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */,
+				48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -158,6 +219,10 @@
 		65F271751D3CF3960042BDA2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				48E4CE801D3E809B0096AE3E /* SettingViewController.swift */,
+				22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */,
+				22FD9F6A1D3E855F00257AD4 /* checkInViewController.swift */,
+				488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */,
 				488FF1B21D3D83FC008D5BA2 /* NoticeViewController.swift */,
 				488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */,
 				488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */,
@@ -165,6 +230,8 @@
 				65F271761D3CF3C80042BDA2 /* RegisterViewController.swift */,
 				65F2717A1D3CF4080042BDA2 /* OnboardingViewController.swift */,
 				656C5FB31D3E551800D81943 /* FriendTableViewController.swift */,
+				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
+				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -172,6 +239,11 @@
 		A31ED027C3D99D19FCCA82E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22FD9F801D3E883700257AD4 /* SwiftyJSON.framework */,
+				22FD9F7E1D3E868300257AD4 /* MessageUI.framework */,
+				22FD9F7C1D3E867800257AD4 /* QuartzCore.framework */,
+				22FD9F7A1D3E867000257AD4 /* CoreLocation.framework */,
+				22FD9F781D3E866300257AD4 /* MapKit.framework */,
 				ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */,
 			);
 			name = Frameworks;
@@ -212,6 +284,7 @@
 				TargetAttributes = {
 					65F271591D3CAEA50042BDA2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 429769UGK3;
 					};
 				};
 			};
@@ -238,16 +311,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E4CE7B1D3E658D0096AE3E /* RegisterViewController.xib in Resources */,
 				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
+				48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */,
+				48E4CE831D3E809B0096AE3E /* SettingViewController.xib in Resources */,
+				48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */,
 				656C5FB61D3E551800D81943 /* FriendTableViewController.xib in Resources */,
 				488FF1C31D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib in Resources */,
 				488FF1B51D3D841A008D5BA2 /* NoticeViewController.xib in Resources */,
+				22FD9F6D1D3E856E00257AD4 /* checkInViewController.xib in Resources */,
 				65F271681D3CAEA50042BDA2 /* LaunchScreen.storyboard in Resources */,
+				48E4CE871D3EDA730096AE3E /* MyProfileViewController.xib in Resources */,
 				65F2717D1D3CF4080042BDA2 /* OnboardingViewController.xib in Resources */,
 				488FF1BB1D3D9322008D5BA2 /* Assets.xcassets in Resources */,
 				65F271721D3CB2420042BDA2 /* LoginViewController.xib in Resources */,
-				65F271A51D3D87950042BDA2 /* Montserrat-UltraLight.otf in Resources */,
-				65F271A91D3D9C500042BDA2 /* RegisterViewController.xib in Resources */,
+				488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */,
+				22FD9F711D3E858300257AD4 /* customCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,20 +385,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */,
 				65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */,
 				488FF1B11D3D7E36008D5BA2 /* StatusController .swift in Sources */,
 				488FF1C21D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift in Sources */,
+				22FD9F771D3E860100257AD4 /* SVPulsingAnnotationView.m in Sources */,
+				22FD9F6F1D3E857800257AD4 /* customCellTableViewCell.swift in Sources */,
 				656C5FB51D3E551800D81943 /* FriendTableViewController.swift in Sources */,
 				488FF1AE1D3D7C1F008D5BA2 /* Status.swift in Sources */,
+				48E4CE821D3E809B0096AE3E /* SettingViewController.swift in Sources */,
 				65F271781D3CF3C80042BDA2 /* RegisterViewController.swift in Sources */,
+				48E4CE861D3EDA730096AE3E /* MyProfileViewController.swift in Sources */,
+				22FD9F731D3E858B00257AD4 /* dummyUser.swift in Sources */,
 				488FF1B31D3D83FC008D5BA2 /* NoticeViewController.swift in Sources */,
 				656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */,
 				65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */,
 				65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */,
+				22FD9F6B1D3E855F00257AD4 /* checkInViewController.swift in Sources */,
 				65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */,
+				48E4CE8F1D3EF5BF0096AE3E /* SignifyUserController.swift in Sources */,
 				488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */,
+				488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */,
 				65F2717C1D3CF4080042BDA2 /* OnboardingViewController.swift in Sources */,
 				65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */,
+				48E4CE8D1D3EF3CD0096AE3E /* SignifyUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,10 +514,20 @@
 			baseConfigurationReference = 087056BB095B7BF37F4685DD /* Pods-Notifi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Notifi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielseong.Notifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -437,10 +536,19 @@
 			baseConfigurationReference = C6EA597F42D6C29793BAA9AD /* Pods-Notifi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Notifi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielseong.Notifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 			};
 			name = Release;
 		};

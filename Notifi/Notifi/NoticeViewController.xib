@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoticeViewController" customModule="Notifi" customModuleProvider="target">
             <connections>
+                <outlet property="call911Button" destination="BsU-ii-yZ7" id="YZQ-R9-hZ6"/>
                 <outlet property="collectionView" destination="dXl-Gx-zB5" id="7fJ-t5-a5I"/>
+                <outlet property="emergencyButton" destination="KNg-Jo-toP" id="auy-mA-lyO"/>
+                <outlet property="innerView" destination="tSG-p4-ggA" id="kTp-lD-eeZ"/>
                 <outlet property="messageLabel" destination="3ii-KX-Zxb" id="8aQ-4b-RRy"/>
                 <outlet property="okayButton" destination="TFp-wi-FeD" id="OVK-iH-9T5"/>
                 <outlet property="stateLabel" destination="9CV-e9-LFn" id="sdI-zg-iEY"/>
@@ -40,35 +43,72 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;I am safe&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-e9-LFn" userLabel="StateLabel">
-                    <rect key="frame" x="235" y="84" width="130" height="32.5"/>
+                    <rect key="frame" x="235" y="84" width="130" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="27"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFp-wi-FeD">
-                    <rect key="frame" x="260" y="470" width="80" height="40"/>
+                    <rect key="frame" x="180" y="500" width="240" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="NOP-ta-8YE"/>
+                        <constraint firstAttribute="width" constant="240" id="NOP-ta-8YE"/>
                         <constraint firstAttribute="height" constant="40" id="bgJ-dB-d1s"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <state key="normal" title="Okay">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="okayPressed:" destination="-1" eventType="touchUpInside" id="7Zm-Mu-WhE"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNg-Jo-toP" userLabel="Emergency">
+                    <rect key="frame" x="182" y="550" width="115" height="36"/>
+                    <color key="backgroundColor" red="0.99607843137254903" green="0.85882352941176465" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="115" id="g39-bB-1u5"/>
+                        <constraint firstAttribute="height" constant="36" id="lc0-ui-1e8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Call Emergency">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-ii-yZ7" userLabel="Call 911">
+                    <rect key="frame" x="307" y="550" width="115" height="36"/>
+                    <color key="backgroundColor" red="0.98431372549019602" green="0.20784313725490197" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="115" id="GLr-Cj-Hs6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Call 911">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSG-p4-ggA" userLabel="InnerView">
+                    <rect key="frame" x="150" y="30" width="300" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="gIG-0d-cjA"/>
+                        <constraint firstAttribute="height" constant="600" id="t7o-KP-aUr"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="BsU-ii-yZ7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="65" id="13w-Cs-qBV"/>
                 <constraint firstItem="TFp-wi-FeD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2WM-Sc-lOQ"/>
                 <constraint firstItem="dXl-Gx-zB5" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="4LI-xf-mjn"/>
-                <constraint firstItem="TFp-wi-FeD" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="190" id="GgS-EO-a4I"/>
+                <constraint firstItem="TFp-wi-FeD" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="220" id="GgS-EO-a4I"/>
                 <constraint firstItem="3ii-KX-Zxb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-160" id="Nee-8e-CGH"/>
+                <constraint firstItem="KNg-Jo-toP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-60" id="VHx-C7-bc7"/>
+                <constraint firstItem="KNg-Jo-toP" firstAttribute="top" secondItem="TFp-wi-FeD" secondAttribute="bottom" constant="10" id="Vso-mh-iZd"/>
+                <constraint firstItem="tSG-p4-ggA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="a5H-1s-lUv"/>
                 <constraint firstItem="dXl-Gx-zB5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="afc-AI-BvE"/>
                 <constraint firstItem="9CV-e9-LFn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-200" id="d8d-hx-AAs"/>
+                <constraint firstItem="BsU-ii-yZ7" firstAttribute="top" secondItem="TFp-wi-FeD" secondAttribute="bottom" constant="10" id="dKv-Rr-H2H"/>
                 <constraint firstItem="3ii-KX-Zxb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ko1-vV-xwl"/>
+                <constraint firstItem="tSG-p4-ggA" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="30" id="vRf-Jx-0MS"/>
                 <constraint firstItem="9CV-e9-LFn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yFY-vv-w6r"/>
             </constraints>
         </view>

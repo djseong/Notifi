@@ -14,6 +14,7 @@
 		222A1DF21D3CCEC8006B42F9 /* checkInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222A1DF01D3CCEC8006B42F9 /* checkInViewController.xib */; };
 		222A1DF51D3CD646006B42F9 /* customCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A1DF31D3CD646006B42F9 /* customCellTableViewCell.swift */; };
 		222A1DF61D3CD646006B42F9 /* customCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222A1DF41D3CD646006B42F9 /* customCellTableViewCell.xib */; };
+		22E43B6B1D3E6CCB004F3D91 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E43B6A1D3E6CCB004F3D91 /* MessageUI.framework */; };
 		22EC571D1D3CF4A600463E8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC571C1D3CF4A600463E8A /* CoreLocation.framework */; };
 		22EC571F1D3CF4AC00463E8A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC571E1D3CF4AC00463E8A /* MapKit.framework */; };
 		22EC57211D3CF7F100463E8A /* dummyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC57201D3CF7F100463E8A /* dummyUser.swift */; };
@@ -31,6 +32,7 @@
 		222A1DF01D3CCEC8006B42F9 /* checkInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = checkInViewController.xib; path = ../checkInViewController.xib; sourceTree = "<group>"; };
 		222A1DF31D3CD646006B42F9 /* customCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCellTableViewCell.swift; sourceTree = "<group>"; };
 		222A1DF41D3CD646006B42F9 /* customCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCellTableViewCell.xib; sourceTree = "<group>"; };
+		22E43B6A1D3E6CCB004F3D91 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		22EC571C1D3CF4A600463E8A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		22EC571E1D3CF4AC00463E8A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		22EC57201D3CF7F100463E8A /* dummyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dummyUser.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E43B6B1D3E6CCB004F3D91 /* MessageUI.framework in Frameworks */,
 				22EC57461D3D16EA00463E8A /* QuartzCore.framework in Frameworks */,
 				22EC571F1D3CF4AC00463E8A /* MapKit.framework in Frameworks */,
 				22EC571D1D3CF4A600463E8A /* CoreLocation.framework in Frameworks */,
@@ -57,6 +60,7 @@
 		222A1DCF1D3CCD68006B42F9 = {
 			isa = PBXGroup;
 			children = (
+				22E43B6A1D3E6CCB004F3D91 /* MessageUI.framework */,
 				22EC57451D3D16EA00463E8A /* QuartzCore.framework */,
 				22EC571E1D3CF4AC00463E8A /* MapKit.framework */,
 				22EC571C1D3CF4A600463E8A /* CoreLocation.framework */,
@@ -76,14 +80,14 @@
 		222A1DDA1D3CCD68006B42F9 /* notifiSam */ = {
 			isa = PBXGroup;
 			children = (
-				22EC57201D3CF7F100463E8A /* dummyUser.swift */,
-				222A1DF01D3CCEC8006B42F9 /* checkInViewController.xib */,
-				222A1DF31D3CD646006B42F9 /* customCellTableViewCell.swift */,
-				22EC57481D3D176E00463E8A /* SVPulsingAnnotationView.h */,
-				222A1DEF1D3CCEC8006B42F9 /* checkInViewController.swift */,
-				22EC57491D3D176E00463E8A /* SVPulsingAnnotationView.m */,
-				222A1DF41D3CD646006B42F9 /* customCellTableViewCell.xib */,
 				222A1DDB1D3CCD68006B42F9 /* AppDelegate.swift */,
+				222A1DF01D3CCEC8006B42F9 /* checkInViewController.xib */,
+				222A1DEF1D3CCEC8006B42F9 /* checkInViewController.swift */,
+				222A1DF31D3CD646006B42F9 /* customCellTableViewCell.swift */,
+				222A1DF41D3CD646006B42F9 /* customCellTableViewCell.xib */,
+				22EC57201D3CF7F100463E8A /* dummyUser.swift */,
+				22EC57481D3D176E00463E8A /* SVPulsingAnnotationView.h */,
+				22EC57491D3D176E00463E8A /* SVPulsingAnnotationView.m */,
 				222A1DE21D3CCD68006B42F9 /* Assets.xcassets */,
 				222A1DE41D3CCD68006B42F9 /* LaunchScreen.storyboard */,
 				222A1DE71D3CCD68006B42F9 /* Info.plist */,
