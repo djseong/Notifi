@@ -22,9 +22,21 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var zipCodeField: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var containerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        containerView.addSubview(firstNameField)
+        containerView.addSubview(lastNameField)
+        containerView.addSubview(emailField)
+        containerView.addSubview(cellNumberField)
+        containerView.addSubview(zipCodeField)
+        containerView.addSubview(cityField)
+        containerView.addSubview(profileImage)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(), name: UIKeybo, object: <#T##AnyObject?#>)
+        
 
         fbRegisterButton.readPermissions = ["public_profile", "email", "user_friends"]
         fbRegisterButton.delegate = self
