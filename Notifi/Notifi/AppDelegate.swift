@@ -40,10 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         
-
-        
         FIRApp.configure()
 
+        let refreshedToken = FIRInstanceID.instanceID().token()
+        print("InstanceID token: \(refreshedToken)")
+        
         
         initNotificationSettings()
         // Add observer for InstanceID token refresh callback.
@@ -199,12 +200,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //first detect if the notification provided a uuid for a sensor to be alarmed.
         let aps = userInfo["aps"]
         print ("aps \(userInfo)")
-        if let alarmedUuid = aps!["uuid"]  {
-            print ("uuid in question: |\(alarmedUuid)|")
-            //go to the home screen, where the sensors are displayed, and refresh emmediately. The state of alarm is fetched along with the other information about the sensors
-            
-            
-        }
+//        if let alarmedUuid = aps!["uuid"]  {
+//            print ("uuid in question: |\(alarmedUuid)|")
+//            //go to the home screen, where the sensors are displayed, and refresh emmediately. The state of alarm is fetched along with the other information about the sensors
+//            
+//            
+//        }
         
     }
     
@@ -244,6 +245,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Unable to connect with FCM. \(error)")
             } else {
                 print("Connected to FCM.")
+                
+//                SignifyUserController.sharedInstance.sendNote([""], alert:"alert", key:"")
+                SignifyUserController.sharedInstance.send()
             }
             
             
@@ -251,7 +255,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-
-
 }
 
