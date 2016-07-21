@@ -22,6 +22,9 @@ class FriendTableViewController: UITableViewController {
         
         tableview.addSubview(loader)
         
+        // navigation customization
+        navigationItem.setHidesBackButton(true, animated: true)
+        
         //Tableview customization
         tableview.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "cellidentifier")
         tableview.allowsMultipleSelection = true
@@ -50,7 +53,7 @@ class FriendTableViewController: UITableViewController {
     }
     
     func getAllFriends (after: String, onCompletion: () -> Void) {
-        let friendRequest = FBSDKGraphRequest(graphPath: "me/invitable_friends", parameters: ["fields" : "id, name, picture", "after" : after], HTTPMethod: "GET")
+        let friendRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields" : "id, name, picture", "after" : after], HTTPMethod: "GET")
         friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             if let next = result.valueForKey("paging")?.valueForKey("cursors")?.valueForKey("after") {
                 let friends = result["data"] as! [AnyObject]

@@ -97,15 +97,35 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
     @IBAction func okayPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    @IBAction func call911ButtonPressed(sender: UIButton) {
+        if let phoneCallURL:NSURL = NSURL(string: "tel://911") {
+            let application:UIApplication = UIApplication.sharedApplication()
+            if (application.canOpenURL(phoneCallURL)) {
+                application.openURL(phoneCallURL);
+            }
+        }
+    }
 
-    /*
+    
     // MARK: - Navigation
 
+    // TODO: set as current user emergency contact
+     @IBAction func emergencyButtonPressed(sender: UIButton) {
+        if let phoneCallURL:NSURL = NSURL(string: "tel://\(2035510306)") {
+            let application:UIApplication = UIApplication.sharedApplication()
+            if (application.canOpenURL(phoneCallURL)) {
+                application.openURL(phoneCallURL);
+            }
+        }
+     }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
