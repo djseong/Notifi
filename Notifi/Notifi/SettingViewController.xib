@@ -38,7 +38,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hu-u8-7Yb" customClass="FBSDKLoginButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hu-u8-7Yb" customClass="FBSDKLoginButton">
                     <rect key="frame" x="225" y="490" width="150" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="7ca-mr-qni"/>

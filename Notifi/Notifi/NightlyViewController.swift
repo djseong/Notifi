@@ -16,6 +16,7 @@ class NightlyViewController: UIViewController {
     @IBOutlet weak var helpButton: UIButton!
 
 
+
     let topLabel = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()

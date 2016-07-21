@@ -72,6 +72,11 @@ class OnboardingViewController: UIViewController {
                         defaults.synchronize()
                         let application = AppDelegate()
                        self.navigationController?.pushViewController(application.initTabBarController(), animated: true)
+
+                        
+                   //     let welcomeviewcontroller = WelcomeViewController(nibName: "WelcomeViewController", bundle: nil)
+             //           self.navigationController?.pushViewController(welcomeviewcontroller, animated: true)
+
                     }
                     
                 }
