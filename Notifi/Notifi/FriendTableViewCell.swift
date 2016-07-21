@@ -15,7 +15,6 @@ class FriendTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    view
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
