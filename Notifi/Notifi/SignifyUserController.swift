@@ -19,9 +19,11 @@ class SignifyUserController{
     // Ns if we need this but keeping it for dummy variables
     var SignifyFriendList : [SignifyUser] = []
     
+
     var currentUser = SignifyUser(lastName: "Xu", firstName: "Siqing")
 
     var currentUserFbId : String = ""
+
 
     
     func getLoginDetails() -> String {
@@ -163,21 +165,21 @@ class SignifyUserController{
         user3.currstatus = .Attention
         user3.cellPhone = "2973972297"
         user3.statusHistory = [s1, s1, s3]
-        user3.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        user3.coordinate = CLLocationCoordinate2D(latitude: -34.0023, longitude: 18.4970)
         user3.homeAddress = "333 Orange Ave"
         
         let user4 = SignifyUser(lastName: " ", firstName: "Santa Claus")
         user4.currstatus = .Safe
         user4.cellPhone = "2035510306"
         user4.statusHistory = [s1, s1, s1]
-        user4.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        user4.coordinate = CLLocationCoordinate2D(latitude: -34.0035, longitude: 18.4998)
         user4.homeAddress = "666 Child Lane"
         
         let user5 = SignifyUser(lastName: " ", firstName: "Bob")
         user5.currstatus = .Safe
         user5.cellPhone = "2035510306"
         user5.statusHistory = [s1, s1, s1]
-        user5.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        user5.coordinate = CLLocationCoordinate2D(latitude: -34.0005, longitude: 18.4968)
         user5.homeAddress = "123 Apple Street NYC"
         
         
