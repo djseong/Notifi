@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -62,9 +63,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          name: kFIRInstanceIDTokenRefreshNotification, object: nil)
 
         
+        self.initDatabase()
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
+
+    func initDatabase() {
+        
+        let ref = FIRDatabase.database().reference()
+        
+    }
+
     
     
     // [START refresh_token]
@@ -77,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     // [END refresh_token]
 
-    
+
     func initNotificationSettings() {
         
         // increment Action
