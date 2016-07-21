@@ -37,6 +37,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = true
+        loginButton.enabled = true
     }
         
     override func viewDidLayoutSubviews() {
@@ -53,6 +54,7 @@ class OnboardingViewController: UIViewController {
         
         activityIndicator.startAnimating()
         activityIndicator.hidden = false
+        loginButton.enabled = false
         let fbLoginManager = FBSDKLoginManager()
         fbLoginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"], fromViewController: self) { (result, error) in
             if error != nil {
@@ -80,37 +82,32 @@ class OnboardingViewController: UIViewController {
                     }
                     else {
                         //log in to app - set user defaults
-                        defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuserfbId")
-                        SignifyUserController.sharedInstance.currentUser.fbId = "515948294@qq.com"
-                        defaults.synchronize()
-                        let application = AppDelegate()
-                       //self.navigationController?.pushViewController(application.initTabBarController(), animated: true)
-                        
-                        
 
-                        
-                        // pre-fetch image in firstpage controller
-                        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, picture.type(large)"])
+                        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, first_name, picture.type(large)"])
+
+
                         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                             if error == nil {
+                                defaults.setObject(result.valueForKey("id") as! String, forKey: "currentuserid")
+                                defaults.synchronize()
                                 let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
-                                if url != nil {
-                                    let picurl = NSURL(string: url! as! String)
-                                    let welcomepageviewcontroller = WelcomePageViewController(nibName: "WelcomePageViewController", bundle: nil)
-                                    var vc = welcomepageviewcontroller.viewcontrollers[0] as! FirstPageController
-                                    vc.tempimage.load(picurl!, placeholder: UIImage(), completionHandler: { (url, image, error, cache) in
-                                        if error == nil {
-                                            print ("inside closure")
-                                            if let firstname = result.valueForKey("first_name") as? String {
-                                                vc.templabel = "Welcome " + firstname + "!"
-                                            }
-                                            self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)
+                            if url != nil {
+                                let picurl = NSURL(string: url! as! String)
+                                let welcomepageviewcontroller = WelcomePageViewController(nibName: "WelcomePageViewController", bundle: nil)
+                                let vc = welcomepageviewcontroller.viewcontrollers[0] as! FirstPageController
+                                vc.tempimage.load(picurl!, placeholder: UIImage(), completionHandler: { (url, image, error, cache) in
+                                    if error == nil {
+                                        print ("inside closure")
+                                        if let firstname = result.valueForKey("first_name") as? String {
+                                            vc.templabel = "Welcome " + firstname + "!"
                                         }
-                                        else {
-                                            print(error)
-                                        }
-                                    })
-                                    
+                                        self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)
+                                    }
+                                    else {
+                                        print(error)
+                                    }
+                                })
+                                
                                     self.activityIndicator.stopAnimating()
                                     self.activityIndicator.hidden = true//let data = NSData(contentsOfURL: picurl!)
                                     //self.profileImage.load(picurl!) //= UIImage(data: data!)

@@ -57,8 +57,9 @@ class FriendTableViewController: UITableViewController {
     }
     
     func getAllFriends (after: String, onCompletion: () -> Void) {
-        let friendRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields" : "id, name, picture", "after" : after], HTTPMethod: "GET")
+        let friendRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields" : "id, name, picture, email", "after" : after], HTTPMethod: "GET")
         friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            print(result)
             if let next = result.valueForKey("paging")?.valueForKey("cursors")?.valueForKey("after") {
                 let friends = result["data"] as! [AnyObject]
                 for friend in friends {
