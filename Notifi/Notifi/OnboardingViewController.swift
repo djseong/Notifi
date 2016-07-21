@@ -84,6 +84,7 @@ class OnboardingViewController: UIViewController {
                     else {
                         //log in to app - set user defaults
                         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, first_name, picture.type(large)"])
+
                         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                             if error == nil {
                                 defaults.setObject(result.valueForKey("id") as! String, forKey: "currentuserid")
