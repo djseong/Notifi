@@ -38,12 +38,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
         
-        initNotificationSettings()
+        
+
         
         FIRApp.configure()
+
+        
+        initNotificationSettings()
+        // Add observer for InstanceID token refresh callback.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
+                                                         name: kFIRInstanceIDTokenRefreshNotification, object: nil)
+
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
+    
+    
+    
+    // [START refresh_token]
+    func tokenRefreshNotification(notification: NSNotification) {
+        let refreshedToken = FIRInstanceID.instanceID().token()!
+        print("InstanceID token: \(refreshedToken)")
+        
+        // Connect to FCM since connection may have failed when attempted before having a token.
+        connectToFcm()
+    }
+    // [END refresh_token]
+
     
     func initNotificationSettings() {
         
@@ -167,7 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //first detect if the notification provided a uuid for a sensor to be alarmed.
         let aps = userInfo["aps"]
-        print ("aps \(userInfo["aps"])")
+        print ("aps \(userInfo)")
         if let alarmedUuid = aps!["uuid"]  {
             print ("uuid in question: |\(alarmedUuid)|")
             //go to the home screen, where the sensors are displayed, and refresh emmediately. The state of alarm is fetched along with the other information about the sensors
@@ -194,9 +215,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
         }
         
-        print("Device Token:", tokenString)
+        print("DeviceToken:", tokenString)
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Sandbox)
-        print(deviceToken)
+        print("deviceToken:",deviceToken)
+        connectToFcm()
         //UserController.sharedInstance.registerPushToken(tokenString)
     }
     
@@ -204,6 +226,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register:", error)
         //UserController.sharedInstance.registerPushToken("failed_to_register_for_ios_push_notes")
     }
+    func connectToFcm() {
+        
+        
+        FIRMessaging.messaging().connectWithCompletion{(error) in
+            if (error != nil) {
+                print("Unable to connect with FCM. \(error)")
+            } else {
+                print("Connected to FCM.")
+            }
+            
+            
+        }
+        
+    }
+    
+
 
 }
 
