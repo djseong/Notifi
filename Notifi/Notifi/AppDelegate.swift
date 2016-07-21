@@ -132,6 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: counterCategory))  // types are UIUserNotificationType members
         
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: NSSet(object: counterCategory) as! Set<UIUserNotificationCategory>)
+        
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
 
     }
@@ -261,7 +262,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Connected to FCM.")
                 
 //                SignifyUserController.sharedInstance.sendNote([""], alert:"alert", key:"")
-                SignifyUserController.sharedInstance.send()
+                SignifyUserController.sharedInstance.send("wwww")
             }
             
             

@@ -70,8 +70,8 @@ class OnboardingViewController: UIViewController {
                         //log in to app - set user defaults
                         defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuseremail")
                         defaults.synchronize()
-                        
-                      //  self.navigationController?.pushViewController(welcomeviewcontroller, animated: true)
+                        let application = AppDelegate()
+                       self.navigationController?.pushViewController(application.initTabBarController(), animated: true)
                     }
                     
                 }

@@ -37,14 +37,14 @@ class SignifyUserController{
     
     
     
-    func send ()    {
+    func send (notimessage: String)    {
         
         let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string:"https://fcm.googleapis.com/fcm/send")!)
         mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         mutableURLRequest.HTTPMethod = "POST"
         mutableURLRequest.setValue("key=AIzaSyDCLEwBwuM7CmBUePfGHxN8RbxdcHRq5rM", forHTTPHeaderField: "Authorization")
-        let data = ["alert":"alert_value"]
-        let params = ["data":data, "to": "eXD6rxAGHFg:APA91bG7kQYiPrHP_fnITm1cF01aPDyewQYxUy8iVnMKetzBzU5LdWx5vWieNQ0nw1ZiC7itWUvCruLGqqbU7r7Jcg1dr1iIdejr8uvZdIC8WeRJMxPVKcsS4D8frl2yBDn9gWT0N5h0"]
+        let data = ["body":notimessage, "title":"Hey"]
+        let params = ["notification":data, "to": "eXD6rxAGHFg:APA91bG7kQYiPrHP_fnITm1cF01aPDyewQYxUy8iVnMKetzBzU5LdWx5vWieNQ0nw1ZiC7itWUvCruLGqqbU7r7Jcg1dr1iIdejr8uvZdIC8WeRJMxPVKcsS4D8frl2yBDn9gWT0N5h0"]
         
         let jsonS = self.JSONStringify(params, prettyPrinted: true)
         mutableURLRequest.HTTPBody = jsonS.dataUsingEncoding(NSUTF8StringEncoding)
@@ -63,8 +63,9 @@ class SignifyUserController{
             if (success)    {
                 
                 let json = JSON(returnedData.result.value!)
+                print(json)
                 let serverResponseCode = returnedData.response?.statusCode
-//                completion(serverResponseCode!,json)
+                
                 
             }   else    { //response code is nil
                 
