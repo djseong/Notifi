@@ -26,16 +26,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bPT-np-LWj">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-QT-N7S">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-QT-N7S">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="246" id="c5U-eM-htV"/>
+                        <constraint firstAttribute="height" constant="246" id="c5U-eM-htV">
+                            <variation key="heightClass=regular-widthClass=compact" constant="321"/>
+                        </constraint>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -48,42 +44,23 @@
                         </mask>
                     </variation>
                 </mapView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnX-mp-SR2">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Edit">
-                        <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="editButtonPressed:" destination="-1" eventType="touchUpInside" id="Eb2-iC-I56"/>
-                    </connections>
-                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bPT-np-LWj">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="separatorColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="sectionIndexBackgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-nX-cWy" userLabel="friendInfoView">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nal-ng-2BI" userLabel="bigRequestButton">
-                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" red="0.090196078430000007" green="0.82352941180000006" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="Request Update">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="152" y="174" width="180" height="30"/>
-                            </variation>
-                            <connections>
-                                <action selector="bigRequestButtonPressed:" destination="-1" eventType="touchUpInside" id="wWh-pe-gLg"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rud-1A-jIT" userLabel="callButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" backgroundImage="icon_phone">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="87" y="174" width="40" height="40"/>
+                                <rect key="frame" x="79" y="166" width="40" height="40"/>
                             </variation>
                             <connections>
                                 <action selector="callButtonPressed:" destination="-1" eventType="touchUpInside" id="blY-sk-aeR"/>
@@ -91,131 +68,141 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhN-qI-FtR" userLabel="textButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" backgroundImage="icon_textmessage">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="19" y="174" width="40" height="40"/>
+                                <rect key="frame" x="8" y="166" width="40" height="40"/>
                             </variation>
                             <connections>
                                 <action selector="textButtonPressed:" destination="-1" eventType="touchUpInside" id="MfA-ek-59c"/>
                             </connections>
                         </button>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qlh-H2-ENs" userLabel="statusTableView">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="152" y="-5" width="208" height="144"/>
-                            </variation>
-                        </tableView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v" userLabel="nameLabel">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="8" y="118" width="130" height="30"/>
-                            </variation>
-                        </label>
                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-AY-TmG" userLabel="bigProfile">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                 <rect key="frame" x="19" y="8" width="100" height="100"/>
                             </variation>
                         </imageView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qlh-H2-ENs" userLabel="statusTableView">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="separatorColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="sectionIndexBackgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="sectionIndexTrackingBackgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="152" y="8" width="208" height="144"/>
+                            </variation>
+                        </tableView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v" userLabel="nameLabel">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="8" y="122" width="130" height="30"/>
+                            </variation>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nal-ng-2BI" userLabel="bigRequestButton">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.82352941180000006" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Request Update">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="152" y="166" width="180" height="30"/>
+                            </variation>
+                            <connections>
+                                <action selector="bigRequestButtonPressed:" destination="-1" eventType="touchUpInside" id="wWh-pe-gLg"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                     <variation key="default">
                         <mask key="subviews">
-                            <exclude reference="nal-ng-2BI"/>
                             <exclude reference="Rud-1A-jIT"/>
                             <exclude reference="vhN-qI-FtR"/>
+                            <exclude reference="ERo-AY-TmG"/>
                             <exclude reference="Qlh-H2-ENs"/>
                             <exclude reference="LHA-jc-B3v"/>
-                            <exclude reference="ERo-AY-TmG"/>
+                            <exclude reference="nal-ng-2BI"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
                         <mask key="subviews">
-                            <include reference="nal-ng-2BI"/>
                             <include reference="Rud-1A-jIT"/>
                             <include reference="vhN-qI-FtR"/>
+                            <include reference="ERo-AY-TmG"/>
                             <include reference="Qlh-H2-ENs"/>
                             <include reference="LHA-jc-B3v"/>
-                            <include reference="ERo-AY-TmG"/>
+                            <include reference="nal-ng-2BI"/>
                         </mask>
                     </variation>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Gar-nX-cWy" firstAttribute="leading" secondItem="bPT-np-LWj" secondAttribute="leading" id="1Ca-CU-wxg"/>
-                <constraint firstItem="Gar-nX-cWy" firstAttribute="bottom" secondItem="bPT-np-LWj" secondAttribute="bottom" id="36a-ML-YSj">
-                    <variation key="heightClass=regular-widthClass=compact" constant="18"/>
-                </constraint>
-                <constraint firstItem="Gar-nX-cWy" firstAttribute="trailing" secondItem="bPT-np-LWj" secondAttribute="trailing" id="3zc-XM-uru"/>
                 <constraint firstItem="Gar-nX-cWy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4ns-YC-hxc"/>
                 <constraint firstItem="Ojd-QT-N7S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Lx-y4-hc6"/>
-                <constraint firstAttribute="bottom" secondItem="Gar-nX-cWy" secondAttribute="bottom" constant="40" id="Cqu-Lg-Wbs"/>
-                <constraint firstItem="nnX-mp-SR2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="G4E-fy-rFO"/>
+                <constraint firstAttribute="bottom" secondItem="Gar-nX-cWy" secondAttribute="bottom" constant="40" id="Cqu-Lg-Wbs">
+                    <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                </constraint>
                 <constraint firstAttribute="trailing" secondItem="Gar-nX-cWy" secondAttribute="trailing" id="Hqs-ag-Ay1"/>
-                <constraint firstItem="Ojd-QT-N7S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="KGz-Kh-Dx2"/>
-                <constraint firstAttribute="trailing" secondItem="nnX-mp-SR2" secondAttribute="trailing" id="LUi-rV-7vc"/>
-                <constraint firstItem="Gar-nX-cWy" firstAttribute="top" secondItem="nnX-mp-SR2" secondAttribute="bottom" id="WGh-Wk-BQ4"/>
+                <constraint firstItem="Ojd-QT-N7S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="KGz-Kh-Dx2">
+                    <variation key="heightClass=regular-widthClass=compact" constant="67"/>
+                </constraint>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="trailing" secondItem="bPT-np-LWj" secondAttribute="trailing" id="O46-pX-Noe"/>
                 <constraint firstAttribute="trailing" secondItem="Ojd-QT-N7S" secondAttribute="trailing" id="XeX-uE-auJ"/>
-                <constraint firstItem="nnX-mp-SR2" firstAttribute="top" secondItem="Ojd-QT-N7S" secondAttribute="bottom" constant="2" id="gJm-TQ-Xhe"/>
-                <constraint firstItem="Gar-nX-cWy" firstAttribute="top" secondItem="bPT-np-LWj" secondAttribute="top" id="oPG-h9-R6I"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="top" secondItem="Ojd-QT-N7S" secondAttribute="bottom" constant="1" id="iCX-Ow-jQG">
+                    <variation key="heightClass=regular-widthClass=compact" constant="4"/>
+                </constraint>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="leading" secondItem="bPT-np-LWj" secondAttribute="leading" id="k4e-ic-H2a"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="bottom" secondItem="bPT-np-LWj" secondAttribute="bottom" id="mdh-eK-zjA">
+                    <variation key="heightClass=regular-widthClass=compact" constant="54"/>
+                </constraint>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="top" secondItem="bPT-np-LWj" secondAttribute="top" id="vod-Hi-5da">
+                    <variation key="heightClass=regular-widthClass=compact" constant="-4"/>
+                </constraint>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="bPT-np-LWj"/>
                     <exclude reference="Ojd-QT-N7S"/>
-                    <exclude reference="nnX-mp-SR2"/>
+                    <exclude reference="bPT-np-LWj"/>
                     <exclude reference="Gar-nX-cWy"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="G4E-fy-rFO"/>
-                    <exclude reference="LUi-rV-7vc"/>
-                    <exclude reference="gJm-TQ-Xhe"/>
-                    <exclude reference="1Ca-CU-wxg"/>
-                    <exclude reference="36a-ML-YSj"/>
-                    <exclude reference="3zc-XM-uru"/>
-                    <exclude reference="4ns-YC-hxc"/>
-                    <exclude reference="Cqu-Lg-Wbs"/>
-                    <exclude reference="Hqs-ag-Ay1"/>
-                    <exclude reference="WGh-Wk-BQ4"/>
-                    <exclude reference="oPG-h9-R6I"/>
                     <exclude reference="8Lx-y4-hc6"/>
                     <exclude reference="KGz-Kh-Dx2"/>
                     <exclude reference="XeX-uE-auJ"/>
+                    <exclude reference="4ns-YC-hxc"/>
+                    <exclude reference="Cqu-Lg-Wbs"/>
+                    <exclude reference="Hqs-ag-Ay1"/>
+                    <exclude reference="O46-pX-Noe"/>
+                    <exclude reference="iCX-Ow-jQG"/>
+                    <exclude reference="k4e-ic-H2a"/>
+                    <exclude reference="mdh-eK-zjA"/>
+                    <exclude reference="vod-Hi-5da"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
-                    <include reference="bPT-np-LWj"/>
                     <include reference="Ojd-QT-N7S"/>
-                    <include reference="nnX-mp-SR2"/>
+                    <include reference="bPT-np-LWj"/>
                     <include reference="Gar-nX-cWy"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="G4E-fy-rFO"/>
-                    <include reference="LUi-rV-7vc"/>
-                    <include reference="gJm-TQ-Xhe"/>
-                    <include reference="1Ca-CU-wxg"/>
-                    <include reference="36a-ML-YSj"/>
-                    <include reference="3zc-XM-uru"/>
-                    <include reference="4ns-YC-hxc"/>
-                    <include reference="Cqu-Lg-Wbs"/>
-                    <include reference="Hqs-ag-Ay1"/>
-                    <include reference="WGh-Wk-BQ4"/>
-                    <include reference="oPG-h9-R6I"/>
                     <include reference="8Lx-y4-hc6"/>
                     <include reference="KGz-Kh-Dx2"/>
                     <include reference="XeX-uE-auJ"/>
+                    <include reference="4ns-YC-hxc"/>
+                    <include reference="Cqu-Lg-Wbs"/>
+                    <include reference="Hqs-ag-Ay1"/>
+                    <include reference="O46-pX-Noe"/>
+                    <include reference="iCX-Ow-jQG"/>
+                    <include reference="k4e-ic-H2a"/>
+                    <include reference="mdh-eK-zjA"/>
+                    <include reference="vod-Hi-5da"/>
                 </mask>
             </variation>
         </view>

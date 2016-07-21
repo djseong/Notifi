@@ -64,6 +64,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         tableView.dataSource = self
         
         
+        // makes the map 2D since it;s 3D by default
+  //      mapView.camera.pitch = 0
+    //    mapView.pitchEnabled = false
+        
+        
    //     let friendProfileViewController = FriendProfileViewController(nibName: "friendProfileViewController", bundle: nil)
         
      //   StatusTableView.delegate = friendProfileViewController
@@ -102,11 +107,16 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         mapView.showsCompass = true
         mapView.rotateEnabled = true
         
-    /*    // center the initial mapView to your location
+        // center the initial mapView to your location
+        
+        /*
         let userLocation = mapView.userLocation.coordinate
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.03, 0.03)
         let region = MKCoordinateRegion(center: userLocation, span: span)
-        mapView.setRegion(region, animated: true)  */
+        mapView.setRegion(region, animated: true)
+ */
+            
+        
         
         // do we need an add button?
         navigationItem.title = "Signifi"
@@ -265,6 +275,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         let location = friendList[indexPath.row].coordinate
         let span = MKCoordinateSpanMake(0.01, 0.01)
         
+            
+           
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         
@@ -283,7 +295,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         StatusTableView.reloadData()
         tableView.hidden = true
         navigationItem.leftBarButtonItem?.enabled = true
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.noticeGrey()
         
         
         navigationItem.title = friendList[indexPath.row].title!
@@ -321,34 +333,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         self.bigProfileImage.layer.cornerRadius = self.bigProfileImage.frame.size.width / 2
         self.bigProfileImage.clipsToBounds = true
         
-        
-        
-        /*
-         
-         self.smallImage1.layer.cornerRadius = self.smallImage1.frame.size.width/2
-         self.smallImage1.clipsToBounds = true
-         
-         
-         
-         self.smallImage2.layer.cornerRadius = self.smallImage2.frame.size.width/2
-         self.smallImage2.clipsToBounds = true
-         
-         self.smallImage3.layer.cornerRadius = self.smallImage3.frame.size.width/2
-         self.smallImage3.clipsToBounds = true
-         
-         self.smallImage4.layer.cornerRadius = self.smallImage4.frame.size.width/2
-         self.smallImage4.clipsToBounds = true
-         
-         
-         // this is all hard coded stuff
-         
-         
-         self.smallImage1.backgroundColor = UIColor.greenColor()
-         self.smallImage2.backgroundColor = UIColor.redColor()
-         self.smallImage3.backgroundColor = UIColor.yellowColor()
-         self.smallImage4.backgroundColor = UIColor.greenColor()
-         
-         */
         
         
         friendInfo.hidden = false
@@ -452,12 +436,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         navigationItem.leftBarButtonItem?.tintColor = UIColor.clearColor()
         
         
-    }
-    
-    
-    // seriously though, what does this button do?
-    @IBAction func editButtonPressed(sender: UIButton) {
-        print("Edit button pressed")
     }
     
     
