@@ -86,31 +86,9 @@ class FriendTableViewController: UITableViewController {
         let window = application.keyWindow
         window?.rootViewController = appDelegate.initTabBarController()
     }
-    /*
     
-    func getAllFriends (after: String, onCompletion: () -> Void) {
-        let friendRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields" : "id, first_name, last_name, email, picture", "after" : after], HTTPMethod: "GET")
-        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if let next = result.valueForKey("paging")?.valueForKey("cursors")?.valueForKey("after") {
-                let friends = result["data"] as! [AnyObject]
-                for friend in friends {
-                    if let name = friend["name"] as? String {
-                        self.data.append(name)
-                    }
-                }
-                //print(self.data)
-                //onCompletion()
-                self.getAllFriends(next as! String, onCompletion: onCompletion)
-            }
-            else {
-                onCompletion()
-            }
-           
-            //print(self.data)
-            
-           // self.tableview.reloadData()
-        })
-    } */
+    
+
     
     func getAllFriends (after: String, onCompletion: () -> Void) {
         let friendRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields" : "id, first_name, last_name, email, picture.type(large)", "after" : after], HTTPMethod: "GET")

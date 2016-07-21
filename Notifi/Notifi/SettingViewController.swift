@@ -88,7 +88,7 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.removeObjectForKey("currentuseremail")
+        defaults.removeObjectForKey("currentuserfbId")
         defaults.synchronize()
         print("User Logged Out")
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
