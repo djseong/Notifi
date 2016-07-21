@@ -57,6 +57,7 @@ class UserController {
     var userList : [User] = []
     
     
+    
     func getJournals() -> [User] {
         
         let s1 : Status = Status(state: .Safe, time: "3 minutes ago", user: "Tobin")

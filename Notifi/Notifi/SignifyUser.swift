@@ -9,15 +9,27 @@
 import Foundation
 import Firebase
 
-class SignifyUser{
+class SignifyUser:  NSObject, MKAnnotation{
     var lastName: String
     var firstName: String
     var emailAddress: String
-    var homeAddress:String?
+    var homeAddress:String
     var cellPhone: String
     var profilePhoto: UIImage?
     var friends = [SignifyUser]()
+    var currstatus : State = .Safe
+    var picture: UIImage?
+    var statusHistory : [Status] = []
+    
     var emergencyContactUser: SignifyUser?// = SignifyUser(lastName: "My", firstName: "Mom")
+    
+    // This is the same as the firstName, but needs to conform to MKAnnotationProtocol
+    var title: String?
+    
+    // This is also needed. Set to some random default value
+    var coordinate : CLLocationCoordinate2D =  CLLocationCoordinate2D(latitude: -34, longitude: 18.5)
+    
+    
     var firebaseToken:String?   {
         
         let refreshedToken = FIRInstanceID.instanceID().token()
@@ -26,12 +38,17 @@ class SignifyUser{
     
    // var emergencyContactUser: SignifyUser = SignifyUser(lastName: "My", firstName: "Mom")
 
+   // various inits  
+    
     init(lastName:String, firstName:String){
         self.lastName = lastName
         self.firstName = firstName
+        self.title = firstName
         self.emailAddress = ""
         self.cellPhone = ""
+        self.homeAddress = ""
         
     }
+    
     
 }

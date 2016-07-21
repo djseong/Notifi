@@ -17,9 +17,11 @@ import FBSDKLoginKit
 
 class SignifyUserController{
     static var sharedInstance = SignifyUserController()
-    private init(){
-        
-    }
+    private init(){}
+    
+    // Ns if we need this but keeping it for dummy variables
+    var SignifyFriendList : [SignifyUser] = []
+    
     var currentUser = SignifyUser(lastName: "Xu", firstName: "Siqing")
     var currentUserEmail : String = ""
     
@@ -37,14 +39,14 @@ class SignifyUserController{
     
     
     
-    func send ()    {
+    func send (notimessage: String)    {
         
         let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string:"https://fcm.googleapis.com/fcm/send")!)
         mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         mutableURLRequest.HTTPMethod = "POST"
         mutableURLRequest.setValue("key=AIzaSyDCLEwBwuM7CmBUePfGHxN8RbxdcHRq5rM", forHTTPHeaderField: "Authorization")
-        let data = ["alert":"alert_value"]
-        let params = ["data":data, "to": "eXD6rxAGHFg:APA91bG7kQYiPrHP_fnITm1cF01aPDyewQYxUy8iVnMKetzBzU5LdWx5vWieNQ0nw1ZiC7itWUvCruLGqqbU7r7Jcg1dr1iIdejr8uvZdIC8WeRJMxPVKcsS4D8frl2yBDn9gWT0N5h0"]
+        let data = ["body":notimessage, "title":"Hey"]
+        let params = ["notification":data, "to": "eXD6rxAGHFg:APA91bG7kQYiPrHP_fnITm1cF01aPDyewQYxUy8iVnMKetzBzU5LdWx5vWieNQ0nw1ZiC7itWUvCruLGqqbU7r7Jcg1dr1iIdejr8uvZdIC8WeRJMxPVKcsS4D8frl2yBDn9gWT0N5h0"]
         
         let jsonS = self.JSONStringify(params, prettyPrinted: true)
         mutableURLRequest.HTTPBody = jsonS.dataUsingEncoding(NSUTF8StringEncoding)
@@ -63,8 +65,9 @@ class SignifyUserController{
             if (success)    {
                 
                 let json = JSON(returnedData.result.value!)
+                print(json)
                 let serverResponseCode = returnedData.response?.statusCode
-//                completion(serverResponseCode!,json)
+                
                 
             }   else    { //response code is nil
                 
@@ -126,6 +129,48 @@ class SignifyUserController{
             }
         }
         return ""
+    }
+    
+    
+    
+    // this func is solely for dummy users for now
+    
+    
+    func getFriendsList() -> [SignifyUser] {
+        
+        let s1 : Status = Status(state: .Safe, time: "3 minutes ago", user: "Tobin")
+        let s2 : Status = Status(state: .Attention, time: "6 minutes ago", user: "Bobby")
+        let s3 : Status = Status(state: .Help, time: "10 minutes ago", user: "Tobin's cat")
+        
+        
+        let user1 = SignifyUser(lastName: "Bell", firstName: "Tobin")
+        user1.currstatus = .Help
+        user1.cellPhone = "2035510306"
+        user1.picture = UIImage(named: "testAlpaca")
+        user1.statusHistory = [s1, s1, s2, s3]
+        user1.coordinate = CLLocationCoordinate2D(latitude: -34.0021, longitude: 18.4987)
+        
+        let user2 = SignifyUser(lastName: " ", firstName: "Tobin's cat")
+        user2.currstatus = .Safe
+        user2.cellPhone = "2035510306"
+        user2.statusHistory = [s1, s1, s1]
+        user2.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        
+        
+        
+        
+        
+        
+        
+        SignifyFriendList.append(user1)
+        SignifyFriendList.append(user2)
+    //    userList.append(user3)
+    //    userList.append(user4)
+    //    userList.append(user5)
+        
+        
+        return SignifyFriendList
+        
     }
 
 }
