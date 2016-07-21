@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //initTabBarController()
         
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        var navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
         // Check if already logged in for facebook
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
         print("not logged in ")
         //TODO uncomment this line below to simulate being log in
-        //navigationcontroller = UINavigationController(rootViewController: tabViewController)
+        //navigationcontroller = UINavigationController(rootViewController: WelcomePageViewController(nibName: "WelcomePageViewController",bundle: nil))
         navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
         navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
         navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
