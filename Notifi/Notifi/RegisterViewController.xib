@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -409,10 +409,10 @@
                     <exclude reference="cEh-SZ-Nyh"/>
                     <exclude reference="OdS-J7-Xm8"/>
                     <exclude reference="tK0-yR-9mI"/>
-                    <exclude reference="G77-dz-nz7"/>
-                    <exclude reference="kez-uZ-bZb"/>
                     <exclude reference="OiN-3v-8N0"/>
                     <exclude reference="Gje-nX-XQg"/>
+                    <exclude reference="G77-dz-nz7"/>
+                    <exclude reference="kez-uZ-bZb"/>
                     <exclude reference="6gF-IQ-l4e"/>
                     <exclude reference="pi3-me-S4U"/>
                     <exclude reference="X58-rw-6mo"/>
@@ -455,10 +455,10 @@
                     <include reference="cEh-SZ-Nyh"/>
                     <include reference="OdS-J7-Xm8"/>
                     <include reference="tK0-yR-9mI"/>
-                    <include reference="G77-dz-nz7"/>
-                    <include reference="kez-uZ-bZb"/>
                     <include reference="OiN-3v-8N0"/>
                     <include reference="Gje-nX-XQg"/>
+                    <include reference="G77-dz-nz7"/>
+                    <include reference="kez-uZ-bZb"/>
                     <include reference="6gF-IQ-l4e"/>
                     <include reference="pi3-me-S4U"/>
                     <include reference="X58-rw-6mo"/>

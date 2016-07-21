@@ -203,6 +203,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         print("Device Token:", tokenString)
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Sandbox)
+        print(deviceToken)
         //UserController.sharedInstance.registerPushToken(tokenString)
     }
     
