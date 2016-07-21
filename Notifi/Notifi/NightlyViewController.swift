@@ -15,6 +15,7 @@ class NightlyViewController: UIViewController {
     @IBOutlet weak var attentionButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
 
+
     let message = FIRMessaging.messaging()
 
     let topLabel = UILabel()
