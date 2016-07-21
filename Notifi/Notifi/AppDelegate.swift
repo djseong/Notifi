@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,11 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         //do init for tab bar
-        initTabBarController()
+        //initTabBarController()
         
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
         let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
+        // Check if already logged in for facebook
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let _: String = defaults.objectForKey("currentuseremail") as? String {
+            print("logged in")
+//            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+//            navigationcontroller.pushViewController(friendtablecontoller, animated: true)
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = initTabBarController()
+            self.window?.makeKeyAndVisible()
+        }
+        else {
+        print("not logged in ")
         //TODO uncomment this line below to simulate being log in
         //navigationcontroller = UINavigationController(rootViewController: tabViewController)
         navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
@@ -37,12 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navigationcontroller
         //self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
-        
-        
-
+        }
         
         FIRApp.configure()
 
+        let refreshedToken = FIRInstanceID.instanceID().token()
+        print("InstanceID token: \(refreshedToken)")
+        
         
         initNotificationSettings()
         // Add observer for InstanceID token refresh callback.
@@ -50,9 +64,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          name: kFIRInstanceIDTokenRefreshNotification, object: nil)
 
         
+        self.initDatabase()
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
+
+    func initDatabase() {
+        
+        let ref = FIRDatabase.database().reference()
+        
+    }
+
     
     
     // [START refresh_token]
@@ -65,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     // [END refresh_token]
 
-    
+
     func initNotificationSettings() {
         
         // increment Action
@@ -189,12 +212,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //first detect if the notification provided a uuid for a sensor to be alarmed.
         let aps = userInfo["aps"]
         print ("aps \(userInfo)")
-        if let alarmedUuid = aps!["uuid"]  {
-            print ("uuid in question: |\(alarmedUuid)|")
-            //go to the home screen, where the sensors are displayed, and refresh emmediately. The state of alarm is fetched along with the other information about the sensors
-            
-            
-        }
+//        if let alarmedUuid = aps!["uuid"]  {
+//            print ("uuid in question: |\(alarmedUuid)|")
+//            //go to the home screen, where the sensors are displayed, and refresh emmediately. The state of alarm is fetched along with the other information about the sensors
+//            
+//            
+//        }
         
     }
     
@@ -234,6 +257,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Unable to connect with FCM. \(error)")
             } else {
                 print("Connected to FCM.")
+                
+//                SignifyUserController.sharedInstance.sendNote([""], alert:"alert", key:"")
+                SignifyUserController.sharedInstance.send()
             }
             
             
@@ -241,7 +267,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-
-
 }
 
