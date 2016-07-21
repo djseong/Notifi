@@ -25,7 +25,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+        self.navigationController?.pushViewController(friendtablecontoller, animated: true)
+
     }
     
     // Facebook Delegate Methods
