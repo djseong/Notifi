@@ -27,12 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //initTabBarController()
         
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        var navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
         // Check if already logged in for facebook
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let _: String = defaults.objectForKey("currentuseremail") as? String {
+        if let id: String = defaults.objectForKey("currentuserid") as? String {
             print("logged in")
+            print(id)
 //            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
 //            navigationcontroller.pushViewController(friendtablecontoller, animated: true)
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

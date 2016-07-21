@@ -9,10 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-
-
 import FBSDKCoreKit
-
 import FBSDKLoginKit
 
 class SignifyUserController{
@@ -23,18 +20,18 @@ class SignifyUserController{
     var SignifyFriendList : [SignifyUser] = []
     
     var currentUser = SignifyUser(lastName: "Xu", firstName: "Siqing")
-    var currentUserEmail : String = ""
+    var currentUserId : String = ""
     
     func getLoginDetails() -> String {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "email"])
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if let email = result.valueForKey("email") as? String {
-                print("here is email" + email)
-                self.currentUserEmail = email
-            }
+            self.currentUserId = result.valueForKey("id") as! String
+//            print(result)
+            print ("hi")
+//            print(result.valueForKey("id") as! String)
+            print(self.currentUserId)
         })
-        
-        return currentUserEmail
+        return currentUserId
     }
     
     
