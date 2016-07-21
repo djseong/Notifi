@@ -6,16 +6,20 @@
 //  Copyright © 2016 David Xu. All rights reserved.
 
 import UIKit
+import Firebase
+import FirebaseMessaging
 
 class NightlyViewController: UIViewController {
 
     @IBOutlet weak var safeButton: UIButton!
     @IBOutlet weak var attentionButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    let message = FIRMessaging()
 
     let topLabel = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         //change tab bar color to black
         tabBarController?.tabBar.barTintColor = UIColor.blackColor()
@@ -61,6 +65,7 @@ class NightlyViewController: UIViewController {
     @IBAction func safePressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Safe)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
+        message.sendMessage("fffff", to: FIRInstanceID.instanceID().token()+"gcm.google.apis.com", withMessageID: "l", timeToLive: 1)
         
     }
     @IBAction func attentionPressed(sender: UIButton) {
