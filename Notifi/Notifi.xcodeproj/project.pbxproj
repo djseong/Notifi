@@ -62,6 +62,7 @@
 		65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */; };
 		65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271801D3D00E50042BDA2 /* ViewGradient.swift */; };
 		65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271821D3D09420042BDA2 /* CustomButton.swift */; };
+		65FFD09D1D40DA470072CB1A /* FirstPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		65F271801D3D00E50042BDA2 /* ViewGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGradient.swift; sourceTree = "<group>"; };
 		65F271821D3D09420042BDA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstPageViewController.xib; sourceTree = "<group>"; };
 		ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notifi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6EA597F42D6C29793BAA9AD /* Pods-Notifi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notifi/Pods-Notifi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +247,7 @@
 				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */,
 				48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */,
+				65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				421D4E711D3FF2C6006C6B32 /* push.py in Resources */,
 				421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */,
 				421D4E701D3FF2C6006C6B32 /* privKey.pem in Resources */,
+				65FFD09D1D40DA470072CB1A /* FirstPageViewController.xib in Resources */,
 				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
 				48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */,
 				226A417A1D400A41007FCC7F /* FriendTableViewController.xib in Resources */,

@@ -14,7 +14,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="Notifi" customModuleProvider="target">
             <connections>
                 <outlet property="loginButton" destination="ZAI-EL-imE" id="uJN-BK-n37"/>
-                <outlet property="registerButton" destination="qE4-fy-98E" id="njc-nW-JeB"/>
                 <outlet property="titleLabel" destination="BDd-Ye-5Ha" id="wRi-CD-fFK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,21 +29,13 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qE4-fy-98E" customClass="CustomButton" customModule="Notifi" customModuleProvider="target">
-                    <rect key="frame" x="40" y="420" width="520" height="45"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="cqR-SY-8vN"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <state key="normal" title="Create Account"/>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-EL-imE" customClass="CustomButton" customModule="Notifi" customModuleProvider="target">
-                    <rect key="frame" x="40" y="475" width="520" height="45"/>
+                    <rect key="frame" x="40" y="447" width="520" height="55"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="Rsz-X4-Y2W"/>
+                        <constraint firstAttribute="height" constant="55" id="Rsz-X4-Y2W"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <state key="normal" title="Login"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal" title="Login with Facebook"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-78-cdL">
                     <rect key="frame" x="213" y="120" width="175" height="175"/>
@@ -57,17 +48,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="BDd-Ye-5Ha" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="bottom" multiplier="1:2" id="0kb-fW-xKN"/>
-                <constraint firstAttribute="trailing" secondItem="qE4-fy-98E" secondAttribute="trailing" constant="40" id="2Og-e6-fFY"/>
                 <constraint firstItem="BDd-Ye-5Ha" firstAttribute="top" secondItem="J6o-78-cdL" secondAttribute="bottom" constant="5" id="AfP-VQ-aRC"/>
                 <constraint firstAttribute="trailing" secondItem="ZAI-EL-imE" secondAttribute="trailing" constant="40" id="Cf4-gi-Hg4"/>
                 <constraint firstItem="ZAI-EL-imE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="IjY-8z-rm3"/>
                 <constraint firstItem="ZAI-EL-imE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UEX-HL-XWL"/>
                 <constraint firstItem="BDd-Ye-5Ha" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XXy-sS-acm"/>
                 <constraint firstItem="J6o-78-cdL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cyj-yE-kfE"/>
-                <constraint firstItem="ZAI-EL-imE" firstAttribute="top" secondItem="qE4-fy-98E" secondAttribute="bottom" constant="10" id="gvM-nR-Ldj"/>
-                <constraint firstItem="qE4-fy-98E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="hbb-sT-uy0"/>
-                <constraint firstItem="qE4-fy-98E" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="icp-Br-4Dv"/>
-                <constraint firstAttribute="bottom" secondItem="ZAI-EL-imE" secondAttribute="bottom" constant="80" id="l1I-pQ-nZA"/>
+                <constraint firstItem="ZAI-EL-imE" firstAttribute="top" secondItem="BDd-Ye-5Ha" secondAttribute="bottom" constant="70" id="uV4-T1-Voc"/>
             </constraints>
         </view>
     </objects>

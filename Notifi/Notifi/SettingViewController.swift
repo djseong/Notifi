@@ -87,11 +87,17 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("currentuseremail")
+        defaults.synchronize()
         print("User Logged Out")
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
         let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         let application = UIApplication.sharedApplication()
         let window = application.keyWindow
         window?.rootViewController = navigationcontroller
+        navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
+        navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
+        navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
     }
 }

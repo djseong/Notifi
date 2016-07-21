@@ -24,6 +24,8 @@ class SignifyUser{
         return refreshedToken
     }
     
+   // var emergencyContactUser: SignifyUser = SignifyUser(lastName: "My", firstName: "Mom")
+
     init(lastName:String, firstName:String){
         self.lastName = lastName
         self.firstName = firstName
