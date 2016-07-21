@@ -74,6 +74,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let ref = FIRDatabase.database().reference()
         
+        let refHandle = ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+            let fullDatabase = snapshot.value as! [String : AnyObject]
+          print("herehere")
+            print(fullDatabase)
+        })
     }
 
     
@@ -239,7 +244,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         print("DeviceToken:", tokenString)
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Sandbox)
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Prod)
         print("deviceToken:",deviceToken)
         connectToFcm()
         //UserController.sharedInstance.registerPushToken(tokenString)
