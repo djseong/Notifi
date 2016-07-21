@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
+import Firebase
 
 class OnboardingViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var registerButton: UIButton!
+    //@IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
     
@@ -21,7 +24,7 @@ class OnboardingViewController: UIViewController {
         self.titleLabel.textColor = UIColor.whiteColor()
         
         // Button segues
-        registerButton.addTarget(self, action: #selector(registerView), forControlEvents: .TouchUpInside)
+       // registerButton.addTarget(self, action: #selector(registerView), forControlEvents: .TouchUpInside)
         loginButton.addTarget(self, action: #selector(loginView), forControlEvents: .TouchUpInside)
         
         // navigation controller
@@ -32,10 +35,6 @@ class OnboardingViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        navigationController?.navigationBarHidden = false
     }
         
     override func viewDidLayoutSubviews() {
@@ -49,8 +48,38 @@ class OnboardingViewController: UIViewController {
     }
     
     func loginView() {
-        let loginviewcontroller = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        self.navigationController?.pushViewController(loginviewcontroller, animated: true)
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"]) { (result, error) in
+            if result.grantedPermissions.contains("email")
+            {
+                let defaults = NSUserDefaults.standardUserDefaults()
+                // Do work
+                //firebase connection
+                let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                    // ...
+                    print("firebase returned")
+                    print(user)
+                    if (error != nil) {
+                        //
+                        print("firebase login error: \(error)")
+                        
+                        
+                    }   else    {
+                        
+                        //log in to app - set user defaults
+                        defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuseremail")
+                        defaults.synchronize()
+                        
+                        let welcomeviewcontroller = WelcomeViewController(nibName: "WelcomeViewController", bundle: nil)
+                        self.navigationController?.pushViewController(welcomeviewcontroller, animated: true)
+                    }
+                    
+                }
+            }
+        }
+//        let loginviewcontroller = LoginViewController(nibName: "LoginViewController", bundle: nil)
+//        self.navigationController?.pushViewController(loginviewcontroller, animated: true)
     }
 
 }

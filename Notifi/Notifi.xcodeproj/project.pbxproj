@@ -62,6 +62,9 @@
 		65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */; };
 		65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271801D3D00E50042BDA2 /* ViewGradient.swift */; };
 		65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271821D3D09420042BDA2 /* CustomButton.swift */; };
+		65FFD09C1D40DA470072CB1A /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFD09A1D40DA470072CB1A /* FirstPageViewController.swift */; };
+		65FFD09D1D40DA470072CB1A /* FirstPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */; };
+		65FFD09F1D40E41C0072CB1A /* WelcomePagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFD09E1D40E41C0072CB1A /* WelcomePagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +127,9 @@
 		65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		65F271801D3D00E50042BDA2 /* ViewGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGradient.swift; sourceTree = "<group>"; };
 		65F271821D3D09420042BDA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		65FFD09A1D40DA470072CB1A /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstPageViewController.xib; sourceTree = "<group>"; };
+		65FFD09E1D40E41C0072CB1A /* WelcomePagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePagesViewController.swift; sourceTree = "<group>"; };
 		ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notifi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6EA597F42D6C29793BAA9AD /* Pods-Notifi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notifi/Pods-Notifi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +251,7 @@
 				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */,
 				48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */,
+				65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -267,6 +274,8 @@
 				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
 				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
 				650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */,
+				65FFD09A1D40DA470072CB1A /* FirstPageViewController.swift */,
+				65FFD09E1D40E41C0072CB1A /* WelcomePagesViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -357,6 +366,7 @@
 				421D4E711D3FF2C6006C6B32 /* push.py in Resources */,
 				421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */,
 				421D4E701D3FF2C6006C6B32 /* privKey.pem in Resources */,
+				65FFD09D1D40DA470072CB1A /* FirstPageViewController.xib in Resources */,
 				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
 				48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */,
 				226A417A1D400A41007FCC7F /* FriendTableViewController.xib in Resources */,
@@ -448,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FFD09C1D40DA470072CB1A /* FirstPageViewController.swift in Sources */,
 				48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */,
 				65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */,
 				488FF1B11D3D7E36008D5BA2 /* StatusController .swift in Sources */,
@@ -463,6 +474,7 @@
 				488FF1B31D3D83FC008D5BA2 /* NoticeViewController.swift in Sources */,
 				656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */,
 				65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */,
+				65FFD09F1D40E41C0072CB1A /* WelcomePagesViewController.swift in Sources */,
 				2222226C1D3EF0D500F5F22B /* StatusTableViewCell.swift in Sources */,
 				65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */,
 				22FD9F6B1D3E855F00257AD4 /* checkInViewController.swift in Sources */,
@@ -590,7 +602,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1d2391f9-12bc-4482-a4f7-1d5579b3f3a8";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -612,7 +624,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1d2391f9-12bc-4482-a4f7-1d5579b3f3a8";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 			};
 			name = Release;

@@ -68,6 +68,7 @@ class NightlyViewController: UIViewController {
         message.subscribeToTopic("/topics/cheese")
         
         
+       // message.sendMessage("fffff", to: FIRInstanceID.instanceID().token()!+"gcm.google.apis.com", withMessageID: "l", timeToLive: 1)
     }
     @IBAction func attentionPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Attention)
