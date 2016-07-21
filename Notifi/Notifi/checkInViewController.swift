@@ -143,6 +143,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         friendProfileViewController.tempAddress2 = friendList[rowindex].address2
         friendProfileViewController.tempPhone = friendList[rowindex].phone
         friendProfileViewController.tempEmergency = friendList[rowindex].emergencyPhone
+        friendProfileViewController.state = friendList[rowindex].currstatus
         self.navigationController?.pushViewController(friendProfileViewController, animated: true)
         
         
