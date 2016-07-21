@@ -279,10 +279,10 @@
 				488FF1B21D3D83FC008D5BA2 /* NoticeViewController.swift */,
 				488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */,
 				488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */,
+				650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */,
 				656C5FB31D3E551800D81943 /* FriendTableViewController.swift */,
 				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
 				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
-				650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */,
 				226A418C1D40634B007FCC7F /* FriendProfileViewController.swift */,
 			);
 			name = "View Controller";
