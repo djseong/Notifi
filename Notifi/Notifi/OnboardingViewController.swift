@@ -49,8 +49,15 @@ class OnboardingViewController: UIViewController {
     
     func loginView() {
         let fbLoginManager = FBSDKLoginManager()
-        fbLoginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"]) { (result, error) in
-            if result.grantedPermissions.contains("email")
+        fbLoginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"], fromViewController: self) { (result, error) in
+            if error != nil {
+                print("facebook login error")
+            }
+            else if result.isCancelled {
+               
+            }
+            else {
+                if result.grantedPermissions.contains("email")
             {
                 let defaults = NSUserDefaults.standardUserDefaults()
                 // Do work
@@ -65,7 +72,11 @@ class OnboardingViewController: UIViewController {
                         print("firebase login error: \(error)")
                         
                         
-                    }   else    {
+                    }
+                    else if result.isCancelled {
+                        print("facebook login cancelled")
+                    }
+                    else    {
                         
                         //log in to app - set user defaults
                         defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuseremail")
@@ -77,10 +88,14 @@ class OnboardingViewController: UIViewController {
                    //     let welcomeviewcontroller = WelcomeViewController(nibName: "WelcomeViewController", bundle: nil)
              //           self.navigationController?.pushViewController(welcomeviewcontroller, animated: true)
 
+                        let welcomepageviewcontroller = WelcomePageViewController(nibName: "WelcomePageViewController", bundle: nil)
+                        self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)
+
                     }
                     
                 }
             }
+        }
         }
 //        let loginviewcontroller = LoginViewController(nibName: "LoginViewController", bundle: nil)
 //        self.navigationController?.pushViewController(loginviewcontroller, animated: true)

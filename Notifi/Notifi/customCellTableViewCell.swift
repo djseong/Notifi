@@ -29,7 +29,7 @@ class customCellTableViewCell: UITableViewCell {
         
         self.imageview.layer.cornerRadius = self.imageview.frame.size.width / 2
         self.imageview.clipsToBounds = true
-        self.backgroundColor = UIColor.darkGrayColor()
+        self.backgroundColor = UIColor.noticeGrey()
         
     }
 
