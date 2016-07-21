@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import Firebase
 import FirebaseMessaging
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -26,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //initTabBarController()
         
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
+        var navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
         // Check if already logged in for facebook
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -41,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
         print("not logged in ")
         //TODO uncomment this line below to simulate being log in
-        //navigationcontroller = UINavigationController(rootViewController: tabViewController)
+        //navigationcontroller = UINavigationController(rootViewController: WelcomePageViewController(nibName: "WelcomePageViewController",bundle: nil))
         navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
         navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
         navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
@@ -53,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         FIRApp.configure()
+        print(FIRInstanceID.instanceID().token())
 
         let refreshedToken = FIRInstanceID.instanceID().token()
         print("InstanceID token: \(refreshedToken)")
@@ -72,13 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func initDatabase() {
         
-        let ref = FIRDatabase.database().reference()
-        
-        let refHandle = ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
-            let fullDatabase = snapshot.value as! [String : AnyObject]
-          print("herehere")
-            print(fullDatabase)
-        })
+//        let ref = FIRDatabase.database().reference()
+//        
+//        let refHandle = ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+//            let fullDatabase = snapshot.value as! [String : AnyObject]
+//          print("herehere")
+//            print(fullDatabase)
+//        })
     }
 
     
@@ -135,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: counterCategory))  // types are UIUserNotificationType members
         
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: NSSet(object: counterCategory) as! Set<UIUserNotificationCategory>)
+        
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
 
     }
@@ -264,7 +267,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Connected to FCM.")
                 
 //                SignifyUserController.sharedInstance.sendNote([""], alert:"alert", key:"")
-                SignifyUserController.sharedInstance.send()
+                SignifyUserController.sharedInstance.send("wwww")
             }
             
             

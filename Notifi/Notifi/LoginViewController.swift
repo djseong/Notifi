@@ -8,7 +8,6 @@
 
 import UIKit
 import FBSDKCoreKit
-
 import FBSDKLoginKit
 import Firebase
 
@@ -38,8 +37,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             // Process error
         }
         else if result.isCancelled {
-            // Handle cancellations
-        }
+            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+            self.navigationController?.pushViewController(friendtablecontoller, animated: true)         }
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing

@@ -29,8 +29,6 @@
 		421D4E711D3FF2C6006C6B32 /* push.py in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6E1D3FF2C6006C6B32 /* push.py */; };
 		421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6F1D3FF2C6006C6B32 /* pushcert.pem */; };
 		421D4E761D401EA1006C6B32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E751D401EA1006C6B32 /* GoogleService-Info.plist */; };
-		4261EDC91D40FE1800141C80 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261EDC71D40FE1800141C80 /* FriendProfileViewController.swift */; };
-		4261EDCA1D40FE1800141C80 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4261EDC81D40FE1800141C80 /* FriendProfileViewController.xib */; };
 		488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */; };
 		488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */; };
 		488FF1AE1D3D7C1F008D5BA2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1AD1D3D7C1F008D5BA2 /* Status.swift */; };
@@ -42,6 +40,7 @@
 		488FF1C31D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */; };
 		488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */; };
 		488FF1C71D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */; };
+		48BFFDAE1D414379005F4A9A /* WebDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BFFDAD1D414379005F4A9A /* WebDatabase.swift */; };
 		48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */; };
 		48E4CE7B1D3E658D0096AE3E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */; };
 		48E4CE821D3E809B0096AE3E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4CE801D3E809B0096AE3E /* SettingViewController.swift */; };
@@ -66,6 +65,13 @@
 		65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */; };
 		65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271801D3D00E50042BDA2 /* ViewGradient.swift */; };
 		65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271821D3D09420042BDA2 /* CustomButton.swift */; };
+		65FFD09C1D40DA470072CB1A /* FirstPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFD09A1D40DA470072CB1A /* FirstPageController.swift */; };
+		65FFD09D1D40DA470072CB1A /* FirstPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD09B1D40DA470072CB1A /* FirstPageController.xib */; };
+		65FFD0A81D4140A80072CB1A /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFD0A61D4140A80072CB1A /* WelcomePageViewController.swift */; };
+		65FFD0A91D4140A80072CB1A /* WelcomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD0A71D4140A80072CB1A /* WelcomePageViewController.xib */; };
+		65FFD0AC1D4149D90072CB1A /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFD0AA1D4149D90072CB1A /* SecondPageViewController.swift */; };
+		65FFD0AD1D4149D90072CB1A /* SecondPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD0AB1D4149D90072CB1A /* SecondPageViewController.xib */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +110,7 @@
 		488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		488FF1C41D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTabBarViewController.swift; sourceTree = "<group>"; };
 		488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizedTabBarViewController.xib; sourceTree = "<group>"; };
+		48BFFDAD1D414379005F4A9A /* WebDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebDatabase.swift; sourceTree = "<group>"; };
 		48E4CE781D3E65750096AE3E /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		48E4CE801D3E809B0096AE3E /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +137,12 @@
 		65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		65F271801D3D00E50042BDA2 /* ViewGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGradient.swift; sourceTree = "<group>"; };
 		65F271821D3D09420042BDA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		65FFD09A1D40DA470072CB1A /* FirstPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageController.swift; sourceTree = "<group>"; };
+		65FFD09B1D40DA470072CB1A /* FirstPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstPageController.xib; sourceTree = "<group>"; };
+		65FFD0A61D4140A80072CB1A /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
+		65FFD0A71D4140A80072CB1A /* WelcomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomePageViewController.xib; sourceTree = "<group>"; };
+		65FFD0AA1D4149D90072CB1A /* SecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		65FFD0AB1D4149D90072CB1A /* SecondPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondPageViewController.xib; sourceTree = "<group>"; };
 		ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notifi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6EA597F42D6C29793BAA9AD /* Pods-Notifi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notifi/Pods-Notifi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +239,7 @@
 		65F271731D3CF38C0042BDA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				48BFFDAD1D414379005F4A9A /* WebDatabase.swift */,
 				22FD9F721D3E858B00257AD4 /* dummyUser.swift */,
 				488FF1AD1D3D7C1F008D5BA2 /* Status.swift */,
 				48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */,
@@ -252,6 +266,9 @@
 				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */,
 				48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */,
+				65FFD09B1D40DA470072CB1A /* FirstPageController.xib */,
+				65FFD0A71D4140A80072CB1A /* WelcomePageViewController.xib */,
+				65FFD0AB1D4149D90072CB1A /* SecondPageViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -274,6 +291,9 @@
 				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
 				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
 				650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */,
+				65FFD09A1D40DA470072CB1A /* FirstPageController.swift */,
+				65FFD0AA1D4149D90072CB1A /* SecondPageViewController.swift */,
+				65FFD0A61D4140A80072CB1A /* WelcomePageViewController.swift */,
 				226A418C1D40634B007FCC7F /* FriendProfileViewController.swift */,
 			);
 			name = "View Controller";
@@ -365,14 +385,17 @@
 				421D4E711D3FF2C6006C6B32 /* push.py in Resources */,
 				421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */,
 				421D4E701D3FF2C6006C6B32 /* privKey.pem in Resources */,
+				65FFD09D1D40DA470072CB1A /* FirstPageController.xib in Resources */,
 				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
 				48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */,
 				226A417A1D400A41007FCC7F /* FriendTableViewController.xib in Resources */,
 				222A2A971D3FF9060055C930 /* signifi_certs in Resources */,
 				48E4CE831D3E809B0096AE3E /* SettingViewController.xib in Resources */,
 				48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */,
+				65FFD0A91D4140A80072CB1A /* WelcomePageViewController.xib in Resources */,
 				488FF1C31D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib in Resources */,
 				488FF1B51D3D841A008D5BA2 /* NoticeViewController.xib in Resources */,
+				65FFD0AD1D4149D90072CB1A /* SecondPageViewController.xib in Resources */,
 				22FD9F6D1D3E856E00257AD4 /* checkInViewController.xib in Resources */,
 				65F271681D3CAEA50042BDA2 /* LaunchScreen.storyboard in Resources */,
 				48E4CE871D3EDA730096AE3E /* MyProfileViewController.xib in Resources */,
@@ -457,9 +480,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FFD09C1D40DA470072CB1A /* FirstPageController.swift in Sources */,
 				48E4CE8A1D3EE84F0096AE3E /* EditProfileViewController.swift in Sources */,
 				65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */,
 				488FF1B11D3D7E36008D5BA2 /* StatusController .swift in Sources */,
+				48BFFDAE1D414379005F4A9A /* WebDatabase.swift in Sources */,
 				226A418E1D40634B007FCC7F /* FriendProfileViewController.swift in Sources */,
 				488FF1C21D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift in Sources */,
 				22FD9F771D3E860100257AD4 /* SVPulsingAnnotationView.m in Sources */,
@@ -470,6 +495,8 @@
 				65F271781D3CF3C80042BDA2 /* RegisterViewController.swift in Sources */,
 				48E4CE861D3EDA730096AE3E /* MyProfileViewController.swift in Sources */,
 				22FD9F731D3E858B00257AD4 /* dummyUser.swift in Sources */,
+				65FFD0A81D4140A80072CB1A /* WelcomePageViewController.swift in Sources */,
+				65FFD0AC1D4149D90072CB1A /* SecondPageViewController.swift in Sources */,
 				488FF1B31D3D83FC008D5BA2 /* NoticeViewController.swift in Sources */,
 				656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */,
 				65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */,
@@ -592,8 +619,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -602,7 +629,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -614,8 +641,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -624,7 +651,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 			};
 			name = Release;

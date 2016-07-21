@@ -40,6 +40,10 @@ class FriendTableViewController: UITableViewController {
       
     }
     
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
+    
     override func viewDidAppear(animated: Bool) {
         loader.center = self.view.center
         loader.startAnimating()
