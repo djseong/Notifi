@@ -71,8 +71,7 @@ class OnboardingViewController: UIViewController {
                         defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuseremail")
                         defaults.synchronize()
                         
-                        let welcomeviewcontroller = WelcomeViewController(nibName: "WelcomeViewController", bundle: nil)
-                        self.navigationController?.pushViewController(welcomeviewcontroller, animated: true)
+                      //  self.navigationController?.pushViewController(welcomeviewcontroller, animated: true)
                     }
                     
                 }

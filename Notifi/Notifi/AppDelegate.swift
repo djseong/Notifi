@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import Firebase
 import FirebaseMessaging
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -72,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func initDatabase() {
         
-        let ref = FIRDatabase.database().reference()
+        //let ref = FIRDatabase.database().reference()
         
     }
 
