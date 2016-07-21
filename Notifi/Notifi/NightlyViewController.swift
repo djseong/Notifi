@@ -82,6 +82,20 @@ class NightlyViewController: UIViewController {
     @IBAction func helpPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Help)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
+        WebDatabase.sharedInstance.addContact("515948294@qq.com", onCompletion: {boValue, newContact in
+            if boValue{
+                var key:String?
+                WebDatabase.sharedInstance.findCurrentUserKey({keyIn in key = keyIn
+                    let ref = FIRDatabase.database().reference()
+                    print(key)
+                    ref.child("ios_users").child(key!).child("contacts").setValue(newContact)
+                
+                })
+            }else{
+                print("failed")
+            }
+        
+        })
     }
 
 }

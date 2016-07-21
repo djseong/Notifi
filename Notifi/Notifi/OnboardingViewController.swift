@@ -80,6 +80,7 @@ class OnboardingViewController: UIViewController {
                         
                         //log in to app - set user defaults
                         defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuseremail")
+                        SignifyUserController.sharedInstance.currentUser.emailAddress = "515948294@qq.com"
                         defaults.synchronize()
                         let application = AppDelegate()
                        self.navigationController?.pushViewController(application.initTabBarController(), animated: true)
