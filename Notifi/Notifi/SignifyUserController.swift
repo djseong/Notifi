@@ -149,12 +149,35 @@ class SignifyUserController{
         user1.picture = UIImage(named: "testAlpaca")
         user1.statusHistory = [s1, s1, s2, s3]
         user1.coordinate = CLLocationCoordinate2D(latitude: -34.0021, longitude: 18.4987)
+        user1.homeAddress = "123 Apple Street NYC"
         
         let user2 = SignifyUser(lastName: " ", firstName: "Tobin's cat")
         user2.currstatus = .Safe
-        user2.cellPhone = "2035510306"
+        user2.cellPhone = "8888888888"
         user2.statusHistory = [s1, s1, s1]
         user2.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        user2.homeAddress = "123 Apple Street NYC"
+        
+        let user3 = SignifyUser(lastName: " ", firstName: "El Chapo")
+        user3.currstatus = .Attention
+        user3.cellPhone = "2973972297"
+        user3.statusHistory = [s1, s1, s3]
+        user3.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        user3.homeAddress = "333 Orange Ave"
+        
+        let user4 = SignifyUser(lastName: " ", firstName: "Santa Claus")
+        user4.currstatus = .Safe
+        user4.cellPhone = "2035510306"
+        user4.statusHistory = [s1, s1, s1]
+        user4.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        user4.homeAddress = "666 Child Lane"
+        
+        let user5 = SignifyUser(lastName: " ", firstName: "Bob")
+        user5.currstatus = .Safe
+        user5.cellPhone = "2035510306"
+        user5.statusHistory = [s1, s1, s1]
+        user5.coordinate = CLLocationCoordinate2D(latitude: -34.0018, longitude: 18.4980)
+        user5.homeAddress = "123 Apple Street NYC"
         
         
         
@@ -164,9 +187,9 @@ class SignifyUserController{
         
         SignifyFriendList.append(user1)
         SignifyFriendList.append(user2)
-    //    userList.append(user3)
-    //    userList.append(user4)
-    //    userList.append(user5)
+        SignifyFriendList.append(user3)
+        SignifyFriendList.append(user4)
+        SignifyFriendList.append(user5)
         
         
         return SignifyFriendList
