@@ -88,7 +88,7 @@ class OnboardingViewController: UIViewController {
 
                         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                             if error == nil {
-                                defaults.setObject(result.valueForKey("id") as! String, forKey: "currentuserid")
+                                defaults.setObject(result.valueForKey("id") as! String, forKey: "currentuserfbId")
                                 defaults.synchronize()
                                 let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
                             if url != nil {
