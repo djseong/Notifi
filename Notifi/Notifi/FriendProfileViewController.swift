@@ -33,7 +33,7 @@ class FriendProfileViewController: UIViewController, MFMessageComposeViewControl
     
     @IBOutlet weak var address1: UILabel!
     
-    @IBOutlet weak var address2: UILabel!
+
     
 
     override func viewDidLoad() {
@@ -41,11 +41,15 @@ class FriendProfileViewController: UIViewController, MFMessageComposeViewControl
 
         // Do any additional setup after loading the view.
         
+        // make the address label wrap to more lines if needed
+        self.address1.lineBreakMode = .ByWordWrapping
+        self.address1.numberOfLines = 0
+        
         self.nameLabel.text = tempName
         self.phoneLabel.text = tempPhone
         self.emergencyPhoneLabel.text = tempEmergency
         self.address1.text = tempAddress1
-        self.address2.text = tempAddress2
+
         
         
         

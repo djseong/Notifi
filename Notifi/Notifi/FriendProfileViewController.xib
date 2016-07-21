@@ -10,14 +10,12 @@
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
-            <string>Montserrat-UltraLight</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendProfileViewController" customModule="Notifi" customModuleProvider="target">
             <connections>
                 <outlet property="address1" destination="I6f-61-jiM" id="8z2-cV-nSK"/>
-                <outlet property="address2" destination="UcN-u2-q1d" id="xZN-iY-FPl"/>
                 <outlet property="emergencyPhoneLabel" destination="cpO-N4-7Hq" id="uzW-1u-6uK"/>
                 <outlet property="nameLabel" destination="EfP-d7-Uf2" id="fE1-a4-5H2"/>
                 <outlet property="phoneLabel" destination="gdv-eQ-0gi" id="ugw-Zh-lYw"/>
@@ -69,16 +67,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="125" y="274" width="150" height="21"/>
-                    </variation>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-u2-q1d" userLabel="address2">
-                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="125" y="295" width="150" height="21"/>
+                        <rect key="frame" x="125" y="274" width="150" height="42"/>
                     </variation>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-xN-vq0" userLabel="textButton">
@@ -148,7 +137,6 @@
                     <exclude reference="cpO-N4-7Hq"/>
                     <exclude reference="gdv-eQ-0gi"/>
                     <exclude reference="I6f-61-jiM"/>
-                    <exclude reference="UcN-u2-q1d"/>
                     <exclude reference="eVl-xN-vq0"/>
                     <exclude reference="xKU-Sk-3Dp"/>
                     <exclude reference="wdZ-Tc-yIb"/>
@@ -164,7 +152,6 @@
                     <include reference="cpO-N4-7Hq"/>
                     <include reference="gdv-eQ-0gi"/>
                     <include reference="I6f-61-jiM"/>
-                    <include reference="UcN-u2-q1d"/>
                     <include reference="eVl-xN-vq0"/>
                     <include reference="xKU-Sk-3Dp"/>
                     <include reference="wdZ-Tc-yIb"/>
