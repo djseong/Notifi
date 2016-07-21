@@ -150,7 +150,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         friendProfileViewController.tempImage = friendList[rowindex].picture
         friendProfileViewController.tempName = friendList[rowindex].title
         friendProfileViewController.tempAddress1 = friendList[rowindex].address1
-        friendProfileViewController.tempAddress2 = friendList[rowindex].address2
         friendProfileViewController.tempPhone = friendList[rowindex].phone
         friendProfileViewController.tempEmergency = friendList[rowindex].emergencyPhone
         friendProfileViewController.state = friendList[rowindex].currstatus
