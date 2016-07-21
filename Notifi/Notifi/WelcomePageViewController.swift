@@ -28,6 +28,10 @@ class WelcomePageViewController: UIPageViewController, UIPageViewControllerDataS
         self.view.backgroundColor = UIColor.notifiDarkTeal()
     }
     
+//    func getViews(view: UIViewController, name: String) -> UIViewController {
+//        return view(nibName: name, bundle: nil)
+//    }
+    
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : AnyObject]?) {
         super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: options)
     }

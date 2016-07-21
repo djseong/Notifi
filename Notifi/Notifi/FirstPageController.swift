@@ -12,6 +12,9 @@ import FBSDKLoginKit
 import ImageLoader
 
 class FirstPageController: UIViewController{
+    var tempimage: UIImageView = UIImageView()
+    var templabel:String = ""
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     
@@ -20,27 +23,34 @@ class FirstPageController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, picture.type(large)"])
+        
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print(templabel)
+        profileImage.image = tempimage.image
+        profileImage.round()
+        welcomeLabel.text = templabel
+        /*let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, picture.type(large)"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             if error == nil {
-            self.profileImage.round()
-            let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
-            if url != nil {
-                let picurl = NSURL(string: url! as! String)
-                let data = NSData(contentsOfURL: picurl!)
-                self.profileImage.image = UIImage(data: data!)
-            }
+                self.profileImage.round()
+                let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
+                if url != nil {
+                    let picurl = NSURL(string: url! as! String)
+                    self.profileImage.load(picurl!, placeholder: UIImage(), completionHandler: { (url, image, error, cache) in
+                        print(error)
+                    })
+//                    let data = NSData(contentsOfURL: picurl!)
+//                    self.profileImage.load(picurl!) //= UIImage(data: data!)
+                }
                 if let firstname = result.valueForKey("first_name") as? String {
                     self.welcomeLabel.text = "Welcome " + firstname + "!"
                 }
                 
             }
-        })
-
-        
-    }
-    override func viewDidDisappear(animated: Bool) {
-       // navigationController?.navigationBarHidden = false
+        })*/
     }
 
     override func didReceiveMemoryWarning() {
