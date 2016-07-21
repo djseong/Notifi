@@ -1,7 +1,7 @@
 import time, os
 from apns import APNs, Frame, Payload
 
-cert_path = '/Users/julianhulme/signifi_certs/pushcert.pem'
+cert_path = '/Users/julianhulme/signifi_certs/dist-cert.pem'
 # key_path = '/Users/julianhulme/signifi_certs/privKey.pem'
 
 apns = APNs(use_sandbox=True, cert_file=cert_path, key_file='')

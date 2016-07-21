@@ -27,6 +27,8 @@
 		421D4E711D3FF2C6006C6B32 /* push.py in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6E1D3FF2C6006C6B32 /* push.py */; };
 		421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6F1D3FF2C6006C6B32 /* pushcert.pem */; };
 		421D4E761D401EA1006C6B32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E751D401EA1006C6B32 /* GoogleService-Info.plist */; };
+		4261EDC91D40FE1800141C80 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261EDC71D40FE1800141C80 /* FriendProfileViewController.swift */; };
+		4261EDCA1D40FE1800141C80 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4261EDC81D40FE1800141C80 /* FriendProfileViewController.xib */; };
 		488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */; };
 		488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */; };
 		488FF1AE1D3D7C1F008D5BA2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1AD1D3D7C1F008D5BA2 /* Status.swift */; };
@@ -62,7 +64,6 @@
 		65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */; };
 		65F271811D3D00E50042BDA2 /* ViewGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271801D3D00E50042BDA2 /* ViewGradient.swift */; };
 		65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F271821D3D09420042BDA2 /* CustomButton.swift */; };
-		65FFD09D1D40DA470072CB1A /* FirstPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,7 +126,6 @@
 		65F2717E1D3CF5150042BDA2 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		65F271801D3D00E50042BDA2 /* ViewGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGradient.swift; sourceTree = "<group>"; };
 		65F271821D3D09420042BDA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		65FFD09B1D40DA470072CB1A /* FirstPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstPageViewController.xib; sourceTree = "<group>"; };
 		ADCF6B8815EC1CF5CBA57063 /* Pods_Notifi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notifi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6EA597F42D6C29793BAA9AD /* Pods-Notifi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notifi/Pods-Notifi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -513,7 +513,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -535,6 +535,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -558,7 +559,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -573,6 +574,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -584,8 +586,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -594,7 +596,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -606,8 +608,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -616,7 +618,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.ixperience.signifi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifi/Notifi-Bridging-Header.h";
 			};
 			name = Release;
