@@ -28,14 +28,21 @@
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="342" width="400" height="264"/>
-                    </variation>
                 </tableView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-QT-N7S">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="64" width="400" height="246"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="246" id="c5U-eM-htV"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="c5U-eM-htV"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="c5U-eM-htV"/>
+                        </mask>
                     </variation>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnX-mp-SR2">
@@ -46,9 +53,6 @@
                         <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="312" width="400" height="30"/>
-                    </variation>
                     <connections>
                         <action selector="editButtonPressed:" destination="-1" eventType="touchUpInside" id="Eb2-iC-I56"/>
                     </connections>
@@ -152,8 +156,7 @@
                             <exclude reference="Qlh-H2-ENs"/>
                         </mask>
                     </variation>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="342" width="400" height="264"/>
+                    <variation key="heightClass=regular-widthClass=compact">
                         <mask key="subviews">
                             <include reference="nal-ng-2BI"/>
                             <include reference="ERo-AY-TmG"/>
@@ -168,12 +171,44 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="leading" secondItem="bPT-np-LWj" secondAttribute="leading" id="1Ca-CU-wxg"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="bottom" secondItem="bPT-np-LWj" secondAttribute="bottom" id="36a-ML-YSj"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="trailing" secondItem="bPT-np-LWj" secondAttribute="trailing" id="3zc-XM-uru"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4ns-YC-hxc"/>
+                <constraint firstItem="Ojd-QT-N7S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Lx-y4-hc6"/>
+                <constraint firstAttribute="bottom" secondItem="Gar-nX-cWy" secondAttribute="bottom" constant="40" id="Cqu-Lg-Wbs"/>
+                <constraint firstItem="nnX-mp-SR2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="G4E-fy-rFO"/>
+                <constraint firstAttribute="trailing" secondItem="Gar-nX-cWy" secondAttribute="trailing" id="Hqs-ag-Ay1"/>
+                <constraint firstItem="Ojd-QT-N7S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="KGz-Kh-Dx2"/>
+                <constraint firstAttribute="trailing" secondItem="nnX-mp-SR2" secondAttribute="trailing" id="LUi-rV-7vc"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="top" secondItem="nnX-mp-SR2" secondAttribute="bottom" id="WGh-Wk-BQ4"/>
+                <constraint firstAttribute="trailing" secondItem="Ojd-QT-N7S" secondAttribute="trailing" id="XeX-uE-auJ"/>
+                <constraint firstItem="nnX-mp-SR2" firstAttribute="top" secondItem="Ojd-QT-N7S" secondAttribute="bottom" constant="2" id="gJm-TQ-Xhe"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="top" secondItem="bPT-np-LWj" secondAttribute="top" id="oPG-h9-R6I"/>
+            </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="bPT-np-LWj"/>
                     <exclude reference="Ojd-QT-N7S"/>
                     <exclude reference="nnX-mp-SR2"/>
                     <exclude reference="Gar-nX-cWy"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="8Lx-y4-hc6"/>
+                    <exclude reference="KGz-Kh-Dx2"/>
+                    <exclude reference="XeX-uE-auJ"/>
+                    <exclude reference="G4E-fy-rFO"/>
+                    <exclude reference="LUi-rV-7vc"/>
+                    <exclude reference="gJm-TQ-Xhe"/>
+                    <exclude reference="1Ca-CU-wxg"/>
+                    <exclude reference="36a-ML-YSj"/>
+                    <exclude reference="3zc-XM-uru"/>
+                    <exclude reference="4ns-YC-hxc"/>
+                    <exclude reference="Cqu-Lg-Wbs"/>
+                    <exclude reference="Hqs-ag-Ay1"/>
+                    <exclude reference="WGh-Wk-BQ4"/>
+                    <exclude reference="oPG-h9-R6I"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -182,6 +217,22 @@
                     <include reference="Ojd-QT-N7S"/>
                     <include reference="nnX-mp-SR2"/>
                     <include reference="Gar-nX-cWy"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="8Lx-y4-hc6"/>
+                    <include reference="KGz-Kh-Dx2"/>
+                    <include reference="XeX-uE-auJ"/>
+                    <include reference="G4E-fy-rFO"/>
+                    <include reference="LUi-rV-7vc"/>
+                    <include reference="gJm-TQ-Xhe"/>
+                    <include reference="1Ca-CU-wxg"/>
+                    <include reference="36a-ML-YSj"/>
+                    <include reference="3zc-XM-uru"/>
+                    <include reference="4ns-YC-hxc"/>
+                    <include reference="Cqu-Lg-Wbs"/>
+                    <include reference="Hqs-ag-Ay1"/>
+                    <include reference="WGh-Wk-BQ4"/>
+                    <include reference="oPG-h9-R6I"/>
                 </mask>
             </variation>
         </view>

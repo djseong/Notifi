@@ -84,7 +84,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         
         tableView.registerNib(UINib(nibName: "customCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        tableView.rowHeight = 80
+        tableView.rowHeight = 65
         
         
         StatusTableView.registerNib(UINib(nibName: "StatusTableViewCell", bundle: nil), forCellReuseIdentifier: "statusCell")
@@ -174,6 +174,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             if friendList[indexPath.row].picture != nil {
                 
                 cell.imageview.image = friendList[indexPath.row].picture
+            }
+            else {
+                cell.imageview.image = nil
             }
             
             
