@@ -43,7 +43,7 @@ class SignifyUser:  NSObject, MKAnnotation{
 
    // various inits  
     
-    init(lastName:String, firstName:String, emailAddress: String){
+    init(lastName:String, firstName:String){
         self.lastName = lastName
         self.firstName = firstName
         self.title = firstName
