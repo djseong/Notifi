@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     }   else    {
                         
                         //log in to app - set user defaults
-                        defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuseremail")
+                        defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuserfbId")
                         defaults.synchronize()
                         
                         let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
