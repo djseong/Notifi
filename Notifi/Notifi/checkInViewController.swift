@@ -41,10 +41,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var address1Label: UILabel!
-    
-    @IBOutlet weak var address2Label: UILabel!
-    
 
     var rowindex : Int = 0
     var friendList : [User] = []
@@ -129,7 +125,26 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         // hide the friendInfoView -- this is retarded 
         friendInfo.hidden = true
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.imagePressed))
+        bigProfileImage.addGestureRecognizer(tap)
+        bigProfileImage.userInteractionEnabled = true
        
+        
+    }
+    
+    func imagePressed() -> Void {
+        
+        let friendProfileViewController = FriendProfileViewController(nibName: "FriendProfileViewController", bundle: nil)
+        friendProfileViewController.tempImage = friendList[rowindex].picture
+        friendProfileViewController.tempName = friendList[rowindex].title
+        friendProfileViewController.tempAddress1 = friendList[rowindex].address1
+        friendProfileViewController.tempAddress2 = friendList[rowindex].address2
+        friendProfileViewController.tempPhone = friendList[rowindex].phone
+        friendProfileViewController.tempEmergency = friendList[rowindex].emergencyPhone
+        self.navigationController?.pushViewController(friendProfileViewController, animated: true)
+        
         
     }
     
@@ -274,8 +289,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         // friendInfo stuff
         nameLabel.text = friendList[indexPath.row].title!
-        address1Label.text = friendList[indexPath.row].address1
-        address2Label.text = friendList[indexPath.row].address2
         rowindex = indexPath.row
         
         bigProfileImage.layer.borderWidth = 2.0;
@@ -465,7 +478,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     
     @IBAction func textButtonPressed(sender: UIButton) {
-        print("text button pressed")
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
             controller.body = "Message Body"

@@ -4,12 +4,15 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Montserrat-UltraLight.otf">
+            <string>Montserrat-UltraLight</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="checkInViewController" customModule="Notifi" customModuleProvider="target">
             <connections>
                 <outlet property="StatusTableView" destination="Qlh-H2-ENs" id="GZC-I2-Tpj"/>
-                <outlet property="address1Label" destination="ftP-Rw-Y5Q" id="Idc-mH-cvO"/>
-                <outlet property="address2Label" destination="bc8-jn-MPG" id="1Ac-xo-ZQA"/>
                 <outlet property="bigProfileImage" destination="ERo-AY-TmG" id="4tr-0h-5hU"/>
                 <outlet property="friendInfo" destination="Gar-nX-cWy" id="zal-RK-5i7"/>
                 <outlet property="mapView" destination="Ojd-QT-N7S" id="tee-zZ-Qh7"/>
@@ -67,36 +70,12 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="180" y="223" width="180" height="30"/>
+                                <rect key="frame" x="152" y="174" width="180" height="30"/>
                             </variation>
                             <connections>
                                 <action selector="bigRequestButtonPressed:" destination="-1" eventType="touchUpInside" id="wWh-pe-gLg"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-AY-TmG" userLabel="bigProfile">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="20" y="13" width="100" height="100"/>
-                            </variation>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftP-Rw-Y5Q" userLabel="address1">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="20" y="165" width="130" height="21"/>
-                            </variation>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc8-jn-MPG" userLabel="address2">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="20" y="194" width="130" height="21"/>
-                            </variation>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rud-1A-jIT" userLabel="callButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,21 +83,12 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="87" y="218" width="40" height="40"/>
+                                <rect key="frame" x="87" y="174" width="40" height="40"/>
                             </variation>
                             <connections>
                                 <action selector="callButtonPressed:" destination="-1" eventType="touchUpInside" id="blY-sk-aeR"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v" userLabel="nameLabel">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="20" y="127" width="130" height="30"/>
-                            </variation>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhN-qI-FtR" userLabel="textButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,7 +96,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="15" y="218" width="40" height="40"/>
+                                <rect key="frame" x="19" y="174" width="40" height="40"/>
                             </variation>
                             <connections>
                                 <action selector="textButtonPressed:" destination="-1" eventType="touchUpInside" id="MfA-ek-59c"/>
@@ -139,33 +109,44 @@
                             <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                <rect key="frame" x="152" y="13" width="208" height="144"/>
+                                <rect key="frame" x="152" y="-5" width="208" height="144"/>
                             </variation>
                         </tableView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-jc-B3v" userLabel="nameLabel">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="8" y="118" width="130" height="30"/>
+                            </variation>
+                        </label>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-AY-TmG" userLabel="bigProfile">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="19" y="8" width="100" height="100"/>
+                            </variation>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="default">
                         <mask key="subviews">
                             <exclude reference="nal-ng-2BI"/>
-                            <exclude reference="ERo-AY-TmG"/>
-                            <exclude reference="ftP-Rw-Y5Q"/>
-                            <exclude reference="bc8-jn-MPG"/>
                             <exclude reference="Rud-1A-jIT"/>
-                            <exclude reference="LHA-jc-B3v"/>
                             <exclude reference="vhN-qI-FtR"/>
                             <exclude reference="Qlh-H2-ENs"/>
+                            <exclude reference="LHA-jc-B3v"/>
+                            <exclude reference="ERo-AY-TmG"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
                         <mask key="subviews">
                             <include reference="nal-ng-2BI"/>
-                            <include reference="ERo-AY-TmG"/>
-                            <include reference="ftP-Rw-Y5Q"/>
-                            <include reference="bc8-jn-MPG"/>
                             <include reference="Rud-1A-jIT"/>
-                            <include reference="LHA-jc-B3v"/>
                             <include reference="vhN-qI-FtR"/>
                             <include reference="Qlh-H2-ENs"/>
+                            <include reference="LHA-jc-B3v"/>
+                            <include reference="ERo-AY-TmG"/>
                         </mask>
                     </variation>
                 </view>
@@ -173,7 +154,9 @@
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Gar-nX-cWy" firstAttribute="leading" secondItem="bPT-np-LWj" secondAttribute="leading" id="1Ca-CU-wxg"/>
-                <constraint firstItem="Gar-nX-cWy" firstAttribute="bottom" secondItem="bPT-np-LWj" secondAttribute="bottom" id="36a-ML-YSj"/>
+                <constraint firstItem="Gar-nX-cWy" firstAttribute="bottom" secondItem="bPT-np-LWj" secondAttribute="bottom" id="36a-ML-YSj">
+                    <variation key="heightClass=regular-widthClass=compact" constant="18"/>
+                </constraint>
                 <constraint firstItem="Gar-nX-cWy" firstAttribute="trailing" secondItem="bPT-np-LWj" secondAttribute="trailing" id="3zc-XM-uru"/>
                 <constraint firstItem="Gar-nX-cWy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4ns-YC-hxc"/>
                 <constraint firstItem="Ojd-QT-N7S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Lx-y4-hc6"/>
@@ -195,9 +178,6 @@
                     <exclude reference="Gar-nX-cWy"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="8Lx-y4-hc6"/>
-                    <exclude reference="KGz-Kh-Dx2"/>
-                    <exclude reference="XeX-uE-auJ"/>
                     <exclude reference="G4E-fy-rFO"/>
                     <exclude reference="LUi-rV-7vc"/>
                     <exclude reference="gJm-TQ-Xhe"/>
@@ -209,6 +189,9 @@
                     <exclude reference="Hqs-ag-Ay1"/>
                     <exclude reference="WGh-Wk-BQ4"/>
                     <exclude reference="oPG-h9-R6I"/>
+                    <exclude reference="8Lx-y4-hc6"/>
+                    <exclude reference="KGz-Kh-Dx2"/>
+                    <exclude reference="XeX-uE-auJ"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -219,9 +202,6 @@
                     <include reference="Gar-nX-cWy"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="8Lx-y4-hc6"/>
-                    <include reference="KGz-Kh-Dx2"/>
-                    <include reference="XeX-uE-auJ"/>
                     <include reference="G4E-fy-rFO"/>
                     <include reference="LUi-rV-7vc"/>
                     <include reference="gJm-TQ-Xhe"/>
@@ -233,6 +213,9 @@
                     <include reference="Hqs-ag-Ay1"/>
                     <include reference="WGh-Wk-BQ4"/>
                     <include reference="oPG-h9-R6I"/>
+                    <include reference="8Lx-y4-hc6"/>
+                    <include reference="KGz-Kh-Dx2"/>
+                    <include reference="XeX-uE-auJ"/>
                 </mask>
             </variation>
         </view>
