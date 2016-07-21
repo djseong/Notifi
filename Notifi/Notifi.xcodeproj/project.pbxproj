@@ -71,7 +71,6 @@
 		65FFD0A91D4140A80072CB1A /* WelcomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD0A71D4140A80072CB1A /* WelcomePageViewController.xib */; };
 		65FFD0AC1D4149D90072CB1A /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFD0AA1D4149D90072CB1A /* SecondPageViewController.swift */; };
 		65FFD0AD1D4149D90072CB1A /* SecondPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FFD0AB1D4149D90072CB1A /* SecondPageViewController.xib */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,25 +249,20 @@
 		65F271741D3CF3910042BDA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				65FFD0AF1D4159790072CB1A /* Onboarding */,
 				226A41791D400A41007FCC7F /* FriendTableViewController.xib */,
+				650FDD381D3F8A0100D6562B /* FriendTableViewCell.xib */,
 				2222226B1D3EF0D500F5F22B /* StatusTableViewCell.xib */,
 				48E4CE811D3E809B0096AE3E /* SettingViewController.xib */,
 				22FD9F701D3E858300257AD4 /* customCellTableViewCell.xib */,
 				22FD9F6C1D3E856E00257AD4 /* checkInViewController.xib */,
 				226A418D1D40634B007FCC7F /* FriendProfileViewController.xib */,
-				48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */,
 				488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */,
-				650FDD381D3F8A0100D6562B /* FriendTableViewCell.xib */,
 				488FF1B41D3D841A008D5BA2 /* NoticeViewController.xib */,
 				488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */,
 				488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */,
-				65F271701D3CB2420042BDA2 /* LoginViewController.xib */,
-				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */,
 				48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */,
-				65FFD09B1D40DA470072CB1A /* FirstPageController.xib */,
-				65FFD0A71D4140A80072CB1A /* WelcomePageViewController.xib */,
-				65FFD0AB1D4149D90072CB1A /* SecondPageViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -276,6 +270,7 @@
 		65F271751D3CF3960042BDA2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				65FFD0AE1D41593D0072CB1A /* Onboarding */,
 				48E4CE801D3E809B0096AE3E /* SettingViewController.swift */,
 				22FD9F6E1D3E857800257AD4 /* customCellTableViewCell.swift */,
 				2222226A1D3EF0D500F5F22B /* StatusTableViewCell.swift */,
@@ -284,19 +279,39 @@
 				488FF1B21D3D83FC008D5BA2 /* NoticeViewController.swift */,
 				488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */,
 				488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */,
-				65F2716F1D3CB2420042BDA2 /* LoginViewController.swift */,
-				65F271761D3CF3C80042BDA2 /* RegisterViewController.swift */,
-				65F2717A1D3CF4080042BDA2 /* OnboardingViewController.swift */,
 				656C5FB31D3E551800D81943 /* FriendTableViewController.swift */,
 				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
 				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
 				650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */,
-				65FFD09A1D40DA470072CB1A /* FirstPageController.swift */,
-				65FFD0AA1D4149D90072CB1A /* SecondPageViewController.swift */,
-				65FFD0A61D4140A80072CB1A /* WelcomePageViewController.swift */,
 				226A418C1D40634B007FCC7F /* FriendProfileViewController.swift */,
 			);
 			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		65FFD0AE1D41593D0072CB1A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				65F2716F1D3CB2420042BDA2 /* LoginViewController.swift */,
+				65F271761D3CF3C80042BDA2 /* RegisterViewController.swift */,
+				65F2717A1D3CF4080042BDA2 /* OnboardingViewController.swift */,
+				65FFD09A1D40DA470072CB1A /* FirstPageController.swift */,
+				65FFD0AA1D4149D90072CB1A /* SecondPageViewController.swift */,
+				65FFD0A61D4140A80072CB1A /* WelcomePageViewController.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		65FFD0AF1D4159790072CB1A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */,
+				65F271701D3CB2420042BDA2 /* LoginViewController.xib */,
+				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
+				65FFD09B1D40DA470072CB1A /* FirstPageController.xib */,
+				65FFD0A71D4140A80072CB1A /* WelcomePageViewController.xib */,
+				65FFD0AB1D4149D90072CB1A /* SecondPageViewController.xib */,
+			);
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
 		A31ED027C3D99D19FCCA82E2 /* Frameworks */ = {

@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import ImageLoader
 
 class FirstPageController: UIViewController{
     @IBOutlet weak var profileImage: UIImageView!
