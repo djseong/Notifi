@@ -43,7 +43,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
 
     var rowindex : Int = 0
-    var friendList : [User] = []
+    var friendList : [SignifyUser] = []
   
     
     
@@ -56,25 +56,14 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         super.viewDidLoad()
 
         
-        friendList = UserController.sharedInstance.getJournals()
+        friendList = SignifyUserController.sharedInstance.getFriendsList()
         
         // Do any additional setup after loading the view.
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
-        
-        // makes the map 2D since it;s 3D by default
-  //      mapView.camera.pitch = 0
-    //    mapView.pitchEnabled = false
-        
-        
-   //     let friendProfileViewController = FriendProfileViewController(nibName: "friendProfileViewController", bundle: nil)
-        
-     //   StatusTableView.delegate = friendProfileViewController
-      //  StatusTableView.dataSource = friendProfileViewController
-        
-        StatusTableView.delegate = self
+          StatusTableView.delegate = self
         StatusTableView.dataSource = self
 
         
@@ -149,9 +138,14 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         let friendProfileViewController = FriendProfileViewController(nibName: "FriendProfileViewController", bundle: nil)
         friendProfileViewController.tempImage = friendList[rowindex].picture
         friendProfileViewController.tempName = friendList[rowindex].title
-        friendProfileViewController.tempAddress1 = friendList[rowindex].address1
-        friendProfileViewController.tempPhone = friendList[rowindex].phone
-        friendProfileViewController.tempEmergency = friendList[rowindex].emergencyPhone
+        friendProfileViewController.tempAddress1 = friendList[rowindex].homeAddress
+        friendProfileViewController.tempPhone = friendList[rowindex].cellPhone
+        
+        if (friendList[rowindex].emergencyContactUser != nil) {
+            
+            friendProfileViewController.tempEmergency = friendList[rowindex].emergencyContactUser!.cellPhone
+            
+        }
         friendProfileViewController.state = friendList[rowindex].currstatus
         self.navigationController?.pushViewController(friendProfileViewController, animated: true)
         
@@ -384,7 +378,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             // change to real colors later
             
-            let annotationUser : User = annotation as! User
+            let annotationUser : SignifyUser = annotation as! SignifyUser
             
             if annotationUser.currstatus == .Help {
                 annotationView?.annotationColor = UIColor.redColor()
@@ -446,7 +440,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     @IBAction func callButtonPressed(sender: UIButton) {
         print("call button pressed")
         
-        if let phoneCallURL:NSURL = NSURL(string: "tel://\(friendList[rowindex].phone)") {
+        if let phoneCallURL:NSURL = NSURL(string: "tel://\(friendList[rowindex].cellPhone)") {
             let application:UIApplication = UIApplication.sharedApplication()
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL);
@@ -459,7 +453,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
             controller.body = "Message Body"
-            controller.recipients = [friendList[rowindex].phone]
+            controller.recipients = [friendList[rowindex].cellPhone]
             controller.messageComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
         }

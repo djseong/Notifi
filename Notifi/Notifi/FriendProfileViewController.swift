@@ -41,6 +41,10 @@ class FriendProfileViewController: UIViewController, MFMessageComposeViewControl
 
         // Do any additional setup after loading the view.
         
+        // make the address label wrap to more lines if needed
+        self.address1.lineBreakMode = .ByWordWrapping
+        self.address1.numberOfLines = 0
+        
         self.nameLabel.text = tempName
         self.phoneLabel.text = tempPhone
         self.emergencyPhoneLabel.text = tempEmergency
