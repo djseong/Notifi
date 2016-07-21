@@ -22,11 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         //do init for tab bar
-        initTabBarController()
+        //initTabBarController()
         
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
         let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
+        // Check if already logged in for facebook
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let _: String = defaults.objectForKey("currentuseremail") as? String {
+            print("logged in")
+//            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
+//            navigationcontroller.pushViewController(friendtablecontoller, animated: true)
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = initTabBarController()
+            self.window?.makeKeyAndVisible()
+        }
+        else {
+        print("not logged in ")
         //TODO uncomment this line below to simulate being log in
         //navigationcontroller = UINavigationController(rootViewController: tabViewController)
         navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
@@ -37,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navigationcontroller
         //self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
-        
+        }
         
 
         

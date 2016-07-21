@@ -23,6 +23,8 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var zipCodeField: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     
+    var currentUserName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +65,10 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (!error) {
             let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
             navigationController?.pushViewController(friendtablecontoller, animated: true)
+            
+//            let defaults = NSUserDefaults.standardUserDefaults()
+//            defaults.setObject(currentUserName, forKey: "currentusername")
+//            defaults.synchronize()
         }
     }
     
@@ -92,6 +98,10 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let data = NSData(contentsOfURL: picurl!)
                     self.profileImage.image = UIImage(data: data!)
                 }
+                if let name = result.valueForKey("name") as? String {
+                    self.currentUserName = name
+                }
+                
                 
             })
             

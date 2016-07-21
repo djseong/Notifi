@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class CustomButton: UIButton {
     required init?(coder aDecoder: NSCoder) {

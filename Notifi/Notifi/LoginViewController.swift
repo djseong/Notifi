@@ -25,8 +25,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
-        self.navigationController?.pushViewController(friendtablecontoller, animated: true)
 
     }
     
@@ -47,12 +45,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
+                let defaults = NSUserDefaults.standardUserDefaults()
                 // Do work
                 //firebase connection
                 let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
                 FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
                     // ...
                     print("firebase returned")
+                    print(user)
                     if (error != nil) {
                         //
                         print("firebase login error: \(error)")
@@ -60,9 +60,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         
                     }   else    {
                         
-                        //log in to app
+                        //log in to app - set user defaults
+                        defaults.setObject(SignifyUserController.sharedInstance.getLoginDetails(), forKey: "currentuseremail")
+                        defaults.synchronize()
+                        
                         let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
-                        self.navigationController?.pushViewController(friendtablecontoller, animated: true)
+                        self.navigationController?.pushViewController(friendtablecontoller, animated: true) 
                     }
                     
                 }
