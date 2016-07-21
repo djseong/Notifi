@@ -21,11 +21,7 @@ class WebDatabase{
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: { (data) in
             let fullDatabase = data.value as! [String : AnyObject]
             for user in fullDatabase{
-//                let userDict = user as! (String,AnyObject)
-//                let email = userDict.1["email"]!!
-//                let firstName = userDict.1["first_name"]!!
-//                print(firstName)
-//                let lastName = userDict.1["last_name"]!!
+
                 let userTuple = user as! (String,AnyObject)
                 let firstName = userTuple.1["first_name"]!!
                 let lastName = userTuple.1["last_name"]!!
@@ -39,7 +35,7 @@ class WebDatabase{
         }
         return nameStringList
     }
-    func resgisterUser(email:String, firstName:String, lastName:String, pushId:String) {
+    func resgisterUser(fbId:String, firstName:String, lastName:String, pushId:String) {
 //        ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: { (data) in
 //            let fullDatabase = data.value as! [String : AnyObject]
 //            for user in fullDatabase{
@@ -50,7 +46,7 @@ class WebDatabase{
 //        }
         
         let key = ref.child("ios_users").childByAutoId().key
-        let user = ["email": email,
+        let user = ["fbId": fbId,
                     "contacts": [],
                     "first_name": firstName,
                     "last_name": lastName,
@@ -61,17 +57,17 @@ class WebDatabase{
 
         
     }
-    func addContact(friendEmail:String,onCompletion:(boValue:Bool,newContact:[String])->Void){
+    func addContact(friendFbId:String,onCompletion:(boValue:Bool,newContact:[String])->Void){
         
 
         
         var currentContact = [String]()
-        SignifyUserController.sharedInstance.currentUser.emailAddress = "515948294@qq.com"
+        SignifyUserController.sharedInstance.currentUser.fbId = "515948294@qq.com"
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
             let fullDatabase = data.value as! [String: AnyObject]
             for user in fullDatabase{
-                let userEmail = user.1["email"] as! String
-                if SignifyUserController.sharedInstance.currentUser.emailAddress == userEmail{
+                let userFbId = user.1["fbId"] as! String
+                if SignifyUserController.sharedInstance.currentUser.fbId == userFbId{
                     print( user.1["contacts"])
                     currentContact = user.1["contacts"] as! [String]
                     break
@@ -79,16 +75,16 @@ class WebDatabase{
             }
             for user in fullDatabase{
                 //let userTuple = user as! (String,AnyObject)
-                let userEmail = user.1["email"] as! String
-                if friendEmail == userEmail{
+                let userfbId = user.1["fbId"] as! String
+                if friendFbId == userfbId{
                     for contact in currentContact{
-                        if friendEmail == contact{
+                        if friendFbId == contact{
                             print("the contact exist")
                             return
                         }
                     }
-                    print("find matched user email")
-                    currentContact.append(friendEmail)
+                    print("find matched user fbId")
+                    currentContact.append(friendFbId)
                     onCompletion(boValue: true,newContact: currentContact)
                     return
                 }
@@ -100,21 +96,15 @@ class WebDatabase{
     }
     
     func findCurrentUserKey(onCompl: (String?)->Void) {
-//        ref.child("ios_users").child("-KNDoupr0kTzj6SeTaXd").setValue(["last_name":"Xu"])
-//        var dependentsJSON:
 
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: { (data) in
             let fullDatabase = data.value as! [String : AnyObject]
             for user in fullDatabase{
-                //                let userDict = user as! (String,AnyObject)
-                //                let email = userDict.1["email"]!!
-                //                let firstName = userDict.1["first_name"]!!
-                //                print(firstName)
-                //                let lastName = userDict.1["last_name"]!!
+               
                 let userTuple = user
                 print(userTuple.0)
-                let email = userTuple.1["email"]!!
-                if SignifyUserController.sharedInstance.currentUser.emailAddress == email as! String{
+                let fbId = userTuple.1["fbId"]!!
+                if SignifyUserController.sharedInstance.currentUser.fbId == fbId as! String{
                     let key:String = String("\(userTuple.0)")
                     onCompl(key)
                     return

@@ -12,7 +12,7 @@ import Firebase
 class SignifyUser:  NSObject, MKAnnotation{
     var lastName: String
     var firstName: String
-    var emailAddress: String
+    
     var homeAddress:String
     var cellPhone: String
     var profilePhoto: UIImage?
@@ -20,6 +20,7 @@ class SignifyUser:  NSObject, MKAnnotation{
     var currstatus : State = .Safe
     var picture: UIImage?
     var statusHistory : [Status] = []
+    var fbId:String?
     
     var emergencyContactUser: SignifyUser?// = SignifyUser(lastName: "My", firstName: "Mom")
     
@@ -44,7 +45,7 @@ class SignifyUser:  NSObject, MKAnnotation{
         self.lastName = lastName
         self.firstName = firstName
         self.title = firstName
-        self.emailAddress = ""
+        
         self.cellPhone = ""
         self.homeAddress = ""
         

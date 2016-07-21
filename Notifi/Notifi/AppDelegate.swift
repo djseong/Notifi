@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Check if already logged in for facebook
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let _: String = defaults.objectForKey("currentuseremail") as? String {
+        if let _: String = defaults.objectForKey("currentuserfbId") as? String {
             print("logged in")
 //            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
 //            navigationcontroller.pushViewController(friendtablecontoller, animated: true)
