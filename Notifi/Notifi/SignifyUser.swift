@@ -13,8 +13,8 @@ class SignifyUser:  NSObject, MKAnnotation{
     var lastName: String
     var firstName: String
     var emailAddress: String
-    var homeAddress:String
-    var cellPhone: String
+    var homeAddress:String?
+    var cellPhone: String?
     var profilePhoto: UIImage?
     var friends = [SignifyUser]()
     var currstatus : State = .Safe
@@ -26,7 +26,7 @@ class SignifyUser:  NSObject, MKAnnotation{
     // This is the same as the firstName, but needs to conform to MKAnnotationProtocol
     var title: String?
     
-    // This is also needed. Set to some random default value
+    // This is also needed. Set to some random default value 
     var coordinate : CLLocationCoordinate2D =  CLLocationCoordinate2D(latitude: -34, longitude: 18.5)
     
     
@@ -40,13 +40,11 @@ class SignifyUser:  NSObject, MKAnnotation{
 
    // various inits  
     
-    init(lastName:String, firstName:String){
+    init(lastName:String, firstName:String, emailAddress: String){
         self.lastName = lastName
         self.firstName = firstName
         self.title = firstName
-        self.emailAddress = ""
-        self.cellPhone = ""
-        self.homeAddress = ""
+        self.emailAddress = emailAddress
         
     }
     

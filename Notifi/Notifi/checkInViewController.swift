@@ -440,22 +440,37 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     @IBAction func callButtonPressed(sender: UIButton) {
         print("call button pressed")
         
+        if friendList[rowindex].cellPhone != nil {
+        
         if let phoneCallURL:NSURL = NSURL(string: "tel://\(friendList[rowindex].cellPhone)") {
             let application:UIApplication = UIApplication.sharedApplication()
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL);
             }
         }
+        }
+        
+        else {
+            
+        }
+        
     }
     
     
     @IBAction func textButtonPressed(sender: UIButton) {
         if (MFMessageComposeViewController.canSendText()) {
+            
+            if friendList[rowindex].cellPhone != nil {
+            
             let controller = MFMessageComposeViewController()
             controller.body = "Message Body"
-            controller.recipients = [friendList[rowindex].cellPhone]
+            controller.recipients = [friendList[rowindex].cellPhone!]
             controller.messageComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
+            }
+            else {
+                // the person don't got no cell phone number
+            }
         }
     }
 
