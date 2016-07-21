@@ -74,13 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func initDatabase() {
         
-        //let ref = FIRDatabase.database().reference()
-        
-        let refHandle = ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
-            let fullDatabase = snapshot.value as! [String : AnyObject]
-          print("herehere")
-            print(fullDatabase)
-        })
+//        let ref = FIRDatabase.database().reference()
+//        
+//        let refHandle = ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+//            let fullDatabase = snapshot.value as! [String : AnyObject]
+//          print("herehere")
+//            print(fullDatabase)
+//        })
     }
 
     

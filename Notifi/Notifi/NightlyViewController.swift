@@ -69,12 +69,14 @@ class NightlyViewController: UIViewController {
 
         //message.subscribeToTopic("/topics/cheese")
         SignifyUserController.sharedInstance.send("I am Safe")
+        print(WebDatabase.sharedInstance.getUserName())
         
     }
     @IBAction func attentionPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Attention)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
          SignifyUserController.sharedInstance.send("I need your attention!")
+        WebDatabase.sharedInstance.resgisterUser("asdf@rewq.com", firstName: "Julian", lastName: "hel", pushId: "asdf")
         
     }
     @IBAction func helpPressed(sender: UIButton) {
