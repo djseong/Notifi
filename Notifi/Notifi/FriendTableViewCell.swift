@@ -19,6 +19,8 @@ class FriendTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        self.ImageView.clipsToBounds = true
+        self.ImageView.layer.cornerRadius = 50
         
     }
     
