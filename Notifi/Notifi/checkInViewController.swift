@@ -41,10 +41,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var address1Label: UILabel!
-    
-    @IBOutlet weak var address2Label: UILabel!
-    
 
     var rowindex : Int = 0
     var friendList : [User] = []
@@ -66,6 +62,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        // makes the map 2D since it;s 3D by default
+  //      mapView.camera.pitch = 0
+    //    mapView.pitchEnabled = false
         
         
    //     let friendProfileViewController = FriendProfileViewController(nibName: "friendProfileViewController", bundle: nil)
@@ -106,11 +107,16 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         mapView.showsCompass = true
         mapView.rotateEnabled = true
         
-    /*    // center the initial mapView to your location
+        // center the initial mapView to your location
+        
+        /*
         let userLocation = mapView.userLocation.coordinate
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.03, 0.03)
         let region = MKCoordinateRegion(center: userLocation, span: span)
-        mapView.setRegion(region, animated: true)  */
+        mapView.setRegion(region, animated: true)
+ */
+            
+        
         
         // do we need an add button?
         navigationItem.title = "Signifi"
@@ -129,7 +135,27 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         // hide the friendInfoView -- this is retarded 
         friendInfo.hidden = true
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.imagePressed))
+        bigProfileImage.addGestureRecognizer(tap)
+        bigProfileImage.userInteractionEnabled = true
        
+        
+    }
+    
+    func imagePressed() -> Void {
+        
+        let friendProfileViewController = FriendProfileViewController(nibName: "FriendProfileViewController", bundle: nil)
+        friendProfileViewController.tempImage = friendList[rowindex].picture
+        friendProfileViewController.tempName = friendList[rowindex].title
+        friendProfileViewController.tempAddress1 = friendList[rowindex].address1
+        friendProfileViewController.tempAddress2 = friendList[rowindex].address2
+        friendProfileViewController.tempPhone = friendList[rowindex].phone
+        friendProfileViewController.tempEmergency = friendList[rowindex].emergencyPhone
+        friendProfileViewController.state = friendList[rowindex].currstatus
+        self.navigationController?.pushViewController(friendProfileViewController, animated: true)
+        
         
     }
     
@@ -249,6 +275,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         let location = friendList[indexPath.row].coordinate
         let span = MKCoordinateSpanMake(0.01, 0.01)
         
+            
+           
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         
@@ -267,15 +295,13 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         StatusTableView.reloadData()
         tableView.hidden = true
         navigationItem.leftBarButtonItem?.enabled = true
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.noticeGrey()
         
         
         navigationItem.title = friendList[indexPath.row].title!
         
         // friendInfo stuff
         nameLabel.text = friendList[indexPath.row].title!
-        address1Label.text = friendList[indexPath.row].address1
-        address2Label.text = friendList[indexPath.row].address2
         rowindex = indexPath.row
         
         bigProfileImage.layer.borderWidth = 2.0;
@@ -307,34 +333,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         self.bigProfileImage.layer.cornerRadius = self.bigProfileImage.frame.size.width / 2
         self.bigProfileImage.clipsToBounds = true
         
-        
-        
-        /*
-         
-         self.smallImage1.layer.cornerRadius = self.smallImage1.frame.size.width/2
-         self.smallImage1.clipsToBounds = true
-         
-         
-         
-         self.smallImage2.layer.cornerRadius = self.smallImage2.frame.size.width/2
-         self.smallImage2.clipsToBounds = true
-         
-         self.smallImage3.layer.cornerRadius = self.smallImage3.frame.size.width/2
-         self.smallImage3.clipsToBounds = true
-         
-         self.smallImage4.layer.cornerRadius = self.smallImage4.frame.size.width/2
-         self.smallImage4.clipsToBounds = true
-         
-         
-         // this is all hard coded stuff
-         
-         
-         self.smallImage1.backgroundColor = UIColor.greenColor()
-         self.smallImage2.backgroundColor = UIColor.redColor()
-         self.smallImage3.backgroundColor = UIColor.yellowColor()
-         self.smallImage4.backgroundColor = UIColor.greenColor()
-         
-         */
         
         
         friendInfo.hidden = false
@@ -441,12 +439,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     }
     
     
-    // seriously though, what does this button do?
-    @IBAction func editButtonPressed(sender: UIButton) {
-        print("Edit button pressed")
-    }
-    
-    
     
     
     // These are all actions for the friendInfo View
@@ -465,7 +457,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     
     @IBAction func textButtonPressed(sender: UIButton) {
-        print("text button pressed")
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
             controller.body = "Message Body"

@@ -84,6 +84,7 @@ class OnboardingViewController: UIViewController {
                         
                         let welcomepageviewcontroller = WelcomePageViewController(nibName: "WelcomePageViewController", bundle: nil)
                         self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)
+
                     }
                     
                 }

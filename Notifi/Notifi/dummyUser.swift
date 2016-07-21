@@ -25,6 +25,7 @@ class User : NSObject, MKAnnotation {
     var address2: String = "NYC, NY 10002"
     var phone : String = "2035510306"
     var statusHistory: [Status] = []
+    var emergencyPhone : String = "2035510306"
     
     
     init(title : String, latitude: Double, longitude : Double, address1: String, address2: String, phone: String) {

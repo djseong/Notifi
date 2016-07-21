@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Firebase
+
 class SignifyUser{
     var lastName: String
     var firstName: String
@@ -15,7 +17,15 @@ class SignifyUser{
     var cellPhone: String
     var profilePhoto: UIImage?
     var friends = [SignifyUser]()
+    var emergencyContactUser: SignifyUser?// = SignifyUser(lastName: "My", firstName: "Mom")
+    var firebaseToken:String?   {
+        
+        let refreshedToken = FIRInstanceID.instanceID().token()
+        return refreshedToken
+    }
+    
    // var emergencyContactUser: SignifyUser = SignifyUser(lastName: "My", firstName: "Mom")
+
     init(lastName:String, firstName:String){
         self.lastName = lastName
         self.firstName = firstName

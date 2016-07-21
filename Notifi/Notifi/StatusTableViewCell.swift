@@ -23,7 +23,9 @@ class StatusTableViewCell: UITableViewCell {
         
         self.statusTypeImage.layer.cornerRadius = self.statusTypeImage.frame.size.width / 2
         self.statusTypeImage.clipsToBounds = true
-        self.backgroundColor = UIColor.darkGrayColor()
+        self.backgroundColor = UIColor.noticeGrey()
+        
+        self.selectionStyle = .None
 
         
     }
