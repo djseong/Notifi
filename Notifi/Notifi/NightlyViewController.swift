@@ -14,7 +14,7 @@ class NightlyViewController: UIViewController {
     @IBOutlet weak var safeButton: UIButton!
     @IBOutlet weak var attentionButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
-    let message = FIRMessaging()
+    let message = FIRMessaging.messaging()
 
     let topLabel = UILabel()
     override func viewDidLoad() {
@@ -65,12 +65,15 @@ class NightlyViewController: UIViewController {
     @IBAction func safePressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Safe)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
-        message.sendMessage("fffff", to: FIRInstanceID.instanceID().token()+"gcm.google.apis.com", withMessageID: "l", timeToLive: 1)
+        message.subscribeToTopic("/topics/cheese")
+        
         
     }
     @IBAction func attentionPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Attention)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
+         message.sendMessage(["/topics/cheese": "w"], to: "644725273210@gcm.googleapis.com", withMessageID: "l", timeToLive: 1)
+        
     }
     @IBAction func helpPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Help)

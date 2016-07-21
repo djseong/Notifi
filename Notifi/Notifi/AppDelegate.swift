@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         FIRApp.configure()
+        print(FIRInstanceID.instanceID().token())
 
         
         initNotificationSettings()
