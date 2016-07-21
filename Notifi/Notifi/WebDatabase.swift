@@ -69,7 +69,12 @@ class WebDatabase{
                 let userFbId = user.1["fbId"] as! String
                 if SignifyUserController.sharedInstance.currentUser.fbId == userFbId{
                     print( user.1["contacts"])
-                    currentContact = user.1["contacts"] as! [String]
+                    if let contacts = user.1["contacts"] as? [String]   {
+                        
+                        currentContact = contacts
+                    }   else    {
+                        currentContact = []
+                    }
                     break
                 }
             }
