@@ -12,7 +12,7 @@ class FriendTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var ImageView: UIImageView!
-    
+    @IBOutlet weak var checkImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
     override func awakeFromNib() {
@@ -28,8 +28,13 @@ class FriendTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if selected {
+            checkImage.hidden = false
+        }
+        else {
+            checkImage.hidden = true
+        }
+        
     }
     
 }

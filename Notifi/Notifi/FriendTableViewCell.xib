@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -12,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DE0-am-vzZ" userLabel="ImageView">
@@ -37,9 +38,12 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6U-5L-Mt7" userLabel="nameLabel">
                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                            <rect key="frame" x="96" y="-28" width="34" height="28"/>
+                        </variation>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Valid" translatesAutoresizingMaskIntoConstraints="NO" id="ajP-jU-8RW">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -70,8 +74,8 @@
                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                     </constraint>
                     <constraint firstItem="ajP-jU-8RW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="37" id="Nol-Js-qnm"/>
-                    <constraint firstAttribute="trailing" secondItem="p6U-5L-Mt7" secondAttribute="trailing" constant="44" id="WWd-kc-Hma">
-                        <variation key="heightClass=regular-widthClass=compact" constant="225.5"/>
+                    <constraint firstAttribute="trailing" secondItem="p6U-5L-Mt7" secondAttribute="trailing" constant="35" id="WWd-kc-Hma">
+                        <variation key="heightClass=regular-widthClass=compact" constant="190"/>
                     </constraint>
                     <constraint firstAttribute="bottom" secondItem="p6U-5L-Mt7" secondAttribute="bottom" constant="67" id="lzP-PY-Wc8">
                         <variation key="heightClass=regular-widthClass=compact" constant="43"/>
@@ -85,10 +89,10 @@
                         <exclude reference="ajP-jU-8RW"/>
                     </mask>
                     <mask key="constraints">
-                        <exclude reference="A3G-81-gQF"/>
-                        <exclude reference="BDX-dq-9lN"/>
                         <exclude reference="WWd-kc-Hma"/>
                         <exclude reference="lzP-PY-Wc8"/>
+                        <exclude reference="A3G-81-gQF"/>
+                        <exclude reference="BDX-dq-9lN"/>
                         <exclude reference="Nol-Js-qnm"/>
                         <exclude reference="t7M-Lm-385"/>
                     </mask>
@@ -100,10 +104,10 @@
                         <include reference="ajP-jU-8RW"/>
                     </mask>
                     <mask key="constraints">
-                        <include reference="A3G-81-gQF"/>
-                        <include reference="BDX-dq-9lN"/>
                         <include reference="WWd-kc-Hma"/>
                         <include reference="lzP-PY-Wc8"/>
+                        <include reference="A3G-81-gQF"/>
+                        <include reference="BDX-dq-9lN"/>
                         <include reference="Nol-Js-qnm"/>
                         <include reference="t7M-Lm-385"/>
                     </mask>
@@ -111,6 +115,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="ImageView" destination="DE0-am-vzZ" id="GHR-02-spi"/>
+                <outlet property="checkImage" destination="ajP-jU-8RW" id="2lX-LL-Foa"/>
                 <outlet property="nameLabel" destination="p6U-5L-Mt7" id="Ifx-tE-Pkg"/>
             </connections>
             <point key="canvasLocation" x="323" y="229"/>
