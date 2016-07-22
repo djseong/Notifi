@@ -63,7 +63,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             if self.friendList.count >= 1 {
                 self.friendList[0].coordinate = CLLocationCoordinate2D(latitude: -34.024, longitude: 18.489)
-                self.friendList[0].currstatus = .Attention
+                //self.friendList[0].currstatus = .Attention
                 
             }
             
@@ -74,9 +74,30 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             }
             
             if self.friendList.count >= 3 {
-                print(self.friendList[2].title)
-                print(self.friendList[2].currstatus.rawValue)
+                self.friendList[2].coordinate = CLLocationCoordinate2D(latitude: -34.040, longitude: 18.503)
+                
+                
             }
+            
+            
+            if self.friendList.count >= 4 {
+                self.friendList[3].coordinate = CLLocationCoordinate2D(latitude: -34.033, longitude: 18.489)
+                self.friendList[3].currstatus = .Attention
+                print(self.friendList[3].title)
+                print(self.friendList[3].currstatus.rawValue)
+            }
+            
+            if self.friendList.count >= 5 {
+                print(self.friendList[4].title)
+                print(self.friendList[4].currstatus.rawValue)
+                self.friendList[4].homeAddress = "107 Main Road"
+                self.friendList[4].cellPhone = "2034450456"
+                let s1 = Status(state: .Safe, time: "5 minutes ago", user: "asd")
+                let s2 = Status(state: .Safe, time: "14 minutes ago", user: " ad")
+                self.friendList[4].statusHistory = [s1, s2]
+                
+            }
+            
             self.mapView.addAnnotations(self.friendList)
 
         })
