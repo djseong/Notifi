@@ -146,16 +146,19 @@ class WebDatabase{
                     }   else    {
                         currentContact = []
                     }
+                    
                     break
                 }
             }
             for contact in currentContact{
+                self.ref.removeAllObservers()
                 self.retriveUserWithID(contact, onCompletion: {user in
                     if user == nil{
                         print("no contact for this id")
                     }else{
                         returnedUsers.append(user!)
                     }
+                    self.ref.removeAllObservers()
                     onCompletion(returnedUsers)
                 })
             }
@@ -163,11 +166,11 @@ class WebDatabase{
         
         })
        
-        self.ref.removeAllObservers()
 
     
     }
     func retriveUserWithID(fbID:String, onCompletion:(signifyUser:SignifyUser?)->Void){
+        ref.removeAllObservers()
         var signifyUser:SignifyUser?
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
             let fullDatabase = data.value as! [String: AnyObject]
@@ -179,11 +182,12 @@ class WebDatabase{
                 let last_name = user.1["last_name"] as! String
                  signifyUser = SignifyUser(lastName: last_name, firstName: first_name, imageString: profileImage, fbId: userFbId)
                     onCompletion(signifyUser: signifyUser)
+                    self.ref.removeAllObservers()
                     break
                 }
             }
-            self.ref.removeAllObservers()
             onCompletion(signifyUser: nil)
+            self.ref.removeAllObservers()
         }){ (error) in
             print(error.localizedDescription)
         }
