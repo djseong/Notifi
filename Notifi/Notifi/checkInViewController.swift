@@ -59,15 +59,23 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             
             
-            // hardcoding location to first two users
+            // hardcoding location and status for a varied map
             
             if self.friendList.count >= 1 {
                 self.friendList[0].coordinate = CLLocationCoordinate2D(latitude: -34.024, longitude: 18.489)
+                self.friendList[0].currstatus = .Attention
+                
             }
             
             if self.friendList.count >= 2 {
                 self.friendList[1].coordinate = CLLocationCoordinate2D(latitude: -34.045, longitude: 18.503)
-              //  self.friendList[1].currstatus = .Attention
+                self.friendList[1].currstatus = .Help
+              
+            }
+            
+            if self.friendList.count >= 3 {
+                print(self.friendList[2].title)
+                print(self.friendList[2].currstatus.rawValue)
             }
             self.mapView.addAnnotations(self.friendList)
 
@@ -154,7 +162,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     }
     override func viewWillAppear(animated: Bool) {
         
-        mapView.addAnnotations(friendList)
         tableView.reloadData()
     }
     
@@ -401,20 +408,21 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             
             
-            let annotationUser = annotation as! SignifyUser
-            
-            if annotationUser.currstatus == .Help {
-                annotationView?.annotationColor = UIColor.redColor()
-            }
-            else if annotationUser.currstatus == .Attention {
-                annotationView?.annotationColor = UIColor.yellowColor()
-            }
-            else {
-                annotationView?.annotationColor = UIColor.greenColor()
-            }
-            
         }
         
+        let annotationUser = annotation as! SignifyUser
+        
+        
+        if annotationUser.currstatus == .Help {
+            annotationView?.annotationColor = UIColor.redColor()
+        }
+        else if annotationUser.currstatus == .Attention {
+            annotationView?.annotationColor = UIColor.yellowColor()
+        }
+        else {
+            annotationView?.annotationColor = UIColor.greenColor()
+        }
+
         
         annotationView!.annotation = annotation
         return annotationView!
