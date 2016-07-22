@@ -17,7 +17,7 @@ class FriendProfileViewController: UIViewController, MFMessageComposeViewControl
     var tempEmergency : String?
     var tempAddress1: String?
     var tempAddress2: String?
-    var tempImage : UIImage?
+    var tempImageString : String?
     var state : State?
     
     
@@ -70,7 +70,9 @@ class FriendProfileViewController: UIViewController, MFMessageComposeViewControl
             profileImageView.layer.borderColor = UIColor.greenColor().CGColor
         }
         
-        profileImageView.image = tempImage
+        let url = tempImageString
+        let picurl = NSURL(string: url!)
+        profileImageView.load(picurl!)
         
         
         

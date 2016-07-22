@@ -137,7 +137,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     func imagePressed() -> Void {
         
         let friendProfileViewController = FriendProfileViewController(nibName: "FriendProfileViewController", bundle: nil)
-        friendProfileViewController.tempImage = friendList[rowindex].picture
+        friendProfileViewController.tempImageString = friendList[rowindex].profilePhotoString
         friendProfileViewController.tempName = friendList[rowindex].title
         friendProfileViewController.tempAddress1 = friendList[rowindex].homeAddress
         friendProfileViewController.tempPhone = friendList[rowindex].cellPhone
@@ -196,7 +196,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             cell.nameLabel.text = friendList[indexPath.row].title
             
-            if friendList[indexPath.row].picture != nil {
+            if friendList[indexPath.row].profilePhotoString != nil {
                 let url = friendList[indexPath.row].profilePhotoString
                 let picurl = NSURL(string: url!)
                 cell.imageview.load(picurl!)
@@ -307,8 +307,10 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         bigProfileImage.layer.borderWidth = 2.0;
         bigProfileImage.frame.size.width = 100
         
-        if friendList[indexPath.row].picture != nil {
-            bigProfileImage.image = friendList[indexPath.row].picture
+        if friendList[indexPath.row].profilePhotoString != nil {
+            let url = friendList[indexPath.row].profilePhotoString
+            let picurl = NSURL(string: url!)
+            bigProfileImage.load(picurl!)
             
         }
         else {
