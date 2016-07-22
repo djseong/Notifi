@@ -90,6 +90,7 @@ class OnboardingViewController: UIViewController {
                             if error == nil {
                                 defaults.setObject(result.valueForKey("id") as! String, forKey: "currentuserfbId")
                                 defaults.synchronize()
+                                
                                 let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
                             if url != nil {
                                 let picurl = NSURL(string: url! as! String)

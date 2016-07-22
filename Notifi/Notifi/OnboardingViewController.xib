@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Montserrat-UltraLight.otf">
             <string>Montserrat-UltraLight</string>
+            <string>Montserrat-UltraLight</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -35,7 +36,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="Rsz-X4-Y2W"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="17"/>
                     <state key="normal" title="Login with Facebook"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-78-cdL">

@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Montserrat-UltraLight.otf">
             <string>Montserrat-UltraLight</string>
+            <string>Montserrat-UltraLight</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -40,7 +41,8 @@
                         <constraint firstAttribute="height" constant="45" id="90V-2U-Jzg"/>
                         <constraint firstAttribute="width" constant="200" id="r1D-pB-Gp2"/>
                     </constraints>
-                    <state key="normal" title="Add"/>
+                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="15"/>
+                    <state key="normal" title="Add Friends"/>
                     <connections>
                         <action selector="friendTableButtonPressed:" destination="-1" eventType="touchUpInside" id="ItA-dR-CHy"/>
                     </connections>
