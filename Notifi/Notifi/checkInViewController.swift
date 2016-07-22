@@ -52,10 +52,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendList = WebDatabase.sharedInstance.retriveContact()
-
         
-        friendList = SignifyUserController.sharedInstance.getFriendsList()
+        WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
+            self.friendList = users
+        })
+
         
         // Do any additional setup after loading the view.
         mapView.delegate = self

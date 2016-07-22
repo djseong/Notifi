@@ -130,7 +130,7 @@ class WebDatabase{
         
        
     }
-    func retriveContact()->[SignifyUser]{
+    func retriveContact(onCOmpletion onCompletion:([SignifyUser])->Void){
         var returnedUsers = [SignifyUser]()
         var currentContact = [String]()
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
@@ -138,6 +138,7 @@ class WebDatabase{
             for user in fullDatabase{
                 let userFbId = user.1["fbId"] as! String
                 if SignifyUserController.sharedInstance.currentUser.fbId == userFbId{
+                    print(userFbId)
                     print( user.1["contacts"])
                     if let contacts = user.1["contacts"] as? [String]   {
                         
@@ -148,31 +149,45 @@ class WebDatabase{
                     break
                 }
             }
+            for contact in currentContact{
+                self.retriveUserWithID(contact, onCompletion: {user in
+                    if user == nil{
+                        print("no contact for this id")
+                    }else{
+                        returnedUsers.append(user!)
+                    }
+                    onCompletion(returnedUsers)
+                })
+            }
+        
         
         })
-        for contact in currentContact{
-            returnedUsers.append(retriveUserWithID(contact)!)
-        }
+       
         self.ref.removeAllObservers()
-        return returnedUsers
+
     
     }
-    func retriveUserWithID(fbID:String)-> SignifyUser?{
+    func retriveUserWithID(fbID:String, onCompletion:(signifyUser:SignifyUser?)->Void){
         var signifyUser:SignifyUser?
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
             let fullDatabase = data.value as! [String: AnyObject]
             for user in fullDatabase{
                 let userFbId = user.1["fbId"] as! String
                 if fbID == userFbId{
-                let profileImage = user.1["profile_image"] as! String
+            let profileImage = user.1["profile_image"] as! String
                 let first_name = user.1["first_name"] as! String
                 let last_name = user.1["last_name"] as! String
                  signifyUser = SignifyUser(lastName: last_name, firstName: first_name, imageString: profileImage, fbId: userFbId)
+                    onCompletion(signifyUser: signifyUser)
+                    break
                 }
             }
-            
-        })
-        return signifyUser
+            self.ref.removeAllObservers()
+            onCompletion(signifyUser: nil)
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+        
         
     }
 }
