@@ -36,25 +36,28 @@ class WebDatabase{
         return nameStringList
     }
     func resgisterUser(fbId:String, firstName:String, lastName:String, pushId:String) {
-//        ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: { (data) in
-//            let fullDatabase = data.value as! [String : AnyObject]
-//            for user in fullDatabase{
-//                            }
-//            
-//        }){ (error) in
-//            print(error.localizedDescription)
-//        }
+        ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: { (data) in
+            let fullDatabase = data.value as! [String : AnyObject]
+            for user in fullDatabase{
+                if fbId == user.1["fbId"] as! String{
+                    print("repeat account, log in automatically")
+                     return
+                }
+                    }
+            let key = self.ref.child("ios_users").childByAutoId().key
+            let user = ["fbId": fbId,
+                "contacts": [],
+                "first_name": firstName,
+                "last_name": lastName,
+                "push_note_id":pushId]
+            
+            let childUpdates = ["/ios_users/\(key)": user]
+            self.ref.updateChildValues(childUpdates)
+            
+        }){ (error) in
+            print(error.localizedDescription)
+        }
         
-        let key = ref.child("ios_users").childByAutoId().key
-        let user = ["fbId": fbId,
-                    "contacts": [],
-                    "first_name": firstName,
-                    "last_name": lastName,
-                    "push_note_id":pushId]
-
-        let childUpdates = ["/ios_users/\(key)": user]
-        ref.updateChildValues(childUpdates)
-
         
     }
     func addContact(friendFbId:String,onCompletion:(boValue:Bool,newContact:[String])->Void){
@@ -62,7 +65,6 @@ class WebDatabase{
 
         
         var currentContact = [String]()
-        SignifyUserController.sharedInstance.currentUser.fbId = "515948294@qq.com"
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
             let fullDatabase = data.value as! [String: AnyObject]
             for user in fullDatabase{
