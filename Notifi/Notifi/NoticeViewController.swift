@@ -97,10 +97,6 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        collectionView.reloadData()
-        
-    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return friendList.count
