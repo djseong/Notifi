@@ -35,7 +35,8 @@ class WebDatabase{
         }
         return nameStringList
     }
-    func resgisterUser(fbId:String, firstName:String, lastName:String, pushId:String) {
+    func resgisterUser(fbId:String, firstName:String, lastName:String, profileImage:String) {
+        ref.removeAllObservers()
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: { (data) in
             let fullDatabase = data.value as! [String : AnyObject]
             for user in fullDatabase{
@@ -49,21 +50,22 @@ class WebDatabase{
                 "contacts": [],
                 "first_name": firstName,
                 "last_name": lastName,
-                "push_note_id":pushId]
+                "profile_image": profileImage
+            ]
             
             let childUpdates = ["/ios_users/\(key)": user]
             self.ref.updateChildValues(childUpdates)
-            
         }){ (error) in
             print(error.localizedDescription)
         }
+        self.ref.removeAllObservers()
         
         
     }
     func addContact(friendFbId:String,onCompletion:(boValue:Bool,newContact:[String])->Void){
         
 
-        
+        self.ref.removeAllObservers()
         var currentContact = [String]()
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
             let fullDatabase = data.value as! [String: AnyObject]
@@ -93,6 +95,7 @@ class WebDatabase{
                     print("find matched user fbId")
                     currentContact.append(friendFbId)
                     onCompletion(boValue: true,newContact: currentContact)
+                    self.ref.removeAllObservers()
                     return
                 }
             }
@@ -114,6 +117,7 @@ class WebDatabase{
                 if SignifyUserController.sharedInstance.currentUser.fbId == fbId as! String{
                     let key:String = String("\(userTuple.0)")
                     onCompl(key)
+                    self.ref.removeAllObservers()
                     return
                 }
             
@@ -149,6 +153,7 @@ class WebDatabase{
         for contact in currentContact{
             returnedUsers.append(retriveUserWithID(contact)!)
         }
+        self.ref.removeAllObservers()
         return returnedUsers
     
     }
