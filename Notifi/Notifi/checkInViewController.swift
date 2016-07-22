@@ -56,8 +56,24 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
             self.friendList = users
             self.tableView.reloadData()
-        })
+            
+            
+            
+            // hardcoding location to first two users
+            
+            if self.friendList.count >= 1 {
+                self.friendList[0].coordinate = CLLocationCoordinate2D(latitude: -34.024, longitude: 18.489)
+            }
+            
+            if self.friendList.count >= 2 {
+                self.friendList[1].coordinate = CLLocationCoordinate2D(latitude: -34.045, longitude: 18.503)
+              //  self.friendList[1].currstatus = .Attention
+            }
+            self.mapView.addAnnotations(self.friendList)
 
+        })
+        
+        
         
         // Do any additional setup after loading the view.
         mapView.delegate = self
@@ -88,8 +104,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         self.automaticallyAdjustsScrollViewInsets = false
         
         
+        print(friendList.count)
         
-        mapView.addAnnotations(friendList)
+        
+        
+        
         locationManager.requestWhenInUseAuthorization()
         
         
@@ -134,6 +153,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
     }
     override func viewWillAppear(animated: Bool) {
+        
+        mapView.addAnnotations(friendList)
         tableView.reloadData()
     }
     
@@ -352,20 +373,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        
-        
-        
-        if (annotation.isKindOfClass(MKUserLocation)) {
+        if annotation is MKUserLocation {
             return nil
         }
-        
-        
-        
+ 
         let identifier = "MyPin"
-        
-        
-        
-        
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MyPin") as? SVPulsingAnnotationView
         
         
@@ -388,9 +400,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             
             
-            // change to real colors later
             
-            let annotationUser : SignifyUser = annotation as! SignifyUser
+            let annotationUser = annotation as! SignifyUser
             
             if annotationUser.currstatus == .Help {
                 annotationView?.annotationColor = UIColor.redColor()
@@ -401,7 +412,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             else {
                 annotationView?.annotationColor = UIColor.greenColor()
             }
-            
             
         }
         

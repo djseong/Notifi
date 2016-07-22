@@ -29,8 +29,7 @@ class SignifyUser:  NSObject, MKAnnotation{
     var title: String?
     
     // This is also needed. Set to some random default value 
-    var coordinate : CLLocationCoordinate2D =  CLLocationCoordinate2D(latitude: -34, longitude: 18.5)
-    
+    var coordinate : CLLocationCoordinate2D
     
     var firebaseToken:String?   {
         
@@ -51,6 +50,7 @@ class SignifyUser:  NSObject, MKAnnotation{
 
         self.cellPhone = ""
         self.homeAddress = ""
+        self.coordinate =  CLLocationCoordinate2D(latitude: -34, longitude: 18.5)
 
         
     }
