@@ -109,7 +109,7 @@ class OnboardingViewController: UIViewController {
                                             }
                                             let fbId = result.valueForKey("id") as! String
                                             SignifyUserController.sharedInstance.currentUser = SignifyUser(lastName: lastName, firstName: firstname, imageString: String(url), fbId: result.valueForKey("id") as! String)
-                                            WebDatabase.sharedInstance.resgisterUser(fbId, firstName: firstname, lastName:  lastName, pushId: "..")
+                                            WebDatabase.sharedInstance.resgisterUser(fbId, firstName: firstname, lastName:  lastName, profileImage: String(url))
                                         }
                                         self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)
                                     }

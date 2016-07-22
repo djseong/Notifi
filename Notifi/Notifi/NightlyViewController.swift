@@ -76,7 +76,7 @@ class NightlyViewController: UIViewController {
         StatusController.sharedInstance.changeCurrentState(State.Attention)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
          SignifyUserController.sharedInstance.send("I need your attention!")
-        WebDatabase.sharedInstance.resgisterUser("asdf@rewq.com", firstName: "Julian", lastName: "hel", pushId: "asdf")
+        WebDatabase.sharedInstance.resgisterUser("asdf@rewq.com", firstName: "Julian", lastName: "hel", profileImage: "asdf")
         
     }
     @IBAction func helpPressed(sender: UIButton) {
