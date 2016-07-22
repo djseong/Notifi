@@ -55,6 +55,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
             self.friendList = users
+            self.tableView.reloadData()
         })
 
         
