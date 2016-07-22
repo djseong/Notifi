@@ -17,7 +17,7 @@ class SignifyUser:  NSObject, MKAnnotation{
     var homeAddress:String
     var cellPhone: String
 
-    var profilePhoto: UIImage?
+    var profilePhotoString: String?
     var friends = [SignifyUser]()
     var currstatus : State = .Safe
     var picture: UIImage?
@@ -43,12 +43,13 @@ class SignifyUser:  NSObject, MKAnnotation{
 
    // various inits  
     
-    init(lastName:String, firstName:String){
+    init(lastName:String, firstName:String,imageString:String, fbId:String){
         self.lastName = lastName
         self.firstName = firstName
         self.title = firstName
+        self.profilePhotoString = imageString
+        self.fbId = fbId
 
-        
         self.cellPhone = ""
         self.homeAddress = ""
 

@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let id: String = defaults.objectForKey("currentuserfbId") as? String {
             print("logged in")
             print(id)
+            
 //            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
 //            navigationcontroller.pushViewController(friendtablecontoller, animated: true)
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

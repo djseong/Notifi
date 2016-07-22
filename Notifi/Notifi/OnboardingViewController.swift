@@ -100,6 +100,15 @@ class OnboardingViewController: UIViewController {
                                         print ("inside closure")
                                         if let firstname = result.valueForKey("first_name") as? String {
                                             vc.templabel = "Welcome " + firstname + "!"
+                                            var lastName:String
+                                            if result.valueForKey("last_name") != nil{
+                                                lastName = result.valueForKey("last_name") as! String
+                                            }else{
+                                                lastName = "Unknown"
+                                            }
+                                            let fbId = result.valueForKey("id") as! String
+                                            SignifyUserController.sharedInstance.currentUser = SignifyUser(lastName: lastName, firstName: firstname, imageString: String(url), fbId: result.valueForKey("id") as! String)
+                                            WebDatabase.sharedInstance.resgisterUser(fbId, firstName: firstname, lastName:  lastName, pushId: "..")
                                         }
                                         self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)
                                     }

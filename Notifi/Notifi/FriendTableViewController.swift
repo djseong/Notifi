@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import FBSDKShareKit
 import FBSDKLoginKit
 import ImageLoader
+import FirebaseDatabase
 
 
 
@@ -46,6 +47,7 @@ class FriendTableViewController: UITableViewController {
    // var data:[String] = []
     
     var dataArr: [DataItem] = []
+    var selectedFriend:[SignifyUser] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +85,26 @@ class FriendTableViewController: UITableViewController {
     }
     
     func addFriends() {
+        for friend in selectedFriend{
+            WebDatabase.sharedInstance.addContact(friend.fbId!, onCompletion: {boValue, newContact in
+                if boValue{
+                    var key:String?
+                    WebDatabase.sharedInstance.findCurrentUserKey({keyIn in key = keyIn
+                        let ref = FIRDatabase.database().reference()
+                        print(key)
+                        ref.child("ios_users").child(key!).child("contacts").setValue(newContact)
+                        
+                    })
+                }else{
+                    print("failed")
+                }
+            })
+        }
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let application = UIApplication.sharedApplication()
         let window = application.keyWindow
         window?.rootViewController = appDelegate.initTabBarController()
+        
     }
     
     
@@ -167,12 +185,15 @@ class FriendTableViewController: UITableViewController {
                 
                 isAlreadyContained = true
                 selectedRows.removeAtIndex(index)
+                selectedFriend.removeAtIndex(index)
                 break
             }
         }
         if isAlreadyContained == false  {
             selectedRows.append(indexPath.row)
-            
+            let dataItem = dataArr[indexPath.row]
+            let friendItem:SignifyUser = SignifyUser(lastName: dataItem.last_name, firstName: dataItem.first_name, imageString: dataItem.pictureString, fbId: dataItem.id)
+            selectedFriend.append(friendItem)
         }
 //        tableView.reloadData()
         
