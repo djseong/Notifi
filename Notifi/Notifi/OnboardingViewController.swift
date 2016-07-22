@@ -88,11 +88,8 @@ class OnboardingViewController: UIViewController {
 
                         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                             if error == nil {
-                                defaults.setObject(result.valueForKey("id") as! String, forKey: "currentuserfbId")
-                                defaults.synchronize()
-                                
                                 let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
-                            if url != nil {
+                                if url != nil {
                                 let picurl = NSURL(string: url! as! String)
                                 let welcomepageviewcontroller = WelcomePageViewController(nibName: "WelcomePageViewController", bundle: nil)
                                 let vc = welcomepageviewcontroller.viewcontrollers[0] as! FirstPageController
@@ -109,6 +106,13 @@ class OnboardingViewController: UIViewController {
                                             }
                                             let fbId = result.valueForKey("id") as! String
                                             SignifyUserController.sharedInstance.currentUser = SignifyUser(lastName: lastName, firstName: firstname, imageString: String(url), fbId: result.valueForKey("id") as! String)
+                                            // user persistence
+                                            defaults.setObject(fbId, forKey: "currentuserfbId")
+                                            defaults.setObject(firstname, forKey: "currentuserfirstname")
+                                            defaults.setObject(String(url), forKey: "currentuserpicture")
+                                            defaults.synchronize()
+                                            
+                                            // register on server
                                             WebDatabase.sharedInstance.resgisterUser(fbId, firstName: firstname, lastName:  lastName, profileImage: String(url))
                                         }
                                         self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)

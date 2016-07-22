@@ -131,6 +131,7 @@ class WebDatabase{
        
     }
     func retriveContact(onCOmpletion onCompletion:([SignifyUser])->Void){
+       // self.findCurrentUserKey({(result) in print ("here is current key"); print(result)})
         var returnedUsers = [SignifyUser]()
         var currentContact = [String]()
         ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
