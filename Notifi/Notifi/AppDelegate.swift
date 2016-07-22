@@ -22,40 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
-        //do init for tab bar
-        //initTabBarController()
         
+        // set up view controllers
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
         let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         
-        // Check if already logged in for facebook
+        // Set up nsuser
         let defaults = NSUserDefaults.standardUserDefaults()
-
-        if let id: String = defaults.objectForKey("currentuserfbId") as? String {
-            print("logged in")
-            print(id)
-            
-//            let friendtablecontoller = FriendTableViewController(nibName: "FriendTableViewController", bundle: nil)
-//            navigationcontroller.pushViewController(friendtablecontoller, animated: true)
-            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            self.window?.rootViewController = initTabBarController()
-            self.window?.makeKeyAndVisible()
-        }
-        else {
-        print("not logged in ")
-        //TODO uncomment this line below to simulate being log in
-        //navigationcontroller = UINavigationController(rootViewController: WelcomePageViewController(nibName: "WelcomePageViewController",bundle: nil))
-        navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
-        navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
-        navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = navigationcontroller
-        //self.window?.rootViewController = tabViewController
-        self.window?.makeKeyAndVisible()
-        }
-        
+        // Configure firebase
         FIRApp.configure()
         print(FIRInstanceID.instanceID().token())
 
@@ -64,12 +39,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         initNotificationSettings()
+        
         // Add observer for InstanceID token refresh callback.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
                                                          name: kFIRInstanceIDTokenRefreshNotification, object: nil)
-
-        
         self.initDatabase()
+        
+        // check if already logged in to facebook
+        if let id: String = defaults.objectForKey("currentuserfbId") as? String {
+            if let firstname: String = defaults.objectForKey("currentuserfirstname") as? String {
+                if let picture: String = defaults.objectForKey("currentuserpicture") as? String {
+                    print("logged in")
+                    print(id)
+                    SignifyUserController.sharedInstance.currentUser = SignifyUser(lastName: "unknown", firstName: firstname, imageString: picture, fbId: id)
+                    WebDatabase.sharedInstance.resgisterUser(id, firstName: firstname, lastName: "unknown", profileImage: picture)
+                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                    self.window?.rootViewController = initTabBarController()
+                    self.window?.makeKeyAndVisible()
+                }
+            }
+        }
+        else {
+            print("not logged in ")
+            //TODO uncomment this line below to simulate being log in
+            //navigationcontroller = UINavigationController(rootViewController: WelcomePageViewController(nibName: "WelcomePageViewController",bundle: nil))
+            navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
+            navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
+            navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
+            
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = navigationcontroller
+            //self.window?.rootViewController = tabViewController
+            self.window?.makeKeyAndVisible()
+        }
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
