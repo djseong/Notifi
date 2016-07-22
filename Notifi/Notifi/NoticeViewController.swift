@@ -88,6 +88,9 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(animated: Bool) {
+        self.collectionView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
