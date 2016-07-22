@@ -89,10 +89,18 @@ class FriendTableViewController: UITableViewController {
             WebDatabase.sharedInstance.addContact(friend.fbId!, onCompletion: {boValue, newContact in
                 if boValue{
                     var key:String?
-                    WebDatabase.sharedInstance.findCurrentUserKey({keyIn in key = keyIn
-                        let ref = FIRDatabase.database().reference()
-                        print(key)
-                        ref.child("ios_users").child(key!).child("contacts").setValue(newContact)
+                    WebDatabase.sharedInstance.findCurrentUserKey({keyIn in
+                        
+                        if let key = keyIn  {
+                            
+                            let ref = FIRDatabase.database().reference()
+                            print(key)
+                            ref.child("ios_users").child(key).child("contacts").setValue(newContact)
+                            ref.child("ios_users").child(key).child("contacts").removeAllObservers()
+                        }       else    {
+                           // let ref = FIRDatabase.database().reference()
+                            //ref.child("ios_users").child(keyIn).child("contacts").removeAllObservers()
+                        }
                         
                     })
                 }else{
