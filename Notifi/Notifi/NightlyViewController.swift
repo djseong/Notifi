@@ -66,36 +66,20 @@ class NightlyViewController: UIViewController {
     @IBAction func safePressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Safe)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
-
         //message.subscribeToTopic("/topics/cheese")
         SignifyUserController.sharedInstance.send("I am Safe")
-        print(WebDatabase.sharedInstance.getUserName())
         
     }
     @IBAction func attentionPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Attention)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
          SignifyUserController.sharedInstance.send("I need your attention!")
-        WebDatabase.sharedInstance.resgisterUser("asdf@rewq.com", firstName: "Julian", lastName: "hel", profileImage: "asdf")
+       
         
     }
     @IBAction func helpPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Help)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
-        WebDatabase.sharedInstance.addContact("515948294@qq.com", onCompletion: {boValue, newContact in
-            if boValue{
-                var key:String?
-                WebDatabase.sharedInstance.findCurrentUserKey({keyIn in key = keyIn
-                    let ref = FIRDatabase.database().reference()
-                    print(key)
-                    ref.child("ios_users").child(key!).child("contacts").setValue(newContact)
-                
-                })
-            }else{
-                print("failed")
-            }
-        
-        })
-    }
+        }
 
 }

@@ -123,6 +123,7 @@ class WebDatabase{
             
             }
             onCompl(nil)
+            self.ref.removeAllObservers()
             
         }){ (error) in
             print(error.localizedDescription)
