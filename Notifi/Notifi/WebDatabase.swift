@@ -126,5 +126,48 @@ class WebDatabase{
         
        
     }
+    func retriveContact()->[SignifyUser]{
+        var returnedUsers = [SignifyUser]()
+        var currentContact = [String]()
+        ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
+            let fullDatabase = data.value as! [String: AnyObject]
+            for user in fullDatabase{
+                let userFbId = user.1["fbId"] as! String
+                if SignifyUserController.sharedInstance.currentUser.fbId == userFbId{
+                    print( user.1["contacts"])
+                    if let contacts = user.1["contacts"] as? [String]   {
+                        
+                        currentContact = contacts
+                    }   else    {
+                        currentContact = []
+                    }
+                    break
+                }
+            }
+        
+        })
+        for contact in currentContact{
+            returnedUsers.append(retriveUserWithID(contact)!)
+        }
+        return returnedUsers
     
+    }
+    func retriveUserWithID(fbID:String)-> SignifyUser?{
+        var signifyUser:SignifyUser?
+        ref.child("ios_users").observeEventType(FIRDataEventType.Value, withBlock: {(data) in
+            let fullDatabase = data.value as! [String: AnyObject]
+            for user in fullDatabase{
+                let userFbId = user.1["fbId"] as! String
+                if fbID == userFbId{
+                let profileImage = user.1["profile_image"] as! String
+                let first_name = user.1["first_name"] as! String
+                let last_name = user.1["last_name"] as! String
+                 signifyUser = SignifyUser(lastName: last_name, firstName: first_name, imageString: profileImage, fbId: userFbId)
+                }
+            }
+            
+        })
+        return signifyUser
+        
+    }
 }

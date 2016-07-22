@@ -43,9 +43,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
 
     var rowindex : Int = 0
-    var friendList : [SignifyUser] = []
-  
-    
+    var friendList :[SignifyUser] = []
     
     
     let locationManager = CLLocationManager()
@@ -54,6 +52,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        friendList = WebDatabase.sharedInstance.retriveContact()
 
         
         friendList = SignifyUserController.sharedInstance.getFriendsList()
@@ -168,7 +167,12 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             return friendList.count
         }   else    {
             //statusTableViwe
-            return friendList[rowindex].statusHistory.count
+            if friendList.count == 0 {
+                return 0
+            }   else    {
+                return friendList[rowindex].statusHistory.count
+            }
+            
         }
             
         
@@ -191,8 +195,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             cell.nameLabel.text = friendList[indexPath.row].title
             
             if friendList[indexPath.row].picture != nil {
-                
-                cell.imageview.image = friendList[indexPath.row].picture
+                let url = friendList[indexPath.row].profilePhotoString
+                let picurl = NSURL(string: url!)
+                cell.imageview.load(picurl!)
             }
             else {
                 cell.imageview.image = nil
