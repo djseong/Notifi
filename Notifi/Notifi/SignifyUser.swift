@@ -20,7 +20,6 @@ class SignifyUser:  NSObject, MKAnnotation{
     var profilePhotoString: String?
     var friends = [SignifyUser]()
     var currstatus : State = .Safe
-    var picture: UIImage?
     var statusHistory : [Status] = []
     var fbId:String?
     

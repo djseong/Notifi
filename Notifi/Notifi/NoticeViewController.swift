@@ -18,9 +18,19 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var messageLabel: UILabel!
     var navBar = UINavigationBar()
+    var friendList = [SignifyUser]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
+            self.friendList = users
+            self.collectionView.reloadData()
+            self.messageLabel.text = "was sent to \(self.friendList.count) friends"
+            //self.tableView.reloadData()
+        })
+        messageLabel.text = "was sent to \(friendList.count) friends"
+        
         navBar.barTintColor = UIColor.blackColor()
         navBar.barStyle = .Black
         navBar.tintColor = UIColor.whiteColor()
@@ -84,13 +94,16 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
         // Dispose of any resources that can be recreated.
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return friendList.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let icon_image = UIImage(named: "settings_icon.png")
+
         //let userList = [icon_image,icon_image,icon_image,icon_image]
         let newCell = collectionView.dequeueReusableCellWithReuseIdentifier("CellForPhoto", forIndexPath: indexPath) as! PhotoProfileCollectionViewCell
-        newCell.contentImage.image = icon_image
+        let url = friendList[indexPath.row].profilePhotoString
+        let picurl = NSURL(string: url!)
+        //cell.ImageView.round()
+        newCell.contentImage.load(picurl!)
         return newCell
     }
     
