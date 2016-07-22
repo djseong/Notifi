@@ -164,9 +164,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.tableView.reloadData()
-    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
