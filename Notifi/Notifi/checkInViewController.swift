@@ -133,6 +133,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
        
         
     }
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
     
     func imagePressed() -> Void {
         
