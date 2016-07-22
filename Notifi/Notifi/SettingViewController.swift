@@ -12,8 +12,7 @@ import FBSDKShareKit
 import FBSDKLoginKit
 
 
-class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, FBSDKLoginButtonDelegate {
-    @IBOutlet weak var loginButton: FBSDKLoginButton!
+class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBAction func switchTurned(sender: UISwitch) {
         if sender.on{
@@ -31,7 +30,7 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var gpsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var switchGPS: UISwitch!
-    var settingArray = ["My profile","Emergency Contact"]
+    var settingArray = ["My profile","Emergency Contact", "Edit Friend List", "", "Logout", "TOBIN <3"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +49,6 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         gpsLabel.font = UIFont(name: "Montserrat-UltraLight", size: 20)
 
-        loginButton.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,13 +60,14 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let newCell = tableView.dequeueReusableCellWithIdentifier("settingcell",forIndexPath: indexPath)
-        newCell.backgroundColor = UIColor.nightlyBackgroundGrey()
-        let myfont = UIFont(name: "Montserrat-UltraLight", size: 30)
-        newCell.textLabel?.text = settingArray[indexPath.row]
-        newCell.textLabel?.textColor = UIColor.noticeGrey()
-        newCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        newCell.textLabel?.font = myfont
-        
+        if indexPath.row != 3 {
+            newCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        }
+            newCell.backgroundColor = UIColor.nightlyBackgroundGrey()
+            let myfont = UIFont(name: "Montserrat-UltraLight", size: 30)
+            newCell.textLabel?.text = settingArray[indexPath.row]
+            newCell.textLabel?.textColor = UIColor.noticeGrey()
+            newCell.textLabel?.font = myfont
         return newCell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -78,26 +77,46 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         else if indexPath.row == 1{
             navigationController?.pushViewController(MyProfileViewController(), animated: true)
         }
+        else if indexPath.row == 2 {
+            navigationController?.pushViewController(FriendTableViewController(), animated: true)
+        }
+        else if indexPath.row == 4 {
+            self.fbLogout()
+        }
+        else if indexPath.row == 5 {
+            let alert = UIAlertController(title: "LOL", message: "",
+                                          preferredStyle: UIAlertControllerStyle.Alert)
+            let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
+            })
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        }
     }
     
     
     // Facebook
-
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func fbLogout() {
+        let fbLogoutManager = FBSDKLoginManager()
+        fbLogoutManager.logOut()
+        
+        // Reset nsuser
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("currentuserfbId")
         defaults.synchronize()
         print("User Logged Out")
+        
+        // Go back to onboarding
         let onboardingcontroller = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
         let navigationcontroller = UINavigationController(rootViewController: onboardingcontroller)
         let application = UIApplication.sharedApplication()
         let window = application.keyWindow
         window?.rootViewController = navigationcontroller
+        
+        // Set up navigation bar
         navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
         navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
         navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
     }
-}
+
+    }
