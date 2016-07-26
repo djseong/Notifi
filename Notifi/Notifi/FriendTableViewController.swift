@@ -88,7 +88,6 @@ class FriendTableViewController: UITableViewController {
         for friend in selectedFriend{
             WebDatabase.sharedInstance.addContact(friend.fbId!, onCompletion: {boValue, newContact in
                 if boValue{
-                    var key:String?
                     WebDatabase.sharedInstance.findCurrentUserKey({keyIn in
                         
                         if let key = keyIn  {
