@@ -29,6 +29,12 @@
 		421D4E711D3FF2C6006C6B32 /* push.py in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6E1D3FF2C6006C6B32 /* push.py */; };
 		421D4E721D3FF2C6006C6B32 /* pushcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E6F1D3FF2C6006C6B32 /* pushcert.pem */; };
 		421D4E761D401EA1006C6B32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 421D4E751D401EA1006C6B32 /* GoogleService-Info.plist */; };
+		4809D6B71D561A5300DC326D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809D6B61D561A5300DC326D /* APIService.swift */; };
+		4809D6B91D5634E500DC326D /* APIServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809D6B81D5634E500DC326D /* APIServiceController.swift */; };
+		483D4BBF1D59D68D0087284A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483D4BBD1D59D68D0087284A /* LoadingViewController.swift */; };
+		483D4BC01D59D68D0087284A /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 483D4BBE1D59D68D0087284A /* LoadingViewController.xib */; };
+		483D4BC31D59E8170087284A /* NotifyFriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483D4BC11D59E8170087284A /* NotifyFriendListViewController.swift */; };
+		483D4BC41D59E8170087284A /* NotifyFriendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 483D4BC21D59E8170087284A /* NotifyFriendListViewController.xib */; };
 		488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */; };
 		488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */; };
 		488FF1AE1D3D7C1F008D5BA2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FF1AD1D3D7C1F008D5BA2 /* Status.swift */; };
@@ -98,6 +104,12 @@
 		421D4E6E1D3FF2C6006C6B32 /* push.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = push.py; sourceTree = "<group>"; };
 		421D4E6F1D3FF2C6006C6B32 /* pushcert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pushcert.pem; sourceTree = "<group>"; };
 		421D4E751D401EA1006C6B32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4809D6B61D561A5300DC326D /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		4809D6B81D5634E500DC326D /* APIServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceController.swift; sourceTree = "<group>"; };
+		483D4BBD1D59D68D0087284A /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		483D4BBE1D59D68D0087284A /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		483D4BC11D59E8170087284A /* NotifyFriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyFriendListViewController.swift; sourceTree = "<group>"; };
+		483D4BC21D59E8170087284A /* NotifyFriendListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotifyFriendListViewController.xib; sourceTree = "<group>"; };
 		488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightlyViewController.swift; sourceTree = "<group>"; };
 		488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NightlyViewController.xib; sourceTree = "<group>"; };
 		488FF1AD1D3D7C1F008D5BA2 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -242,6 +254,7 @@
 				22FD9F721D3E858B00257AD4 /* dummyUser.swift */,
 				488FF1AD1D3D7C1F008D5BA2 /* Status.swift */,
 				48E4CE8C1D3EF3CD0096AE3E /* SignifyUser.swift */,
+				4809D6B61D561A5300DC326D /* APIService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -260,8 +273,10 @@
 				488FF1C51D3E4C03008D5BA2 /* CustomizedTabBarViewController.xib */,
 				488FF1B41D3D841A008D5BA2 /* NoticeViewController.xib */,
 				488FF1C11D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.xib */,
+				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				488FF19E1D3D0657008D5BA2 /* NightlyViewController.xib */,
 				48E4CE851D3EDA730096AE3E /* MyProfileViewController.xib */,
+				483D4BC21D59E8170087284A /* NotifyFriendListViewController.xib */,
 				48E4CE891D3EE84F0096AE3E /* EditProfileViewController.xib */,
 			);
 			name = View;
@@ -279,9 +294,11 @@
 				488FF1B21D3D83FC008D5BA2 /* NoticeViewController.swift */,
 				488FF1C01D3E0C42008D5BA2 /* PhotoProfileCollectionViewCell.swift */,
 				488FF19C1D3D064E008D5BA2 /* NightlyViewController.swift */,
+				4809D6B81D5634E500DC326D /* APIServiceController.swift */,
 				650FDD371D3F8A0100D6562B /* FriendTableViewCell.swift */,
 				656C5FB31D3E551800D81943 /* FriendTableViewController.swift */,
 				48E4CE841D3EDA730096AE3E /* MyProfileViewController.swift */,
+				483D4BC11D59E8170087284A /* NotifyFriendListViewController.swift */,
 				48E4CE881D3EE84F0096AE3E /* EditProfileViewController.swift */,
 				226A418C1D40634B007FCC7F /* FriendProfileViewController.swift */,
 			);
@@ -291,6 +308,7 @@
 		65FFD0AE1D41593D0072CB1A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				483D4BBD1D59D68D0087284A /* LoadingViewController.swift */,
 				65F2716F1D3CB2420042BDA2 /* LoginViewController.swift */,
 				65F271761D3CF3C80042BDA2 /* RegisterViewController.swift */,
 				65F2717A1D3CF4080042BDA2 /* OnboardingViewController.swift */,
@@ -304,9 +322,9 @@
 		65FFD0AF1D4159790072CB1A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				483D4BBE1D59D68D0087284A /* LoadingViewController.xib */,
 				48E4CE7A1D3E658D0096AE3E /* RegisterViewController.xib */,
 				65F271701D3CB2420042BDA2 /* LoginViewController.xib */,
-				65F2717B1D3CF4080042BDA2 /* OnboardingViewController.xib */,
 				65FFD09B1D40DA470072CB1A /* FirstPageController.xib */,
 				65FFD0A71D4140A80072CB1A /* WelcomePageViewController.xib */,
 				65FFD0AB1D4149D90072CB1A /* SecondPageViewController.xib */,
@@ -402,8 +420,10 @@
 				421D4E701D3FF2C6006C6B32 /* privKey.pem in Resources */,
 				65FFD09D1D40DA470072CB1A /* FirstPageController.xib in Resources */,
 				488FF19F1D3D0657008D5BA2 /* NightlyViewController.xib in Resources */,
+				483D4BC01D59D68D0087284A /* LoadingViewController.xib in Resources */,
 				48E4CE791D3E65750096AE3E /* Montserrat-UltraLight.otf in Resources */,
 				226A417A1D400A41007FCC7F /* FriendTableViewController.xib in Resources */,
+				483D4BC41D59E8170087284A /* NotifyFriendListViewController.xib in Resources */,
 				222A2A971D3FF9060055C930 /* signifi_certs in Resources */,
 				48E4CE831D3E809B0096AE3E /* SettingViewController.xib in Resources */,
 				48E4CE8B1D3EE84F0096AE3E /* EditProfileViewController.xib in Resources */,
@@ -514,16 +534,20 @@
 				65FFD0AC1D4149D90072CB1A /* SecondPageViewController.swift in Sources */,
 				488FF1B31D3D83FC008D5BA2 /* NoticeViewController.swift in Sources */,
 				656C5FAE1D3E139500D81943 /* CustomImage.swift in Sources */,
+				483D4BBF1D59D68D0087284A /* LoadingViewController.swift in Sources */,
 				65F271711D3CB2420042BDA2 /* LoginViewController.swift in Sources */,
 				2222226C1D3EF0D500F5F22B /* StatusTableViewCell.swift in Sources */,
 				65F2715E1D3CAEA50042BDA2 /* AppDelegate.swift in Sources */,
+				4809D6B71D561A5300DC326D /* APIService.swift in Sources */,
 				22FD9F6B1D3E855F00257AD4 /* checkInViewController.swift in Sources */,
 				65F271831D3D09420042BDA2 /* CustomButton.swift in Sources */,
+				483D4BC31D59E8170087284A /* NotifyFriendListViewController.swift in Sources */,
 				48E4CE8F1D3EF5BF0096AE3E /* SignifyUserController.swift in Sources */,
 				488FF19D1D3D064E008D5BA2 /* NightlyViewController.swift in Sources */,
 				488FF1C61D3E4C03008D5BA2 /* CustomizedTabBarViewController.swift in Sources */,
 				650FDD391D3F8A0100D6562B /* FriendTableViewCell.swift in Sources */,
 				65F2717C1D3CF4080042BDA2 /* OnboardingViewController.swift in Sources */,
+				4809D6B91D5634E500DC326D /* APIServiceController.swift in Sources */,
 				65F2717F1D3CF5150042BDA2 /* ColorExtension.swift in Sources */,
 				48E4CE8D1D3EF3CD0096AE3E /* SignifyUser.swift in Sources */,
 			);
@@ -561,6 +585,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -583,7 +608,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
+				PROVISIONING_PROFILE = "f40fa5af-d38b-423c-a0d8-b586352b0dde";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -607,6 +632,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iXperience (Pty) Ltd (KC6ABGRXCW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -622,7 +648,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "9877e672-73de-4efc-8b9c-933205a1575f";
+				PROVISIONING_PROFILE = "f40fa5af-d38b-423c-a0d8-b586352b0dde";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

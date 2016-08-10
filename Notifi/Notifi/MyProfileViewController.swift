@@ -9,21 +9,42 @@
 import UIKit
 
 class MyProfileViewController: UIViewController {
+    var currentUser = SignifyUserController.sharedInstance.currentUser
 
+    @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var homeAddressLabel: UILabel!
     @IBOutlet weak var cellPhoneNumberLabel: UILabel!
-    @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let editButton = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(self.editPressed(_:)))
+        self.navigationItem.setRightBarButtonItem(editButton, animated: true)
         self.view.backgroundColor = UIColor.nightlyBackgroundGrey()
         profileImage.round()
         profileImage.backgroundColor = UIColor.brownColor()
+        let url = currentUser.profilePhotoString
+        let picurl = NSURL(string: url!)
+        profileImage.load(picurl!)
+        
         self.navigationItem.title = "My Profile"
-        //let editButton = UIBarButtonItem(title: "Edit", style: .Done, target: self, action: #selector(self.editPressed(_:)))
-        //self.navigationItem.rightBarButtonItem = editButton
-        // Do any additional setup after loading the view.
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        if currentUser.homeAddress != ""{
+            homeAddressLabel.text = currentUser.homeAddress
+        }else{
+            homeAddressLabel.text = "Home Address"
+        }
+        
+        if currentUser.cellPhone != ""{
+            cellPhoneNumberLabel.text = currentUser.cellPhone
+        }else{
+            cellPhoneNumberLabel.text = "Cell Phone Number"
+        }
+        firstNameLabel.text = currentUser.firstName
+        lastNameLabel.text = currentUser.lastName
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,18 +52,10 @@ class MyProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func editPressed(sender: UIBarButtonItem){
-        self.navigationController?.presentViewController(MyProfileViewController(), animated: false, completion: nil)
+        self.navigationController?.presentViewController(EditProfileViewController(), animated: true, completion: nil)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }

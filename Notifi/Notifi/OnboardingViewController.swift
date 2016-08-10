@@ -110,10 +110,41 @@ class OnboardingViewController: UIViewController {
                                             defaults.setObject(fbId, forKey: "currentuserfbId")
                                             defaults.setObject(firstname, forKey: "currentuserfirstname")
                                             defaults.setObject(String(url), forKey: "currentuserpicture")
+                                            defaults.setObject(false, forKey: "UseMyLocation")
                                             defaults.synchronize()
                                             
-                                            // register on server
-                                            WebDatabase.sharedInstance.resgisterUser(fbId, firstName: firstname, lastName:  lastName, profileImage: String(url))
+                                            // register/login on server
+                                            //WebDatabase.sharedInstance.resgisterUser(fbId, firstName: firstname, lastName:  lastName, profileImage: String(url))
+                                            let apiService = APIService()
+                                            let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/access/login"),method:"POST",parameters:["facebook_id": fbId, "password": fbId])
+                                            apiService.executeRequest(request, requestCompletionFunction: {respondCode, json in
+                                                if respondCode/100 == 2 {
+                                                    print("log in successfully")
+                                        APIServiceController.sharedInstance.updateProfile(["profile_pic":String(url),"first_name":firstname])
+                                            
+                                            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                                            APIServiceController.sharedInstance.updateDeviceToken(appDelegate.device_token)
+                                                APIServiceController.sharedInstance.populateFriendList()
+                                                    if json["phone_num"].stringValue != ""{
+                                                        SignifyUserController.sharedInstance.currentUser.cellPhone = json["phone_num"].stringValue
+                                                        defaults.setObject(json["phone_num"].stringValue, forKey: "PhoneNo")
+                                                        defaults.synchronize()
+                                                    }
+                                                    if json["home_address"].stringValue != ""{
+                                                        SignifyUserController.sharedInstance.currentUser.homeAddress = json["home_address"].stringValue
+                                                        defaults.setObject(json["home_address"].stringValue, forKey: "HomeAddress")
+                                                        defaults.synchronize()
+                                                    }
+                                                    if json["lastname"].stringValue != "unknown"{
+                                                        SignifyUserController.sharedInstance.currentUser.lastName = json["last_name"].stringValue
+                                                        print(json["last_name"].stringValue)
+                                                        defaults.setObject(json["last_name"].stringValue, forKey: "LastName")
+                                                        defaults.synchronize()
+                                                    }
+                                                }else{
+                                                    print("log in failure")
+                                                }
+                                            })
                                         }
                                         self.navigationController?.pushViewController(welcomepageviewcontroller, animated: true)
                                     }

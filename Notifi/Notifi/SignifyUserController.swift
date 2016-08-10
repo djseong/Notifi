@@ -21,6 +21,7 @@ class SignifyUserController{
     
 
     var currentUser = SignifyUser(lastName: "Siqing", firstName: "Xu", imageString: "0000", fbId: "")
+    
     var currentUserFbId : String = ""
 
 

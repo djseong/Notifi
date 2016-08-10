@@ -22,9 +22,10 @@ class SignifyUser:  NSObject, MKAnnotation{
     var currstatus : State = .Safe
     var statusHistory : [Status] = []
     var fbId:String?
-    
     var emergencyContactUser: SignifyUser?// = SignifyUser(lastName: "My", firstName: "Mom")
-    
+    var useLocation: Bool
+    var useNotifyFriendList: Bool
+    var notifyFriendList: [String] = []
     // This is the same as the firstName, but needs to conform to MKAnnotationProtocol
     var title: String?
     
@@ -47,7 +48,8 @@ class SignifyUser:  NSObject, MKAnnotation{
         self.title = firstName
         self.profilePhotoString = imageString
         self.fbId = fbId
-
+        self.useLocation = false
+        self.useNotifyFriendList = false
         self.cellPhone = ""
         self.homeAddress = ""
         self.coordinate =  CLLocationCoordinate2D(latitude: -34, longitude: 18.5)

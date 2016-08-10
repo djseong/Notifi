@@ -44,63 +44,14 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
 
     var rowindex : Int = 0
     var friendList :[SignifyUser] = []
-    
-    
+    var refreshTimer: NSTimer = NSTimer()
     let locationManager = CLLocationManager()
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
-            self.friendList = users
-            self.tableView.reloadData()
-            
-            
-            
-            // hardcoding location and status for a varied map
-            
-            if self.friendList.count >= 1 {
-                self.friendList[0].coordinate = CLLocationCoordinate2D(latitude: -34.024, longitude: 18.489)
-                //self.friendList[0].currstatus = .Attention
-                
-            }
-            
-            if self.friendList.count >= 2 {
-                self.friendList[1].coordinate = CLLocationCoordinate2D(latitude: -34.045, longitude: 18.503)
-                self.friendList[1].currstatus = .Help
-              
-            }
-            
-            if self.friendList.count >= 3 {
-                self.friendList[2].coordinate = CLLocationCoordinate2D(latitude: -34.040, longitude: 18.503)
-                
-                
-            }
-            
-            
-            if self.friendList.count >= 4 {
-                self.friendList[3].coordinate = CLLocationCoordinate2D(latitude: -34.033, longitude: 18.489)
-                self.friendList[3].currstatus = .Attention
-                print(self.friendList[3].title)
-                print(self.friendList[3].currstatus.rawValue)
-            }
-            
-            if self.friendList.count >= 5 {
-                print(self.friendList[4].title)
-                print(self.friendList[4].currstatus.rawValue)
-                self.friendList[4].homeAddress = "107 Main Road"
-                self.friendList[4].cellPhone = "2034450456"
-                let s1 = Status(state: .Safe, time: "5 minutes ago", user: "asd")
-                let s2 = Status(state: .Safe, time: "14 minutes ago", user: " ad")
-                self.friendList[4].statusHistory = [s1, s2]
-                
-            }
-            
-            self.mapView.addAnnotations(self.friendList)
-
-        })
+        friendList = SignifyUserController.sharedInstance.currentUser.friends
         
         
         
@@ -181,8 +132,11 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
        
         
     }
+    override func viewDidDisappear(animated: Bool) {
+        self.refreshTimer.invalidate()
+    }
     override func viewWillAppear(animated: Bool) {
-        
+        self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.populateLocation), userInfo: nil, repeats: true)
         tableView.reloadData()
     }
     
@@ -208,10 +162,61 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func populateLocation(){
+        var friendsWithLocation = [SignifyUser]()
+        let apiService = APIService()
+        let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/friendship/getlocation"),method:"GET",parameters:nil)
+        apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
+            if responseCode/100 == 2{
+                for (_,friend) in json{
+                    //game = [string, json]
+                    var latitude_value: Double = 1.2
+                    var longitude_value: Double = 1.2
+                    var friend_state: State = .Safe
+                    if let state_data = friend["state"].stringValue as? String{
+                        if state_data == "safe"{ friend_state = .Safe}
+                        else if state_data == "attention"{friend_state = .Attention}
+                        else if state_data == "help"{friend_state = .Help}
+                    }
+                    for user in self.friendList{
+                        if friend["facebook_id"].stringValue == user.fbId{
+                            user.currstatus = friend_state
+                            break
+                        }
+                    }
+                    if friend["latitude"].stringValue == "" || friend["longitude"].stringValue == "" {
+                        continue
+                    }
+                    
+                    if let latitude = friend["latitude"].stringValue as? String{latitude_value = Double(latitude)!}
+                    if let longitude = friend["longitude"].stringValue as? String{longitude_value = Double(longitude)!}
+                    let friend_coordinate = CLLocationCoordinate2D(latitude: latitude_value, longitude: longitude_value)
+                    for user in self.friendList{
+                        if friend["facebook_id"].stringValue == user.fbId{
+                            user.coordinate = friend_coordinate
+                            friendsWithLocation.append(user)
+                            break
+                        }
+                    }
+                    print(latitude_value)
+                    print(longitude_value)
+                    
+                }
+                let annotationToRemove = self.mapView.annotations.filter{ $0 !== self.mapView.userLocation }
+                self.mapView.removeAnnotations(annotationToRemove)
+                self.mapView.addAnnotations(friendsWithLocation)
+                self.tableView.reloadData()
+                self.StatusTableView.reloadData()
+                print(json.count)
+            }
+            else {
+                print(responseCode)
+                print(json)
+            }
+        })
+        
     }
+
     
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -224,7 +229,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             if friendList.count == 0 {
                 return 0
             }   else    {
-                return friendList[rowindex].statusHistory.count
+                
+                return self.friendList[self.rowindex].statusHistory.count
+                
             }
             
         }
@@ -282,8 +289,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
                 
                 let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
                     
-                    
-                    
+                APIServiceController.sharedInstance.sendRequest(self.friendList[indexPath.row].fbId!)
                 })
                 
                 alert.addAction(alertAction)
@@ -298,19 +304,20 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             
             let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath)
                 as! StatusTableViewCell
-            cell.statusTimeLabel.text = friendList[rowindex].statusHistory[indexPath.row].time
             
-            
-            if friendList[rowindex].statusHistory[indexPath.row].state == .Safe  {
-                cell.statusTypeImage.backgroundColor = UIColor.greenColor()
-            }
-            else if friendList[rowindex].statusHistory[indexPath.row].state == .Attention {
-                cell.statusTypeImage.backgroundColor = UIColor.yellowColor()
-            }
-            else {
-                cell.statusTypeImage.backgroundColor = UIColor.redColor()
-            }
-            
+                cell.statusTimeLabel.text = friendList[rowindex].statusHistory[(friendList[rowindex].statusHistory.count - 1) - indexPath.row].time
+                
+                
+                if self.friendList[self.rowindex].statusHistory[(friendList[rowindex].statusHistory.count - 1) - indexPath.row].state == .Safe  {
+                    cell.statusTypeImage.backgroundColor = UIColor.noticeGreen()
+                }
+                else if self.friendList[self.rowindex].statusHistory[(friendList[rowindex].statusHistory.count - 1) - indexPath.row].state == .Attention {
+                    cell.statusTypeImage.backgroundColor = UIColor.noticeYellow()
+                }
+                else {
+                    cell.statusTypeImage.backgroundColor = UIColor.noticeRed()
+                }
+
             return cell
         }
         
@@ -355,7 +362,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         // friendInfo stuff
         nameLabel.text = friendList[indexPath.row].title!
         rowindex = indexPath.row
-        
+            self.getAllStatus(friendList[rowindex].fbId!, onCompletion: {statusHistory in
+            self.friendList[self.rowindex].statusHistory = statusHistory
+            })
         bigProfileImage.layer.borderWidth = 2.0;
         bigProfileImage.frame.size.width = 100
         
@@ -372,13 +381,13 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
       
         
         if friendList[indexPath.row].currstatus == .Help {
-            bigProfileImage.layer.borderColor = UIColor.redColor().CGColor
+            bigProfileImage.layer.borderColor = UIColor.noticeRed().CGColor
         }
         else if friendList[indexPath.row].currstatus == .Attention {
-            bigProfileImage.layer.borderColor = UIColor.yellowColor().CGColor
+            bigProfileImage.layer.borderColor = UIColor.noticeYellow().CGColor
         }
         else {
-            bigProfileImage.layer.borderColor = UIColor.greenColor().CGColor
+            bigProfileImage.layer.borderColor = UIColor.noticeGreen().CGColor
         }
 
         
@@ -435,13 +444,13 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         
         if annotationUser.currstatus == .Help {
-            annotationView?.annotationColor = UIColor.redColor()
+            annotationView?.annotationColor = UIColor.noticeRed()
         }
         else if annotationUser.currstatus == .Attention {
-            annotationView?.annotationColor = UIColor.yellowColor()
+            annotationView?.annotationColor = UIColor.noticeYellow()
         }
         else {
-            annotationView?.annotationColor = UIColor.greenColor()
+            annotationView?.annotationColor = UIColor.noticeGreen()
         }
 
         
@@ -461,7 +470,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     override func viewWillDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
     }
-    
+
     
         
     func addAction(sender:UIBarButtonItem) {
@@ -471,7 +480,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         }
     
     func backAction(sender: UIBarButtonItem) {
-        
         self.tableView.hidden = false
         self.friendInfo.hidden = true
         navigationItem.title = "Signifi"
@@ -490,21 +498,25 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     @IBAction func callButtonPressed(sender: UIButton) {
         print("call button pressed")
-        
-        
-        
+        if friendList[rowindex].cellPhone != ""{
         if let phoneCallURL:NSURL = NSURL(string: "tel://\(friendList[rowindex].cellPhone)") {
             let application:UIApplication = UIApplication.sharedApplication()
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL);
             }
         }
-      
+        }else{
+            let alert = UIAlertController(title: "Sorry", message: "your friend has not add his or her cellphone number yet", preferredStyle: .Alert)
+            let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: nil)
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
         
     }
     
     
     @IBAction func textButtonPressed(sender: UIButton) {
+        if friendList[rowindex].cellPhone != ""{
         if (MFMessageComposeViewController.canSendText()) {
             
           
@@ -513,8 +525,13 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             controller.recipients = [friendList[rowindex].cellPhone]
             controller.messageComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
-            
         
+        }
+        }else{
+            let alert = UIAlertController(title: "Sorry", message: "your friend has not add his or her cellphone number yet", preferredStyle: .Alert)
+            let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: nil)
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 
@@ -529,7 +546,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
             
-            
+        APIServiceController.sharedInstance.sendRequest(self.friendList[self.rowindex].fbId!)
             
         })
         
@@ -539,15 +556,78 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
 
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getAllStatus(facebook_id: String, onCompletion:([Status])->Void){
+        let apiService = APIService()
+        var statusHistory = [Status]()
+        let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/friendship/gethist"),method:"POST",parameters:["facebook_id":facebook_id])
+        apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
+            if responseCode/100 == 2{
+                for (_,status) in json{
+                    let datestring = status["time"].stringValue
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+                    dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                    
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.zzz'Z'"
+                    let availableDate = dateFormatter.dateFromString(datestring)
+                    
+                    var friend_state:State = .Safe
+                    if let state_data = status["state"].stringValue as? String{
+                        if state_data == "safe"{ friend_state = .Safe}
+                        else if state_data == "attention"{friend_state = .Attention}
+                        else if state_data == "help"{friend_state = .Help}
+                    }
+                    let currentDateTime = NSDate()
+                    let seconds = currentDateTime.timeIntervalSinceDate(availableDate!)
+                    
+                    if seconds > 259200{
+                        continue
+                    }
+                    var dateString = ""
+                    if seconds <= 259200 && seconds >= 86400{
+                        let t:Int = Int(seconds/86400)
+                        if t == 1{
+                            dateString = "\(t) day ago"
+                        }else{
+                            dateString = "\(t) days ago"
+                        }
+                    }else if seconds >= 3600 && seconds < 86400{
+                        let t:Int = Int(seconds/3600)
+                        if t == 1{
+                            dateString = "\(t) hour ago"
+                        }else{
+                            dateString = "\(t) hours ago"
+                        }
+                    }else if seconds >= 60 && seconds < 3600 {
+                        let t:Int = Int(seconds/60)
+                        if t == 1{
+                            dateString = "\(t) minute ago"
+                        }else{
+                            dateString = "\(t) minutes ago"
+                        }
+                    }else if seconds > 0 && seconds < 60{
+                        let t = Int(seconds)
+                        dateString = "\(t) seconds ago"
+                    }
+                    let new_status = Status(state: friend_state, time: dateString, user: facebook_id)
+                    statusHistory.append(new_status)
+                }
+                onCompletion(statusHistory)
+                self.tableView.reloadData()
+                self.StatusTableView.reloadData()
+                
+            }
+            else {
+                print(responseCode)
+                print(json)
+                onCompletion(statusHistory)
+                self.tableView.reloadData()
+                self.StatusTableView.reloadData()
+            }
+        })
+        
     }
-    */
 
+
+   
 }

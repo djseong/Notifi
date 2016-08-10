@@ -26,6 +26,20 @@ class NightlyViewController: UIViewController {
         tabBarController?.tabBar.barTintColor = UIColor.blackColor()
         tabBarController?.tabBar.tintColor = UIColor.whiteColor()
         
+        
+        //button setting
+        safeButton.layer.borderWidth = 8
+        safeButton.layer.borderColor = UIColor.noticeGreen().CGColor
+        safeButton.titleLabel?.tintColor = UIColor.noticeGreen()
+        
+        attentionButton.layer.borderWidth = 8
+        attentionButton.layer.borderColor = UIColor.noticeButtonYellow().CGColor
+        attentionButton.titleLabel?.tintColor = UIColor.noticeYellow()
+        
+        helpButton.layer.borderWidth = 8
+        helpButton.layer.borderColor = UIColor.noticeRed().CGColor
+        helpButton.titleLabel?.tintColor = UIColor.noticeRed()
+
         //create a setting button
         let settingButton = UIBarButtonItem(image: UIImage(named:"icon_settings_stroke.png"), style: .Done, target: self, action:  #selector(self.settingPressed(_:)))
             //UIBarButtonItem(title: "Settings", style: .Done, target: self, action: #selector(self.settingPressed(_:)))
@@ -68,18 +82,21 @@ class NightlyViewController: UIViewController {
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
         //message.subscribeToTopic("/topics/cheese")
         SignifyUserController.sharedInstance.send("I am Safe")
+        APIServiceController.sharedInstance.updateState(.Safe)
         
     }
     @IBAction func attentionPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Attention)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
          SignifyUserController.sharedInstance.send("I need your attention!")
-       
-        
+         APIServiceController.sharedInstance.updateState(.Attention)
     }
     @IBAction func helpPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Help)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
+        
+        APIServiceController.sharedInstance.updateState(.Help)
+       //APIServiceController.sharedInstance.getAllStatus("1706920526235781")
         }
 
 }

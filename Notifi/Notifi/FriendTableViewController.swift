@@ -86,26 +86,28 @@ class FriendTableViewController: UITableViewController {
     
     func addFriends() {
         for friend in selectedFriend{
-            WebDatabase.sharedInstance.addContact(friend.fbId!, onCompletion: {boValue, newContact in
-                if boValue{
-                    WebDatabase.sharedInstance.findCurrentUserKey({keyIn in
-                        
-                        if let key = keyIn  {
-                            
-                            let ref = FIRDatabase.database().reference()
-                            print(key)
-                            ref.child("ios_users").child(key).child("contacts").setValue(newContact)
-                            ref.child("ios_users").child(key).child("contacts").removeAllObservers()
-                        }       else    {
-                           // let ref = FIRDatabase.database().reference()
-                            //ref.child("ios_users").child(keyIn).child("contacts").removeAllObservers()
-                        }
-                        
-                    })
-                }else{
-                    print("failed")
-                }
-            })
+//            WebDatabase.sharedInstance.addContact(friend.fbId!, onCompletion: {boValue, newContact in
+//                if boValue{
+//                    WebDatabase.sharedInstance.findCurrentUserKey({keyIn in
+//                        
+//                        if let key = keyIn  {
+//                            
+//                            let ref = FIRDatabase.database().reference()
+//                            print(key)
+//                            ref.child("ios_users").child(key).child("contacts").setValue(newContact)
+//                            ref.child("ios_users").child(key).child("contacts").removeAllObservers()
+//                        }       else    {
+//                           // let ref = FIRDatabase.database().reference()
+//                            //ref.child("ios_users").child(keyIn).child("contacts").removeAllObservers()
+//                        }
+//                        
+//                    })
+//                }else{
+//                    print("failed")
+//                }
+//            })
+            APIServiceController.sharedInstance.addFriend(friend.fbId!)
+            
         }
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let application = UIApplication.sharedApplication()
@@ -186,24 +188,21 @@ class FriendTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var isAlreadyContained = false
+            selectedRows.append(indexPath.row)
+            let dataItem = dataArr[indexPath.row]
+            let friendItem:SignifyUser = SignifyUser(lastName: dataItem.last_name, firstName: dataItem.first_name, imageString: dataItem.pictureString, fbId: dataItem.id)
+            selectedFriend.append(friendItem)
+        
+    }
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         for (index,item) in selectedRows.enumerate()    {
             if (item == indexPath.row)   {
                 
-                isAlreadyContained = true
                 selectedRows.removeAtIndex(index)
                 selectedFriend.removeAtIndex(index)
                 break
             }
         }
-        if isAlreadyContained == false  {
-            selectedRows.append(indexPath.row)
-            let dataItem = dataArr[indexPath.row]
-            let friendItem:SignifyUser = SignifyUser(lastName: dataItem.last_name, firstName: dataItem.first_name, imageString: dataItem.pictureString, fbId: dataItem.id)
-            selectedFriend.append(friendItem)
-        }
-//        tableView.reloadData()
-        
     }
     
     

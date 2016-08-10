@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -94,19 +93,37 @@
                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="20"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2f-u4-TEH">
+                    <rect key="frame" x="353" y="435" width="34" height="30"/>
+                    <state key="normal" title="Save"/>
+                    <connections>
+                        <action selector="saveButtonPressed:" destination="-1" eventType="touchUpInside" id="h3L-g3-csl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXm-lp-ZgK">
+                    <rect key="frame" x="206" y="435" width="48" height="30"/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="PVc-1u-W4d"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="sJu-0r-n4d" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0Av-FM-z6p"/>
                 <constraint firstItem="sJu-0r-n4d" firstAttribute="top" secondItem="nzA-tC-d1p" secondAttribute="bottom" constant="35.5" id="0vg-HZ-702"/>
+                <constraint firstItem="k2f-u4-TEH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="150" id="1LY-hm-xX5"/>
                 <constraint firstItem="mYs-DK-6f0" firstAttribute="top" secondItem="7f1-hz-l1f" secondAttribute="bottom" constant="30" id="2PW-tu-A5z"/>
+                <constraint firstItem="nXm-lp-ZgK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-70" id="82s-C9-Tjk"/>
                 <constraint firstItem="nzA-tC-d1p" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Aac-R3-p78"/>
+                <constraint firstItem="nXm-lp-ZgK" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="150" id="CQZ-3q-Slr"/>
                 <constraint firstItem="nzA-tC-d1p" firstAttribute="top" secondItem="Xcx-K7-hF2" secondAttribute="bottom" constant="25" id="CY2-MX-xOk"/>
                 <constraint firstItem="JCZ-DI-waU" firstAttribute="top" secondItem="nzA-tC-d1p" secondAttribute="bottom" constant="3" id="Lv3-Bc-ciW"/>
                 <constraint firstItem="7f1-hz-l1f" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-200" id="Pzy-nO-eM3"/>
                 <constraint firstItem="dLO-rE-Lnr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="R7t-B8-qAw"/>
                 <constraint firstItem="zol-qa-IAP" firstAttribute="top" secondItem="mYs-DK-6f0" secondAttribute="bottom" constant="2" id="Sdq-jl-pW3"/>
                 <constraint firstItem="7f1-hz-l1f" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="X94-Ev-75A"/>
+                <constraint firstItem="k2f-u4-TEH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="70" id="XYM-eJ-662"/>
                 <constraint firstItem="JCZ-DI-waU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ixP-kU-ZjH"/>
                 <constraint firstItem="dLO-rE-Lnr" firstAttribute="top" secondItem="Xcx-K7-hF2" secondAttribute="bottom" constant="3" id="kJw-y2-UXp"/>
                 <constraint firstItem="zol-qa-IAP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lij-rq-MYQ"/>

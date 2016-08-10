@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var tabViewController = CustomizedTabBarViewController()
-    
+    var device_token:String = ""
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -32,33 +32,82 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configure firebase
         FIRApp.configure()
-        print(FIRInstanceID.instanceID().token())
-
-        let refreshedToken = FIRInstanceID.instanceID().token()
-        print("InstanceID token: \(refreshedToken)")
+//        print(FIRInstanceID.instanceID().token())
+//
+//        let refreshedToken = FIRInstanceID.instanceID().token()
+//        print("InstanceID token: \(refreshedToken)")
         
         
         initNotificationSettings()
         
         // Add observer for InstanceID token refresh callback.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
-                                                         name: kFIRInstanceIDTokenRefreshNotification, object: nil)
-        self.initDatabase()
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
+//                                                         name: kFIRInstanceIDTokenRefreshNotification, object: nil)
+////        self.initDatabase()
+        let loadingViewController = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = loadingViewController
+        self.window?.makeKeyAndVisible()
+        
         
         // check if already logged in to facebook
+        //read defaults
         if let id: String = defaults.objectForKey("currentuserfbId") as? String {
             if let firstname: String = defaults.objectForKey("currentuserfirstname") as? String {
                 if let picture: String = defaults.objectForKey("currentuserpicture") as? String {
                     print("logged in")
                     print(id)
                     SignifyUserController.sharedInstance.currentUser = SignifyUser(lastName: "unknown", firstName: firstname, imageString: picture, fbId: id)
-                    WebDatabase.sharedInstance.resgisterUser(id, firstName: firstname, lastName: "unknown", profileImage: picture)
-                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                    self.window?.rootViewController = initTabBarController()
-                    self.window?.makeKeyAndVisible()
+                    if let bolValue:Bool = defaults.objectForKey("UseMyLocation") as? Bool{
+                    SignifyUserController.sharedInstance.currentUser.useLocation = bolValue
+                    }else{
+                    SignifyUserController.sharedInstance.currentUser.useLocation = false
+                    }
+                    if let useNotifyList:Bool = defaults.objectForKey("IfUseList") as? Bool{
+                        SignifyUserController.sharedInstance.currentUser.useNotifyFriendList = useNotifyList
+                    }else{
+                         SignifyUserController.sharedInstance.currentUser.useNotifyFriendList = false
+                    }
+                    if let notifyList: [String] = defaults.objectForKey("SignifyFriendsList") as? [String]{
+                        SignifyUserController.sharedInstance.currentUser.notifyFriendList = notifyList
+                    }
+                    if let homeAddress: String = defaults.objectForKey("HomeAddress") as? String{
+                         SignifyUserController.sharedInstance.currentUser.homeAddress = homeAddress
+                    }
+                    if let phoneNo: String = defaults.objectForKey("PhoneNo") as? String{
+                        SignifyUserController.sharedInstance.currentUser.cellPhone = phoneNo
+                    }
+                    if let lastName: String = defaults.objectForKey("LastName") as? String{
+                        SignifyUserController.sharedInstance.currentUser.lastName = lastName
+                    }
+                    
+
+                    //User automatically login with user default
+                    let apiService = APIService()
+                    let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/access/login"),method:"POST",parameters:["facebook_id": id, "password": id])
+                    apiService.executeRequest(request, requestCompletionFunction: {respondCode, json in
+                        if respondCode/100 == 2 {
+                            print("log in successfully")
+                            APIServiceController.sharedInstance.populateFriendList()
+                            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                            self.window?.rootViewController = self.initTabBarController()
+                            self.window?.makeKeyAndVisible()
+                            APIServiceController.sharedInstance.updateDeviceToken(self.device_token)
+                            
+                        }else{
+                            print("log in failure")
+                            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                            self.window?.rootViewController = navigationcontroller
+                            //self.window?.rootViewController = tabViewController
+                            self.window?.makeKeyAndVisible()
+                        }
+                    })
+
+                    
                 }
             }
         }
+        
         else {
             print("not logged in ")
             //TODO uncomment this line below to simulate being log in
@@ -91,13 +140,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // [START refresh_token]
-    func tokenRefreshNotification(notification: NSNotification) {
-        let refreshedToken = FIRInstanceID.instanceID().token()!
-        print("InstanceID token: \(refreshedToken)")
-        
-        // Connect to FCM since connection may have failed when attempted before having a token.
-        connectToFcm()
-    }
+//    func tokenRefreshNotification(notification: NSNotification) {
+//        let refreshedToken = FIRInstanceID.instanceID().token()!
+//        print("InstanceID token: \(refreshedToken)")
+//        
+//        // Connect to FCM since connection may have failed when attempted before having a token.
+//        connectToFcm()
+//    }
     // [END refresh_token]
 
 
@@ -187,10 +236,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if identifier == "ATTENTION"{
             print("I need attention")
             StatusController.sharedInstance.changeCurrentState(.Attention)
+            APIServiceController.sharedInstance.updateState(.Attention)
+            completionHandler()
             
         }else if identifier == "SAFE"{
             print("I am safe")
             StatusController.sharedInstance.changeCurrentState(.Safe)
+            APIServiceController.sharedInstance.updateState(.Safe)
+            completionHandler()
         }
         
     }
@@ -244,17 +297,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
-        var tokenString = ""
+//        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+//        var tokenString = ""
         
-        for i in 0..<deviceToken.length {
-            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
-        }
-        
-        print("DeviceToken:", tokenString)
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Prod)
-        print("deviceToken:",deviceToken)
-        connectToFcm()
+//        for i in 0..<deviceToken.length {
+//            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+//        }
+//        
+//        //print("DeviceToken:", tokenString)
+//        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Prod)
+          print("deviceToken:",deviceToken)
+          device_token = String(deviceToken)
+          //print(device_token)
+//        connectToFcm()
         //UserController.sharedInstance.registerPushToken(tokenString)
     }
     
@@ -265,18 +320,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func connectToFcm() {
         
         
-        FIRMessaging.messaging().connectWithCompletion{(error) in
-            if (error != nil) {
-                print("Unable to connect with FCM. \(error)")
-            } else {
-                print("Connected to FCM.")
-                
-//                SignifyUserController.sharedInstance.sendNote([""], alert:"alert", key:"")
-//                SignifyUserController.sharedInstance.send("wwww")
-            }
-            
-            
-        }
+//        FIRMessaging.messaging().connectWithCompletion{(error) in
+//            if (error != nil) {
+//                print("Unable to connect with FCM. \(error)")
+//            } else {
+//                print("Connected to FCM.")
+//                
+////                SignifyUserController.sharedInstance.sendNote([""], alert:"alert", key:"")
+////                SignifyUserController.sharedInstance.send("wwww")
+//            }
+//            
+//            
+//        }
         
     }
     

@@ -18,17 +18,28 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var messageLabel: UILabel!
     var navBar = UINavigationBar()
-    var friendList = [SignifyUser]()
+    var friendList = SignifyUserController.sharedInstance.currentUser.friends
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
-            self.friendList = users
-            self.collectionView.reloadData()
-            self.messageLabel.text = "was sent to \(self.friendList.count) friends"
-            //self.tableView.reloadData()
-        })
+//        WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
+//            self.friendList = users
+//            self.collectionView.reloadData()
+//            self.messageLabel.text = "was sent to \(self.friendList.count) friends"
+//            //self.tableView.reloadData()
+//        })
+        if SignifyUserController.sharedInstance.currentUser.useNotifyFriendList{
+            friendList = []
+            for user_id in SignifyUserController.sharedInstance.currentUser.notifyFriendList{
+                for friend in SignifyUserController.sharedInstance.currentUser.friends{
+                    if user_id == friend.fbId!{
+                        friendList.append(friend)
+                        break
+                    }
+                }
+            }
+        }
         messageLabel.text = "was sent to \(friendList.count) friends"
         
         navBar.barTintColor = UIColor.blackColor()
