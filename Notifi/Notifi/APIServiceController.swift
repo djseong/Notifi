@@ -13,7 +13,7 @@ import SwiftyJSON
 class APIServiceController{
     static var sharedInstance = APIServiceController()
     let apiService = APIService()
-    
+    //all the api calls which the app can use anywhere
     func updateDeviceToken(device_token: String){
         let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/admin/device_token"),method:"POST",parameters:["device_token":device_token])
         apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
@@ -57,20 +57,6 @@ class APIServiceController{
         })
     }
     
-    func addFriend(facebook_id: String){
-        let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/friendship/add"),method:"POST",parameters:["facebook_id":facebook_id])
-        apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
-            if responseCode/100 == 2{
-                print("successfully add friend")
-            }
-            else {
-                print(responseCode)
-                print(json)
-                
-            }
-        })
-        
-    }
     func updateState(state: State){
         var state_string: String
         if state == .Safe{ state_string = "safe"
@@ -126,30 +112,31 @@ class APIServiceController{
                     var firstName = "Unknown"
                     var imageString = ""
                     var friend_state: State = .Safe
-                    if let fbId = friend["facebook_id"].stringValue as? String {facebook_id = fbId}
+                    if friend["facebook_id"].stringValue != "" {facebook_id = friend["facebook_id"].stringValue }
                     print(facebook_id)
-                    if let first_name = friend["firstname"].stringValue as? String{firstName = first_name}
+                    if friend["firstname"].stringValue != ""{firstName = friend["firstname"].stringValue}
                     print(firstName)
-                    if let image_string = friend["profile_pic"].stringValue as? String{imageString = image_string}
-                    if let last_name = friend["lastname"].stringValue as? String{lastName = last_name}
-                    if let state_data = friend["state"].stringValue as? String{
-                        if state_data == "safe"{ friend_state = .Safe}
-                        else if state_data == "attention"{friend_state = .Attention}
-                        else if state_data == "help"{friend_state = .Help}
+                    if friend["profile_pic"].stringValue != ""{imageString = friend["profile_pic"].stringValue}
+                    if friend["lastname"].stringValue != ""{lastName = friend["lastname"].stringValue}
+                    if friend["state"].stringValue != ""{
+                        if friend["state"].stringValue == "safe"{ friend_state = .Safe}
+                        else if friend["state"].stringValue == "attention"{friend_state = .Attention}
+                        else if friend["state"].stringValue == "help"{friend_state = .Help}
                     }
                     let newFriend = SignifyUser(lastName: lastName, firstName: firstName, imageString: imageString, fbId: facebook_id)
                     newFriend.cellPhone = friend["phone_num"].stringValue
                     newFriend.homeAddress = friend["home_address"].stringValue
                     newFriend.currstatus = friend_state
+                    newFriend.emerCellPhone = friend["emer_phone_num"].stringValue
                     friendList.append(newFriend)
                    
                 }
                 SignifyUserController.sharedInstance.currentUser.friends = friendList
-                print(json.count)
+                //print(json.count)
             }
             else {
-                print(responseCode)
-                print(json)
+                //print(responseCode)
+                //print(json)
                 }
         })
     }

@@ -84,29 +84,25 @@ class FriendTableViewController: UITableViewController {
         loader.startAnimating()
     }
     
+    //add friend to the server and then refresh the friend list in local
     func addFriends() {
+        let apiService = APIService()
         for friend in selectedFriend{
-//            WebDatabase.sharedInstance.addContact(friend.fbId!, onCompletion: {boValue, newContact in
-//                if boValue{
-//                    WebDatabase.sharedInstance.findCurrentUserKey({keyIn in
-//                        
-//                        if let key = keyIn  {
-//                            
-//                            let ref = FIRDatabase.database().reference()
-//                            print(key)
-//                            ref.child("ios_users").child(key).child("contacts").setValue(newContact)
-//                            ref.child("ios_users").child(key).child("contacts").removeAllObservers()
-//                        }       else    {
-//                           // let ref = FIRDatabase.database().reference()
-//                            //ref.child("ios_users").child(keyIn).child("contacts").removeAllObservers()
-//                        }
-//                        
-//                    })
-//                }else{
-//                    print("failed")
-//                }
-//            })
-            APIServiceController.sharedInstance.addFriend(friend.fbId!)
+            let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/friendship/add"),method:"POST",parameters:["facebook_id":friend.fbId!])
+            apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
+                if responseCode/100 == 2{
+                    print("successfully add friend")
+                    //populate friend list if friend added
+                    if friend == self.selectedFriend[self.selectedFriend.count - 1]{
+                        APIServiceController.sharedInstance.populateFriendList()
+                    }
+                }
+                else {
+                    print(responseCode)
+                    print(json)
+                    
+                }
+            })
             
         }
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -118,7 +114,7 @@ class FriendTableViewController: UITableViewController {
     
     
 
-    
+    //get all friends from facebook
     func getAllFriends (after: String, onCompletion: () -> Void) {
         let friendRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields" : "id, first_name, last_name, email, picture.type(large)", "after" : after], HTTPMethod: "GET")
         friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -127,12 +123,7 @@ class FriendTableViewController: UITableViewController {
                 for friend in friends {
                     print(friend)
                     let dataItem = DataItem(first_name: friend["first_name"] as! String, last_name: friend["last_name"] as! String, id: friend["id"] as! String, pictureString: friend["picture"]!["data"]!["url"] as! String)
-               
-                    
-                // still crashes since friend don't even have an email field if the person has no email 
-                /*    if friend["email"] != nil {
-                        dataItem.email = friend["email"]
-                    } */
+
 
                         self.dataArr.append(dataItem)
                     
@@ -161,7 +152,6 @@ class FriendTableViewController: UITableViewController {
     
     
 
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -178,7 +168,7 @@ class FriendTableViewController: UITableViewController {
         
         cell.nameLabel.text = dataArr[indexPath.row].first_name
         let url = dataArr[indexPath.row].pictureString
-        let picurl = NSURL(string: url as! String)
+        let picurl = NSURL(string: url )
         //cell.ImageView.round()
         cell.ImageView.load(picurl!)
 
@@ -186,6 +176,7 @@ class FriendTableViewController: UITableViewController {
         return cell
     }
     
+    //enable the user to select a friend or deselect a friend
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
             selectedRows.append(indexPath.row)

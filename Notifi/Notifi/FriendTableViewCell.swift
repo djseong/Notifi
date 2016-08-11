@@ -21,7 +21,6 @@ class FriendTableViewCell: UITableViewCell {
         
         self.ImageView.clipsToBounds = true
         self.ImageView.layer.cornerRadius = 50
-        
     }
     
 

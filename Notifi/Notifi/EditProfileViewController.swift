@@ -9,6 +9,7 @@
 import UIKit
 
 class EditProfileViewController: UIViewController,UITextFieldDelegate {
+    let usePersonalProfile = SignifyUserController.sharedInstance.UsePersonalProfile
     let currentUser = SignifyUserController.sharedInstance.currentUser
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -26,11 +27,18 @@ class EditProfileViewController: UIViewController,UITextFieldDelegate {
         let picurl = NSURL(string: url!)
         profileImage.load(picurl!)
         
-        
+        if usePersonalProfile{
         self.firstNameField.text = currentUser.firstName
         self.lastNameField.text = currentUser.lastName
         self.cellPhoneField.text = currentUser.cellPhone
         self.homeAddressField.text = currentUser.homeAddress
+        }else{
+            self.firstNameField.text = currentUser.emerFirstName
+            self.lastNameField.text = currentUser.emerLastName
+            self.cellPhoneField.text = currentUser.emerCellPhone
+            self.homeAddressField.hidden = true
+            self.profileImage.hidden = true
+        }
        
         //delegate
         self.firstNameField.delegate = self
@@ -42,6 +50,7 @@ class EditProfileViewController: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func saveButtonPressed(sender: UIButton) {
+        if usePersonalProfile{
         //set current version
         SignifyUserController.sharedInstance.currentUser.lastName = lastNameField.text!
         SignifyUserController.sharedInstance.currentUser.cellPhone = cellPhoneField.text!
@@ -55,6 +64,21 @@ class EditProfileViewController: UIViewController,UITextFieldDelegate {
         defaults.setObject(cellPhoneField.text!, forKey: "PhoneNo")
         defaults.setObject(homeAddressField.text!, forKey: "HomeAddress")
         defaults.setObject(lastNameField.text!, forKey: "LastName")
+        defaults.synchronize()
+        }else{
+             //set current version
+            SignifyUserController.sharedInstance.currentUser.emerFirstName = firstNameField.text!
+            SignifyUserController.sharedInstance.currentUser.emerLastName = lastNameField.text!
+            SignifyUserController.sharedInstance.currentUser.emerCellPhone = cellPhoneField.text!
+            //set for remote database
+            APIServiceController.sharedInstance.updateProfile(["emer_phone_num":cellPhoneField.text!])
+            //set for default
+            defaults.setObject(cellPhoneField.text!, forKey: "EmerPhoneNo")
+            defaults.setObject(firstNameField.text!, forKey: "EmerFirstName")
+            defaults.setObject(lastNameField.text!, forKey: "EmerLastName")
+            defaults.synchronize()
+            
+        }
         
         self.dismissViewControllerAnimated(true, completion: nil)
 

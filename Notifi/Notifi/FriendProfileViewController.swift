@@ -89,7 +89,7 @@ class FriendProfileViewController: UIViewController, MFMessageComposeViewControl
     
     
     
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
         //... handle sms screen actions
         self.dismissViewControllerAnimated(true, completion: nil)
     }

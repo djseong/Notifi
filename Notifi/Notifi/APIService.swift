@@ -27,7 +27,7 @@ class APIService{
         //presentingViewController?.addLoadingOverlay()
         
         urlRequest.responseJSON { returnedData -> Void in  //execute the request and give us JSON response data
-            print(returnedData)
+            //print(returnedData)
             //the web service is now done. Remove the loading overlay
             //presentingViewController?.removeLoadingOverlay()
             
@@ -35,7 +35,7 @@ class APIService{
             let success = returnedData.result.isSuccess
             if (success)    {
                 
-                var json = JSON(returnedData.result.value!)
+                let json = JSON(returnedData.result.value!)
                 let serverResponseCode = returnedData.response!.statusCode //since the web service was a success, we know there is a .response value, so we can request the value gets unwrapped with .response!
                 
                 //                let headerData = returnedData.response?.allHeaderFields

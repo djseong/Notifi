@@ -75,37 +75,37 @@ class RegisterViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     // Facebook Delegate methods
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
-        
-        if ((error) != nil)
-        {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, last_name, email, picture.type(large)"])
-            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                self.firstNameField.text = result.valueForKey("first_name") as! String
-                self.lastNameField.text = result.valueForKey("last_name") as! String
-                self.emailField.text = result.valueForKey("email") as! String
-                let titletext = NSAttributedString(string: "Successfully Registered")
-                self.fbRegisterButton.setAttributedTitle(titletext, forState: .Normal)
-                let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
-                if url != nil {
-                    let picurl = NSURL(string: url! as! String)
-                    let data = NSData(contentsOfURL: picurl!)
-                    self.profileImage.image = UIImage(data: data!)
-                }
-                if let name = result.valueForKey("name") as? String {
-                    self.currentUserName = name
-                }
-                
-                
-            })
-            
-        }
+//        print("User Logged In")
+//        
+//        if ((error) != nil)
+//        {
+//            // Process error
+//        }
+//        else if result.isCancelled {
+//            // Handle cancellations
+//        }
+//        else {
+//            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "first_name, last_name, email, picture.type(large)"])
+//            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//                self.firstNameField.text = result.valueForKey("first_name") as! String
+//                self.lastNameField.text = result.valueForKey("last_name") as! String
+//                self.emailField.text = result.valueForKey("email") as! String
+//                let titletext = NSAttributedString(string: "Successfully Registered")
+//                self.fbRegisterButton.setAttributedTitle(titletext, forState: .Normal)
+//                let url = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url")
+//                if url != nil {
+//                    let picurl = NSURL(string: url! as! String)
+//                    let data = NSData(contentsOfURL: picurl!)
+//                    self.profileImage.image = UIImage(data: data!)
+//                }
+//                if let name = result.valueForKey("name") as? String {
+//                    self.currentUserName = name
+//                }
+//                
+//                
+//            })
+//            
+//        }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {

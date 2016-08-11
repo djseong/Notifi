@@ -8,8 +8,7 @@
 
 import UIKit
 import FBSDKCoreKit
-import Firebase
-import FirebaseMessaging
+
 
 
 @UIApplicationMain
@@ -30,20 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set up nsuser
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        // Configure firebase
-        FIRApp.configure()
-//        print(FIRInstanceID.instanceID().token())
-//
-//        let refreshedToken = FIRInstanceID.instanceID().token()
-//        print("InstanceID token: \(refreshedToken)")
-        
-        
         initNotificationSettings()
         
-        // Add observer for InstanceID token refresh callback.
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
-//                                                         name: kFIRInstanceIDTokenRefreshNotification, object: nil)
-////        self.initDatabase()
         let loadingViewController = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = loadingViewController
@@ -80,7 +67,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let lastName: String = defaults.objectForKey("LastName") as? String{
                         SignifyUserController.sharedInstance.currentUser.lastName = lastName
                     }
-                    
+                    if let emerFirstName: String = defaults.objectForKey("EmerFirstName") as? String{
+                        SignifyUserController.sharedInstance.currentUser.emerFirstName = emerFirstName
+                    }
+                    if let emerLastName: String = defaults.objectForKey("EmerLastName") as? String{
+                        SignifyUserController.sharedInstance.currentUser.emerLastName = emerLastName
+                    }
+                    if let emerCellPhone: String = defaults.objectForKey("EmerPhoneNo") as? String{
+                        SignifyUserController.sharedInstance.currentUser.emerCellPhone = emerCellPhone
+                    }
 
                     //User automatically login with user default
                     let apiService = APIService()
@@ -110,15 +105,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         else {
             print("not logged in ")
-            //TODO uncomment this line below to simulate being log in
-            //navigationcontroller = UINavigationController(rootViewController: WelcomePageViewController(nibName: "WelcomePageViewController",bundle: nil))
             navigationcontroller.navigationBar.barTintColor = UIColor.blackColor()
             navigationcontroller.navigationBar.barStyle = UIBarStyle.Black
             navigationcontroller.navigationBar.tintColor = UIColor.whiteColor()
             
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             self.window?.rootViewController = navigationcontroller
-            //self.window?.rootViewController = tabViewController
             self.window?.makeKeyAndVisible()
         }
         
@@ -126,33 +118,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 
-    func initDatabase() {
-        
-//        let ref = FIRDatabase.database().reference()
-//        
-//        let refHandle = ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
-//            let fullDatabase = snapshot.value as! [String : AnyObject]
-//          print("herehere")
-//            print(fullDatabase)
-//        })
-    }
-
-    
-    
-    // [START refresh_token]
-//    func tokenRefreshNotification(notification: NSNotification) {
-//        let refreshedToken = FIRInstanceID.instanceID().token()!
-//        print("InstanceID token: \(refreshedToken)")
-//        
-//        // Connect to FCM since connection may have failed when attempted before having a token.
-//        connectToFcm()
-//    }
-    // [END refresh_token]
 
 
     func initNotificationSettings() {
         
-        // increment Action
+        // Safe Action
         let incrementAction = UIMutableUserNotificationAction()
         incrementAction.identifier = "SAFE"
         incrementAction.title = "Safe"
@@ -160,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         incrementAction.authenticationRequired = true
         incrementAction.destructive = false
         
-        // decrement Action
+        // Attention Action
         let decrementAction = UIMutableUserNotificationAction()
         decrementAction.identifier = "ATTENTION"
         decrementAction.title = "Attention"
@@ -168,20 +138,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         decrementAction.authenticationRequired = true
         decrementAction.destructive = false
         
-        // reset Action
-        let resetAction = UIMutableUserNotificationAction()
-        resetAction.identifier = "RESET_ACTION"
-        resetAction.title = "Reset"
-        resetAction.activationMode = UIUserNotificationActivationMode.Foreground
-        // NOT USED resetAction.authenticationRequired = true
-        resetAction.destructive = true
         
         // Category
         let counterCategory = UIMutableUserNotificationCategory()
         counterCategory.identifier = "COUNTER_CATEGORY"
         
         // A. Set actions for the default context
-        counterCategory.setActions([incrementAction, decrementAction, resetAction],
+        counterCategory.setActions([incrementAction, decrementAction],
                                    forContext: UIUserNotificationActionContext.Default)
         
         // B. Set actions for the minimal context
@@ -190,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: counterCategory))  // types are UIUserNotificationType members
         
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: NSSet(object: counterCategory) as! Set<UIUserNotificationCategory>)
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: NSSet(object: counterCategory) as? Set<UIUserNotificationCategory>)
         
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
 
@@ -199,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func initTabBarController() -> CustomizedTabBarViewController{
-        var tabViewController = CustomizedTabBarViewController()
+        let tabViewController = CustomizedTabBarViewController()
 
         let nightlyViewController = NightlyViewController()
 
@@ -236,6 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if identifier == "ATTENTION"{
             print("I need attention")
             StatusController.sharedInstance.changeCurrentState(.Attention)
+            
             APIServiceController.sharedInstance.updateState(.Attention)
             completionHandler()
             
@@ -276,14 +240,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print ("received notification")
         
         //first detect if the notification provided a uuid for a sensor to be alarmed.
-        let aps = userInfo["aps"]
+        _ = userInfo["aps"]
         print ("aps \(userInfo)")
-//        if let alarmedUuid = aps!["uuid"]  {
-//            print ("uuid in question: |\(alarmedUuid)|")
-//            //go to the home screen, where the sensors are displayed, and refresh emmediately. The state of alarm is fetched along with the other information about the sensors
-//            
-//            
-//        }
+
         
     }
     
@@ -297,42 +256,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-//        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
-//        var tokenString = ""
-        
-//        for i in 0..<deviceToken.length {
-//            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
-//        }
-//        
-//        //print("DeviceToken:", tokenString)
-//        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Prod)
+        //get device token
           print("deviceToken:",deviceToken)
           device_token = String(deviceToken)
-          //print(device_token)
-//        connectToFcm()
-        //UserController.sharedInstance.registerPushToken(tokenString)
-    }
+        }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Failed to register:", error)
-        //UserController.sharedInstance.registerPushToken("failed_to_register_for_ios_push_notes")
-    }
-    func connectToFcm() {
-        
-        
-//        FIRMessaging.messaging().connectWithCompletion{(error) in
-//            if (error != nil) {
-//                print("Unable to connect with FCM. \(error)")
-//            } else {
-//                print("Connected to FCM.")
-//                
-////                SignifyUserController.sharedInstance.sendNote([""], alert:"alert", key:"")
-////                SignifyUserController.sharedInstance.send("wwww")
-//            }
-//            
-//            
-//        }
-        
     }
     
 }

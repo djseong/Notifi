@@ -23,12 +23,7 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        WebDatabase.sharedInstance.retriveContact(onCOmpletion: {users in
-//            self.friendList = users
-//            self.collectionView.reloadData()
-//            self.messageLabel.text = "was sent to \(self.friendList.count) friends"
-//            //self.tableView.reloadData()
-//        })
+        //check if user select his or her friends to send to
         if SignifyUserController.sharedInstance.currentUser.useNotifyFriendList{
             friendList = []
             for user_id in SignifyUserController.sharedInstance.currentUser.notifyFriendList{
@@ -114,11 +109,9 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-        //let userList = [icon_image,icon_image,icon_image,icon_image]
         let newCell = collectionView.dequeueReusableCellWithReuseIdentifier("CellForPhoto", forIndexPath: indexPath) as! PhotoProfileCollectionViewCell
         let url = friendList[indexPath.row].profilePhotoString
         let picurl = NSURL(string: url!)
-        //cell.ImageView.round()
         newCell.contentImage.load(picurl!)
         return newCell
     }
@@ -126,7 +119,6 @@ class NoticeViewController: UIViewController,UICollectionViewDelegate, UICollect
     @IBAction func okayPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
     
     @IBAction func call911ButtonPressed(sender: UIButton) {
         if let phoneCallURL:NSURL = NSURL(string: "tel://911") {

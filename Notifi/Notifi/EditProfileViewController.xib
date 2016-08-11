@@ -9,6 +9,8 @@
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
+            <string>Montserrat-UltraLight</string>
+            <string>Montserrat-UltraLight</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -94,15 +96,21 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2f-u4-TEH">
-                    <rect key="frame" x="353" y="435" width="34" height="30"/>
-                    <state key="normal" title="Save"/>
+                    <rect key="frame" x="343" y="429" width="53" height="42"/>
+                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="24"/>
+                    <state key="normal" title="Save">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="saveButtonPressed:" destination="-1" eventType="touchUpInside" id="h3L-g3-csl"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXm-lp-ZgK">
-                    <rect key="frame" x="206" y="435" width="48" height="30"/>
-                    <state key="normal" title="Cancel"/>
+                    <rect key="frame" x="190" y="429" width="80" height="42"/>
+                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="24"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="PVc-1u-W4d"/>
                     </connections>

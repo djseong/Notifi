@@ -15,18 +15,24 @@ import CoreLocation
 class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     let locationManager = CLLocationManager()
     let defaults = NSUserDefaults.standardUserDefaults()
+    
 
     @IBAction func switchTurned(sender: UISwitch) {
         if sender.on{
             let alert = UIAlertController(title: "Your GPS is on", message: "By turning on the GPS, your friends will be able to see you on the map", preferredStyle: .Alert)
             let alertAction = UIAlertAction(title: "Okay, I see", style: .Cancel, handler: nil)
+            
+            //see/request if the user agree to use the location
             locationManager.requestAlwaysAuthorization()
             let location_status = CLLocationManager.authorizationStatus()
-            defaults.setObject(true, forKey: "UseMyLocation")
-            defaults.synchronize()
             if location_status == CLAuthorizationStatus.AuthorizedAlways{
-            SignifyUserController.sharedInstance.currentUser.useLocation = true
-            locationSwitch = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.updateLocation), userInfo: self, repeats: true)
+                //set up current data a constant functioning function will be called until the switch is turned off
+                SignifyUserController.sharedInstance.currentUser.useLocation = true
+                SignifyUserController.sharedInstance.locationSwitch = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.updateLocation), userInfo: self, repeats: true)
+                
+                //set user default so that the data will be remembered next time
+                defaults.setObject(true, forKey: "UseMyLocation")
+                defaults.synchronize()
             }else{
                 print("We are not allowed to use your location")
             }
@@ -37,10 +43,13 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }else{
             let alert = UIAlertController(title: "Your GPS is off", message: "By turning off the GPS, your friends will not be able to see you on the map", preferredStyle: .Alert)
             let alertAction = UIAlertAction(title: "Okay, I see", style: .Cancel, handler: nil)
+            //set up both user defaults and current version of data
             SignifyUserController.sharedInstance.currentUser.useLocation = false
-            locationSwitch.invalidate()
             defaults.setObject(false, forKey: "UseMyLocation")
             defaults.synchronize()
+            //invalidate the contantly ran function
+            SignifyUserController.sharedInstance.locationSwitch.invalidate()
+            //make the api call to make user's location coordinates null
             APIServiceController.sharedInstance.disableLocation()
             alert.addAction(alertAction)
             
@@ -51,7 +60,6 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var switchGPS: UISwitch!
     var settingArray = ["My Profile","Emergency Contact", "Edit Friend List","Edit Signifi Friend List", "", "Logout"]
-    var locationSwitch = NSTimer()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,11 +79,11 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         switchGPS.layer.cornerRadius = 16
         
         switchGPS.on = SignifyUserController.sharedInstance.currentUser.useLocation
-        
+        //set up switch label font
         gpsLabel.font = UIFont(name: "Montserrat-UltraLight", size: 20)
 
     }
-
+   //the api function to update user location to current user location 
     func updateLocation(){
         let apiService = APIService()
         let locationManager = CLLocationManager()
@@ -84,8 +92,6 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/admin/location"),method:"POST",parameters:["latitude":String(latitude),"longitude":String(longitude)])
         apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
             if responseCode/100 == 2{
-                print(json)
-                print(responseCode)
             }
             else {
                 print(responseCode)
@@ -109,10 +115,13 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return newCell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // see which row the user select and lead them to different pages
         if indexPath.row == 0{
+            SignifyUserController.sharedInstance.UsePersonalProfile = true
             navigationController?.pushViewController(MyProfileViewController(), animated: true)
         }
         else if indexPath.row == 1{
+            SignifyUserController.sharedInstance.UsePersonalProfile = false
             navigationController?.pushViewController(MyProfileViewController(), animated: true)
         }
         else if indexPath.row == 2 {
@@ -124,15 +133,7 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         else if indexPath.row == 5 {
             self.fbLogout()
         }
-//        else if indexPath.row == 6 {
-//            let alert = UIAlertController(title: "LOL", message: "",
-//                                          preferredStyle: UIAlertControllerStyle.Alert)
-//            let alertAction = UIAlertAction(title: "Okay", style: .Cancel, handler: { (action) in
-//            })
-//            alert.addAction(alertAction)
-//            self.presentViewController(alert, animated: true, completion: nil)
-//
-//        }
+
     }
     
     

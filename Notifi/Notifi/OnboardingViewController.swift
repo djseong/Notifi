@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
-import Firebase
+
 
 class OnboardingViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -67,21 +67,7 @@ class OnboardingViewController: UIViewController {
                 
                 let defaults = NSUserDefaults.standardUserDefaults()
                 
-                //firebase connection
-                let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-                FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-                    // ...
-                    print("firebase returned")
-                    print(user)
-                    if (error != nil) {
-                        //
-                        print("firebase login error: \(error)")
-                    }
-                    else if result.isCancelled {
-                        print("facebook login cancelled")
-                    }
-                    else {
-                        //log in to app - set user defaults
+                //log in to app - set user defaults
 
                         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, first_name, picture.type(large)"])
 
@@ -114,7 +100,6 @@ class OnboardingViewController: UIViewController {
                                             defaults.synchronize()
                                             
                                             // register/login on server
-                                            //WebDatabase.sharedInstance.resgisterUser(fbId, firstName: firstname, lastName:  lastName, profileImage: String(url))
                                             let apiService = APIService()
                                             let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/access/login"),method:"POST",parameters:["facebook_id": fbId, "password": fbId])
                                             apiService.executeRequest(request, requestCompletionFunction: {respondCode, json in
@@ -154,8 +139,7 @@ class OnboardingViewController: UIViewController {
                                 })
                                 
                                     self.activityIndicator.stopAnimating()
-                                    self.activityIndicator.hidden = true//let data = NSData(contentsOfURL: picurl!)
-                                    //self.profileImage.load(picurl!) //= UIImage(data: data!)
+                                    self.activityIndicator.hidden = true
                                 }
                                 
                             }
@@ -164,11 +148,10 @@ class OnboardingViewController: UIViewController {
                     }
                     
                 
-            }
+            
+        
         }
-        }
-//        let loginviewcontroller = LoginViewController(nibName: "LoginViewController", bundle: nil)
-//        self.navigationController?.pushViewController(loginviewcontroller, animated: true)
+
     }
 
 }

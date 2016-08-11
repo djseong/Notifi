@@ -25,6 +25,7 @@ class NotifyFriendListViewController: UIViewController,UITableViewDelegate, UITa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsMultipleSelection = true
+        if friendList.count > 0{
         for index in 0...friendList.count-1{
             for selected in selectedFriend{
                 if friendList[index].fbId == selected{
@@ -33,6 +34,7 @@ class NotifyFriendListViewController: UIViewController,UITableViewDelegate, UITa
                     selectedRows.append(index)
                 }
             }
+        }
         }
         
         //set up switch

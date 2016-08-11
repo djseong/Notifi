@@ -25,6 +25,9 @@ class SignifyUser:  NSObject, MKAnnotation{
     var emergencyContactUser: SignifyUser?// = SignifyUser(lastName: "My", firstName: "Mom")
     var useLocation: Bool
     var useNotifyFriendList: Bool
+    var emerFirstName: String
+    var emerLastName: String
+    var emerCellPhone: String
     var notifyFriendList: [String] = []
     // This is the same as the firstName, but needs to conform to MKAnnotationProtocol
     var title: String?
@@ -52,7 +55,10 @@ class SignifyUser:  NSObject, MKAnnotation{
         self.useNotifyFriendList = false
         self.cellPhone = ""
         self.homeAddress = ""
-        self.coordinate =  CLLocationCoordinate2D(latitude: -34, longitude: 18.5)
+        self.emerFirstName = ""
+        self.emerLastName = ""
+        self.emerCellPhone = ""
+        self.coordinate =  CLLocationCoordinate2D(latitude: 800, longitude: 800)
 
         
     }

@@ -53,42 +53,28 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         super.viewDidLoad()
         friendList = SignifyUserController.sharedInstance.currentUser.friends
         
-        
-        
-        // Do any additional setup after loading the view.
+        //delegate all the important elements in this view
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
-          StatusTableView.delegate = self
+        StatusTableView.delegate = self
         StatusTableView.dataSource = self
 
         
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         navigationController!.navigationBar.barStyle = UIBarStyle.Black
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-
-        
         
         tableView.registerNib(UINib(nibName: "customCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         tableView.rowHeight = 65
         
-        
         StatusTableView.registerNib(UINib(nibName: "StatusTableViewCell", bundle: nil), forCellReuseIdentifier: "statusCell")
         StatusTableView.rowHeight = 36
-        
-        
-        
     
         // this is to remove the empty space on the top of the table view. ns if it breaks anything lol
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        
         print(friendList.count)
-        
-        
-        
-        
         locationManager.requestWhenInUseAuthorization()
         
         
@@ -137,6 +123,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     }
     override func viewWillAppear(animated: Bool) {
         self.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.populateLocation), userInfo: nil, repeats: true)
+        
         tableView.reloadData()
     }
     
@@ -147,12 +134,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         friendProfileViewController.tempName = friendList[rowindex].title
         friendProfileViewController.tempAddress1 = friendList[rowindex].homeAddress
         friendProfileViewController.tempPhone = friendList[rowindex].cellPhone
-        
-        if (friendList[rowindex].emergencyContactUser != nil) {
-            
-            friendProfileViewController.tempEmergency = friendList[rowindex].emergencyContactUser!.cellPhone
-            
-        }
+        friendProfileViewController.tempEmergency = friendList[rowindex].emerCellPhone
         friendProfileViewController.state = friendList[rowindex].currstatus
         self.navigationController?.pushViewController(friendProfileViewController, animated: true)
         
@@ -161,7 +143,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     
     
-
+   //populate the location of every friend of the user with a coordinate
     func populateLocation(){
         var friendsWithLocation = [SignifyUser]()
         let apiService = APIService()
@@ -173,10 +155,10 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
                     var latitude_value: Double = 1.2
                     var longitude_value: Double = 1.2
                     var friend_state: State = .Safe
-                    if let state_data = friend["state"].stringValue as? String{
-                        if state_data == "safe"{ friend_state = .Safe}
-                        else if state_data == "attention"{friend_state = .Attention}
-                        else if state_data == "help"{friend_state = .Help}
+                    if friend["state"].stringValue != ""{
+                        if friend["state"].stringValue == "safe"{ friend_state = .Safe}
+                        else if friend["state"].stringValue == "attention"{friend_state = .Attention}
+                        else if friend["state"].stringValue == "help"{friend_state = .Help}
                     }
                     for user in self.friendList{
                         if friend["facebook_id"].stringValue == user.fbId{
@@ -185,11 +167,17 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
                         }
                     }
                     if friend["latitude"].stringValue == "" || friend["longitude"].stringValue == "" {
+                        for user in self.friendList{
+                            if friend["facebook_id"].stringValue == user.fbId{
+                                user.coordinate.latitude = 800
+                                user.coordinate.longitude = 800
+                            }
+                        }
                         continue
                     }
                     
-                    if let latitude = friend["latitude"].stringValue as? String{latitude_value = Double(latitude)!}
-                    if let longitude = friend["longitude"].stringValue as? String{longitude_value = Double(longitude)!}
+                    if friend["latitude"].stringValue != ""{latitude_value = Double(friend["latitude"].stringValue)!}
+                    if friend["longitude"].stringValue != ""{longitude_value = Double(friend["longitude"].stringValue)!}
                     let friend_coordinate = CLLocationCoordinate2D(latitude: latitude_value, longitude: longitude_value)
                     for user in self.friendList{
                         if friend["facebook_id"].stringValue == user.fbId{
@@ -215,6 +203,23 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             }
         })
         
+        //status update
+        if friendList.count - 1 >= rowindex {
+        self.getAllStatus(friendList[self.rowindex].fbId!, onCompletion: {statusHistory in
+            self.friendList[self.rowindex].statusHistory = statusHistory
+            self.StatusTableView.reloadData()
+        })
+            if friendList[rowindex].currstatus == .Help {
+                bigProfileImage.layer.borderColor = UIColor.noticeRed().CGColor
+            }
+            else if friendList[rowindex].currstatus == .Attention {
+                bigProfileImage.layer.borderColor = UIColor.noticeYellow().CGColor
+            }
+            else {
+                bigProfileImage.layer.borderColor = UIColor.noticeGreen().CGColor
+            }
+        }
+        
     }
 
     
@@ -229,15 +234,10 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             if friendList.count == 0 {
                 return 0
             }   else    {
-                
                 return self.friendList[self.rowindex].statusHistory.count
-                
-            }
+           }
             
         }
-            
-        
-        
     }
     
     
@@ -245,13 +245,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if (tableView == self.tableView)  {
-            //
-            
             
             let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
                 as! customCellTableViewCell
-            
-            
             
             cell.nameLabel.text = friendList[indexPath.row].title
             
@@ -301,7 +297,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             return cell
         }   else    {
             //statusTableView
-            
+            //change the color of the image view based on the status of the user
             let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath)
                 as! StatusTableViewCell
             
@@ -330,17 +326,16 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if tableView == self.tableView {
+            //if the user does not have a location, then don't enlarge
+            if friendList[indexPath.row].coordinate.latitude < 400 || friendList[indexPath.row].coordinate.longitude < 400 {
+                let location = friendList[indexPath.row].coordinate
+                let span = MKCoordinateSpanMake(0.01, 0.01)
+                let region = MKCoordinateRegion(center: location, span: span)
+                mapView.setRegion(region, animated: true)
+            }
         
-        let location = friendList[indexPath.row].coordinate
-        let span = MKCoordinateSpanMake(0.01, 0.01)
         
-            
-           
-        let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
-        
-        
-        // there's prob a better solution then this
+        // there's prob a better solution then this, but never mind!
         for annotation in self.mapView.annotations {
             
             if annotation.title! == friendList[indexPath.row].title {
@@ -378,8 +373,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             bigProfileImage.image = nil
         }
         
-      
-        
         if friendList[indexPath.row].currstatus == .Help {
             bigProfileImage.layer.borderColor = UIColor.noticeRed().CGColor
         }
@@ -390,13 +383,8 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
             bigProfileImage.layer.borderColor = UIColor.noticeGreen().CGColor
         }
 
-        
-        
-        
         self.bigProfileImage.layer.cornerRadius = self.bigProfileImage.frame.size.width / 2
         self.bigProfileImage.clipsToBounds = true
-        
-        
         
         friendInfo.hidden = false
         }
@@ -419,12 +407,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         
         
         if (annotationView == nil) {
-            
-          
-            
              annotationView = SVPulsingAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            
-            
             
             annotationView!.canShowCallout = true
             
@@ -462,7 +445,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     
     
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
         //... handle sms screen actions
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -495,7 +478,7 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
     
     // These are all actions for the friendInfo View
     
-    
+    //handle the call button and message button pressed
     @IBAction func callButtonPressed(sender: UIButton) {
         print("call button pressed")
         if friendList[rowindex].cellPhone != ""{
@@ -538,8 +521,6 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
 
     
     @IBAction func bigRequestButtonPressed(sender: UIButton) {
-        
-        
         let message = friendList[rowindex].title! + " will be notified that you requested an update."
         let alert = UIAlertController(title: "Request Sent!", message: message,
                                       preferredStyle: UIAlertControllerStyle.Alert)
@@ -553,9 +534,9 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
         alert.addAction(alertAction)
         self.presentViewController(alert, animated: true, completion: nil)
 
-
     }
     
+    //get the history of status of the user's friend and render the time of status into "xxx ago"
     func getAllStatus(facebook_id: String, onCompletion:([Status])->Void){
         let apiService = APIService()
         var statusHistory = [Status]()
@@ -572,10 +553,10 @@ class checkInViewController: UIViewController, MKMapViewDelegate, UITableViewDel
                     let availableDate = dateFormatter.dateFromString(datestring)
                     
                     var friend_state:State = .Safe
-                    if let state_data = status["state"].stringValue as? String{
-                        if state_data == "safe"{ friend_state = .Safe}
-                        else if state_data == "attention"{friend_state = .Attention}
-                        else if state_data == "help"{friend_state = .Help}
+                    if status["state"].stringValue != ""{
+                        if status["state"].stringValue == "safe"{ friend_state = .Safe}
+                        else if status["state"].stringValue == "attention"{friend_state = .Attention}
+                        else if status["state"].stringValue == "help"{friend_state = .Help}
                     }
                     let currentDateTime = NSDate()
                     let seconds = currentDateTime.timeIntervalSinceDate(availableDate!)

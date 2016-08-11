@@ -14,12 +14,21 @@ class NightlyViewController: UIViewController {
     @IBOutlet weak var safeButton: UIButton!
     @IBOutlet weak var attentionButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
-
-
+    
 
     let topLabel = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //check if we can send user's location
+        let location_status = CLLocationManager.authorizationStatus()
+        if SignifyUserController.sharedInstance.currentUser.useLocation{
+        if location_status == CLAuthorizationStatus.AuthorizedAlways{
+            SignifyUserController.sharedInstance.currentUser.useLocation = true
+            SignifyUserController.sharedInstance.locationSwitch = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.updateLocation), userInfo: self, repeats: true)
+        }else{
+            print("We are not allowed to use your location")
+        }
+        }
 
         
         //change tab bar color to black
@@ -64,6 +73,7 @@ class NightlyViewController: UIViewController {
 
         }
     override func viewWillAppear(animated: Bool) {
+        //check user status
         if StatusController.sharedInstance.currentStatus.state == .Safe{
             navigationItem.title = "Your status: Safe"
         }else if StatusController.sharedInstance.currentStatus.state == .Attention{
@@ -80,23 +90,36 @@ class NightlyViewController: UIViewController {
     @IBAction func safePressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Safe)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
-        //message.subscribeToTopic("/topics/cheese")
-        SignifyUserController.sharedInstance.send("I am Safe")
         APIServiceController.sharedInstance.updateState(.Safe)
         
     }
     @IBAction func attentionPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Attention)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
-         SignifyUserController.sharedInstance.send("I need your attention!")
          APIServiceController.sharedInstance.updateState(.Attention)
     }
     @IBAction func helpPressed(sender: UIButton) {
         StatusController.sharedInstance.changeCurrentState(State.Help)
         self.presentViewController(NoticeViewController(), animated: true, completion: nil)
-        
         APIServiceController.sharedInstance.updateState(.Help)
-       //APIServiceController.sharedInstance.getAllStatus("1706920526235781")
         }
+    //call the update location here because user might not go into the setting page but still can update their location 
+    func updateLocation(){
+        let apiService = APIService()
+        let locationManager = CLLocationManager()
+        let latitude = Double((locationManager.location?.coordinate.latitude)!)
+        let longitude = Double((locationManager.location?.coordinate.longitude)!)
+        let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/admin/location"),method:"POST",parameters:["latitude":String(latitude),"longitude":String(longitude)])
+        apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
+            if responseCode/100 == 2{
+                print(json)
+                print(responseCode)
+            }
+            else {
+                print(responseCode)
+                print("error in updating location")
+            }
+        })
+    }
 
 }

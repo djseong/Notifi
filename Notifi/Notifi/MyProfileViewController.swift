@@ -10,6 +10,7 @@ import UIKit
 
 class MyProfileViewController: UIViewController {
     var currentUser = SignifyUserController.sharedInstance.currentUser
+    var usePersonalProfile = SignifyUserController.sharedInstance.UsePersonalProfile
 
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var homeAddressLabel: UILabel!
@@ -27,10 +28,17 @@ class MyProfileViewController: UIViewController {
         let picurl = NSURL(string: url!)
         profileImage.load(picurl!)
         
-        self.navigationItem.title = "My Profile"
+        if usePersonalProfile{
+            self.navigationItem.title = "My Profile"
+        }else{
+            self.navigationItem.title = "Emergency Contact"
+            profileImage.hidden = true
+        }
         
     }
     override func viewWillAppear(animated: Bool) {
+        //if the user want to know the personal profile
+        if usePersonalProfile{
         if currentUser.homeAddress != ""{
             homeAddressLabel.text = currentUser.homeAddress
         }else{
@@ -44,6 +52,26 @@ class MyProfileViewController: UIViewController {
         }
         firstNameLabel.text = currentUser.firstName
         lastNameLabel.text = currentUser.lastName
+        }//if the user want to know the emergency contact
+        else{
+            if currentUser.emerFirstName != ""{
+            firstNameLabel.text = currentUser.emerFirstName
+            }else{
+                firstNameLabel.text = "First Name"
+            }
+            if currentUser.emerLastName != ""{
+                lastNameLabel.text = currentUser.emerLastName
+            }else{
+                lastNameLabel.text = "Last Name"
+            }
+            if currentUser.emerCellPhone != ""{
+                cellPhoneNumberLabel.text = currentUser.emerCellPhone
+            }else{
+                cellPhoneNumberLabel.text = "Cell Phone Number"
+            }
+            homeAddressLabel.text = ""
+            
+        }
 
     }
 
