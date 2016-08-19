@@ -105,6 +105,7 @@ class APIServiceController{
         let request = apiService.createMutableAnonRequest(NSURL(string: "https://polar-hollows-23592.herokuapp.com/friendship/getall"),method:"GET",parameters:nil)
         apiService.executeRequest(request, requestCompletionFunction: {responseCode, json in
             if responseCode/100 == 2{
+                print(json)
                 for (_,friend) in json{
                     //game = [string, json]
                     var facebook_id = ""
